@@ -1,9 +1,9 @@
 {
   "theme": "mint",
-  "name": "Ultiwrite API documentation",
+  "name": "Ultiwrite API",
   "description": "Integrate Ultiwrite asymmetric diligence and investigative intelligence with authorized evidence uploads, saved investigations, reports and webhooks.",
   "colors": {
-    "primary": "#D39891",
+    "primary": "#884A43",
     "light": "#E7B7B0",
     "dark": "#9A645E"
   },

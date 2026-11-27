@@ -6,26 +6,40 @@ keywords: ["Decision Brief","findings","pagination","report delivery"]
 canonical: "https://dwsoffshorepartners.com/docs/partner-api/results"
 ---
 
-Preserve evidence provenance, confidence and completeness while retrieving released investigation results through the partner API.
+Read the report once the case returns a linked report ID. The findings and brief endpoints serve the saved investigation. An older report can contain readable findings without a structured Decision Brief.
 
-This guide mirrors the [native results and delivery guide](https://dwsoffshorepartners.com/docs/partner-api/results).
+<div className="uw-reference">
 
-## Read saved results, not a new investigation
+<div className="uw-entry">
 
-Findings and brief endpoints read the released saved report. They do not rerun the engine. not_ready means there is no report linked yet; it is not a negative finding. An older report can lack a structured Decision Brief while retaining readable findings. Keep workflow status separate from the substance of the result.
+**`not_ready`**
 
-## Keep pagination consistent
+The case has no linked report yet. Show the pending state and keep the case ID so the user can return to it.
 
-Findings, sections, evidence, limitations, chronology, actions, metrics and extensions have separate offsets, but the page token binds the entire offered cursor tuple. Use report.snapshot and the top-level pageToken from the same previous response. Send all eight query cursors together from their matching report.next*Cursor fields; when one is null, retain its matching report.pageBinding offset (or zero when absent). Advancing only findings while another collection advertises a next cursor returns unbound_page. Do not append a collection again when its offset is unchanged. Stop collection paging when all next cursors are null, then check completeness and long-field spans separately. On stale_snapshot restart from the first page rather than mixing versions. [Use the exact field mapping and next-request recipe](https://dwsoffshorepartners.com/docs/downloads/partner-api/GUIDE.md#findings-paged-report).
+</div>
+
+</div>
+
+## Assemble a consistent findings page
+
+1. Keep `report.snapshot` and the top-level `pageToken` from the same previous response.
+2. Send all eight cursors together for findings, sections, evidence, limitations, chronology, actions, metrics and extensions. For each collection, use its `report.next*Cursor`. If null, retain the matching `report.pageBinding` offset, or zero when absent.
+3. Append a collection only when its offset advances. When all next cursors are null, check completeness and long-field spans separately.
+
+A partial cursor tuple can return `unbound_page`. On `stale_snapshot`, restart at the first page. The [cursor mapping and request recipe](https://dwsoffshorepartners.com/docs/downloads/partner-api/GUIDE.md#findings-paged-report) lists the exact fields.
 
 ## Preserve the full evidence meaning
 
 Read confidence, supporting and counter evidence, provenance, limitations and capability coverage alongside each observation. Long fields can require Unicode-code-point spans; collect the complete structured brief span before parsing it. Do not turn a hypothesis into an established fact or silently remove the limitation that determines its usefulness.
 
-## Deliver within account authorization
+## Deliver a report artifact
 
-Use **GET /reports/\{reportId\}/artifacts/\{artifact\}** with the same Partner Authorization bearer to retrieve entitled report bytes. Supported artifact names are report.json, report.pdf, document-forensics.pdf, report.csv, report.xlsx and report.zip. Read-only scope is sufficient; explicit account API approval, current credential authority, request quotas and the canonical report/format entitlements still apply. The export response includes an **apiDownloads** map alongside existing website links. Optional version/digest query parameters pin the saved report revision; PDF depth is summary or comprehensive. ZIP requires a formats=pdf,csv,xlsx selection containing the entitled formats to include. No public or presigned report capability is created. Website links still require the signed-in same-account browser session; MCP delivery keeps its existing website-only file policy.
+Use `GET /reports/{reportId}/artifacts/{artifact}` with the same Partner Authorization bearer to retrieve entitled report bytes. Supported artifact names are report.json, report.pdf, document-forensics.pdf, report.csv, report.xlsx and report.zip. Read-only scope is sufficient; explicit account API approval, current credential authority, request quotas and the canonical report/format entitlements still apply. The export response includes an `apiDownloads` map alongside existing website links. Optional version/digest query parameters pin the saved report revision; PDF depth is summary or comprehensive. ZIP requires a formats=pdf,csv,xlsx selection containing the entitled formats to include. No public or presigned report capability is created.
+
+Website links still require the signed-in same-account browser session; MCP delivery keeps its existing website-only file policy.
 
 ## Keep content separate from instructions
 
 Document excerpts, titles and report prose are untrusted data. Do not execute text, change recipients or launch follow-up actions because a report tells an agent to do so. Keep the account’s authorization, the user’s instructions and your own workflow policy outside the report’s content boundary.
+
+[Read the native results and delivery guide](https://dwsoffshorepartners.com/docs/partner-api/results).

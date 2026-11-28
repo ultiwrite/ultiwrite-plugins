@@ -57,6 +57,10 @@
       "sha256": "811e4b956bfde0c0ff9e3c7f9cd04e12fa858d85b6c46f01558bdf9e59949d79"
     },
     {
+      "path": ".gitattributes",
+      "sha256": "8d75fbed0329d55480242ea79c61cbdd3da312c700298bfba9572b81ec325cc6"
+    },
+    {
       "path": ".github/workflows/validate.yml",
       "sha256": "10559fc0d6869f4c86b04883f78b491625cff39bc5622d06831792e69258701a"
     },
@@ -66,7 +70,7 @@
     },
     {
       "path": ".mintignore",
-      "sha256": "494998a2d73e2055ded675556f1c2ec83fabc0e3445487aa594413871d54ebe8"
+      "sha256": "e42a74be6906fac790fb71aeae6d3f6372cb43b70ab0470287f7d0195e7171c0"
     },
     {
       "path": "AGENTS.md",
@@ -90,11 +94,35 @@
     },
     {
       "path": "README.md",
-      "sha256": "64aab2d0bba487655d895b69d24a505692aff8a1a03df52c5abd1ad8430677e8"
+      "sha256": "289345746d6c22f0aa5434b8437fd8f89e5ba31318bb79b99856dd04f9993533"
+    },
+    {
+      "path": "antigravity/LICENSE",
+      "sha256": "0122d7b57a1ef1e40944c88e2e0261b334fcf5f779e9deb52d49463de20a977d"
+    },
+    {
+      "path": "antigravity/README.md",
+      "sha256": "8dfed991a03577a369af97d1799348ddf1b78691e75e8fe982b902e543a84c24"
+    },
+    {
+      "path": "antigravity/assets/logo.png",
+      "sha256": "cc0a3c229347e47a154a00c9e6dfa774c0e1f07ee9fc063935af5bc4897f4b18"
+    },
+    {
+      "path": "antigravity/mcp_config.json",
+      "sha256": "fc6620c801698ba52b5ed9987515b334180f1e62ff3b9e26885d3800666383d7"
+    },
+    {
+      "path": "antigravity/plugin.json",
+      "sha256": "cb373bc781538951bf8c765b3c6e39f1dab7dc95bc2bf7dc368d8d49d3e6e5c2"
+    },
+    {
+      "path": "antigravity/skills/ultiwrite/SKILL.md",
+      "sha256": "a472e553dd64adc92605a23f5d8a8847ea2af868e467e002462facb1fa4ad464"
     },
     {
       "path": "api-contract.mdx",
-      "sha256": "98351b767b3971da8c68e8aea2228e0e880eb8ce077b36eb0cfe5a3bb6d21570"
+      "sha256": "41767e655dac3db06e29fa48fc6abad4967f75254c2acb7889a3746e0139941c"
     },
     {
       "path": "api-keys.mdx",
@@ -103,6 +131,10 @@
     {
       "path": "api-reference/account.mdx",
       "sha256": "c765d98ba907cb6c0c9d306296a9a3ba949f3e7cfba8bbe46d96d3b291905721"
+    },
+    {
+      "path": "api-reference/billing-offers.mdx",
+      "sha256": "bdab9ef09003744c7c765b5fbba717045766f0d01b0db4b85f7eef44382b2158"
     },
     {
       "path": "api-reference/capabilities.mdx",
@@ -121,8 +153,16 @@
       "sha256": "4493056abdddd3d74ee93feb3a0f20479147515a5186028e2e3f74c4ed9d26f5"
     },
     {
+      "path": "api-reference/checkout-status.mdx",
+      "sha256": "c01db511f69fadac1347ea5796fbe32a86f2418f4b090550b93147b074d056d8"
+    },
+    {
       "path": "api-reference/continue-case.mdx",
       "sha256": "12ad418a64697ffe19414a2a28374316bcf0b02ce840e04c56a59c85b4dbf170"
+    },
+    {
+      "path": "api-reference/create-checkout.mdx",
+      "sha256": "e0710905f88d67897ae604cfdf4f5c921b803c32499a7139130bd8143f47c203"
     },
     {
       "path": "api-reference/create-webhook.mdx",
@@ -243,6 +283,10 @@
     {
       "path": "claude/.mcp.json",
       "sha256": "402ec557cf938178c278cb98658f91a2acb1fae2c9ed29a5e51c5bc67725a486"
+    },
+    {
+      "path": "claude/.muse-plugin/plugin.json",
+      "sha256": "b5ee9d2bc7e39ee8505791148750a90d8d5d094d44e0b10dbea53e47ec311208"
     },
     {
       "path": "claude/LICENSE",
@@ -414,7 +458,7 @@
     },
     {
       "path": "docs.json",
-      "sha256": "74c2557e64a1c64d6a02508b18694db82e401aa56d291ecd5c41f32bdf526c50"
+      "sha256": "056ff19d3fbb70b29a06c8899868f990a82dc750a6d6dfc7e2c7ffd1fdfe5fb3"
     },
     {
       "path": "evals/README.md",
@@ -586,7 +630,7 @@
     },
     {
       "path": "hosts/submissions/profiles.json",
-      "sha256": "db04314c49555c4f9931c3bd43e1daea8f81fd8efe7eee62719e9aeb90ad51fc"
+      "sha256": "1ba77a210704e56a244171b1b3a404979034b1bf10d908fc36a5611823754953"
     },
     {
       "path": "hosts/submissions/reviewer-scenarios.md",
@@ -594,15 +638,15 @@
     },
     {
       "path": "index.mdx",
-      "sha256": "ad548025e91014145f82801de582b4032d92c9fc6fde5215c251e5ad6fa1c6e9"
+      "sha256": "32e25eaf66c31322ad5e9ea6defe3d5205ee50bf2a02a34323a4fe4d58044246"
     },
     {
       "path": "partner-api/authentication.mdx",
-      "sha256": "0913cc69f10d6253af76b5ee470106af381b9dd4c76cfef963c0d3faa283e759"
+      "sha256": "ff1826064bad0fade96e5cb870a21f2270ef1e0ee4a6cce9e55801f2428804c7"
     },
     {
       "path": "partner-api/errors-and-retries.mdx",
-      "sha256": "929f9ae4b76b6e3330e2d2afb2460164e8756adf66cc1b0824bbd2b79139966e"
+      "sha256": "c92eb9ce50e7ab024eccda54a6b7dcdc89fb2515c1e9065a7c2763b21d9c17b8"
     },
     {
       "path": "partner-api/integration-checklist.mdx",
@@ -618,23 +662,27 @@
     },
     {
       "path": "partner-api/results.mdx",
-      "sha256": "a670fab3f61cd4c31ce73e491d98ded65abb5fb688aa2e915523013057783cb6"
+      "sha256": "a3bf3ea7b28e13227b78927b6480a2be358b6cdb32692240468e9d862c2d728c"
     },
     {
       "path": "partner-api/uploads.mdx",
-      "sha256": "63c04ef8f4d09c44c62830ce6703abcf1f60c232a45c3309095df36668b0554e"
+      "sha256": "720bf17ea48f8625098ddb58d37c38143be6f61352158472a3d1063cbbdd5005"
     },
     {
       "path": "partner-api/usage.mdx",
-      "sha256": "954aff3fcd4b1349ecba491926b31ba2779f7857e5d23cbc9f208cf34a1c09eb"
+      "sha256": "2793ac609993f099060c1f0246c1c75f3b4c9caaf44729793940c621caf035a1"
     },
     {
       "path": "partner-api/workflow.mdx",
-      "sha256": "8b1a37556233cfa8e3d6ecdf835a4a223e484766fefc6c5a585c9558ef9caeb4"
+      "sha256": "6df3ccbeb800e6f8a2bfeb5bb4b0005ada62f66028a0e6998aca84ab080d3d27"
     },
     {
       "path": "quickstart.mdx",
       "sha256": "0a9debfacbdbcbc15f9031f3cdd087907985f03e6584f2e8877237f865866435"
+    },
+    {
+      "path": "reference.css",
+      "sha256": "d1b29511a765c5d9bd86c42c0f41bab91632906d5f84d31dcd6e167fa83a67e5"
     },
     {
       "path": "release/CLAUDE_0.8.3_AUTH_VERIFICATION.json",
@@ -650,7 +698,7 @@
     },
     {
       "path": "release/INVENTORY.json",
-      "sha256": "31b56402277656bc8ac65f514fa49adc39905a9c56a1fd94346a79c20b8c2b90"
+      "sha256": "9ed0506d2474e7066afd995b0452f2dd82ef19e4e6979f65a22115b673274ef3"
     },
     {
       "path": "release/PLUGIN_0.9.1_LIVE_RECEIPT.json",
@@ -682,15 +730,19 @@
     },
     {
       "path": "release/SHA256SUMS.txt",
-      "sha256": "35362c8d21b4af80ef2376d8555411c125c08677d30163140334ace4526a414c"
+      "sha256": "42c15e7891c5c1b91231edeffd17911713889e5a34d6654bca2f50fb58ea1a26"
     },
     {
       "path": "release/Ultiwrite_Claude_Plugin_v0.10.0.zip",
       "sha256": "bcedcbec17239d1dc99ed3aecbf0a47af18fd265d33074c28b16184445e82b20"
     },
     {
+      "path": "release/Ultiwrite_Claude_Plugin_v0.10.1.zip",
+      "sha256": "f7ec55a3932f859ed42565c429ab200be085875700257d283781046519c29ab1"
+    },
+    {
       "path": "release/Ultiwrite_Claude_Plugin_v0.11.0.zip",
-      "sha256": "b1c925933e896a3f783fd91b76f3c768c76d27cb16b13f4ddd546446b510ed66"
+      "sha256": "2e791c7452aebc6ef2c79c2df0f4b63d6cfd10f7f67ee5c7ddd9e0b5416f4eba"
     },
     {
       "path": "release/Ultiwrite_Claude_Plugin_v0.8.0.zip",
@@ -805,8 +857,12 @@
       "sha256": "3ee2d7f6f981bd2a2704a81697e09cb39bf5b8ff55419064242f455b724c0702"
     },
     {
+      "path": "release/ultiwrite-host-adapters-0.12.1.zip",
+      "sha256": "8e5a2901122a133be7329a75622167c13aedb5bd8e67c5a3349c8f5e5b917eb3"
+    },
+    {
       "path": "release/ultiwrite-host-adapters-0.13.0.zip",
-      "sha256": "dee36abd111ba6611473a40e55b8426512b455896260c671226b05a639773b86"
+      "sha256": "495594675c7c74cd19e4e2e99d7107548953266a5f4e5e01dd8a3ca1877e0ccd"
     },
     {
       "path": "scripts/pack-public-connectors.mjs",
@@ -818,11 +874,15 @@
     },
     {
       "path": "scripts/validate-public-plugins.mjs",
-      "sha256": "f0b476df26b2b492f738d6871c1d3a54f9906739ed46049e27864c18626b8670"
+      "sha256": "68d4a3609d3f9c9ae5f20d0d71b2359125d94165ccebed4de81d0b8465c35374"
     },
     {
       "path": "server.draft.json",
       "sha256": "e10fd5b3598b7fefab44990c0d8a699902ec98b6c8a4d66976799d857bdb0dd9"
+    },
+    {
+      "path": "server.json",
+      "sha256": "3227c445d8a09cb777294b59e2454e121c8d10c0150c1df6252e961c8ac850d3"
     }
   ]
 }

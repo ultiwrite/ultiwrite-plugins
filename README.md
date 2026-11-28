@@ -36,7 +36,7 @@ Before export, the table below intentionally records the currently published pub
 | --- | --- |
 | [`ultiwrite-chatgpt-plugin-0.11.0.zip`](https://github.com/dennis430/ultiwrite-plugins/raw/main/release/ultiwrite-chatgpt-plugin-0.11.0.zip) | `e2d3855ed90df86f0cec176b5bb06c7911dd5316193b3a3228bd543b9a062357` |
 | [`ultiwrite-cursor-plugin-0.11.0.zip`](https://github.com/dennis430/ultiwrite-plugins/raw/main/release/ultiwrite-cursor-plugin-0.11.0.zip) | `848f5442eee125d15a0b38af24c3a9416531b061edd4e97e8d8d53db78f21941` |
-| [`Ultiwrite_Claude_Plugin_v0.11.0.zip`](https://github.com/dennis430/ultiwrite-plugins/raw/main/release/Ultiwrite_Claude_Plugin_v0.11.0.zip) | `b1c925933e896a3f783fd91b76f3c768c76d27cb16b13f4ddd546446b510ed66` |
+| [`Ultiwrite_Claude_Plugin_v0.11.0.zip`](https://github.com/dennis430/ultiwrite-plugins/raw/main/release/Ultiwrite_Claude_Plugin_v0.11.0.zip) | `2e791c7452aebc6ef2c79c2df0f4b63d6cfd10f7f67ee5c7ddd9e0b5416f4eba` |
 <!-- CURRENT_DOWNLOADS_END -->
 
 In an exported candidate, `release/INVENTORY.json`, `release/SHA256SUMS.txt` and `RELEASE_MANIFEST.json` record candidate source/archive hashes and historical preservation. New packages do not replace old archives. The authenticated website's 0.10.0 hashes remain in its own `ultiwrite-current-plugins.json`; those ZIP containers differ from this public-repository family and are not interchangeable despite matching source version labels.

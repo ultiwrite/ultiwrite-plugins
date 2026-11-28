@@ -3,6 +3,7 @@
 /*
 !/.mintignore
 !/docs.json
+!/reference.css
 !/index.mdx
 !/quickstart.mdx
 !/api-keys.mdx

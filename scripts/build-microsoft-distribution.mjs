@@ -47,8 +47,9 @@ const m365Name = `ultiwrite-m365-source-${version}.zip`
 copyFileSync(resolve(root, 'microsoft365/dist', m365Name), resolve(release, m365Name))
 const names = [vscodeName, m365Name, copilotName]
 const checksums = names.map(name => `${createHash('sha256').update(readFileSync(resolve(release, name))).digest('hex')}  ${name}`).join('\n') + '\n'
-writeFileSync(resolve(release, 'MICROSOFT_SHA256SUMS.txt'), checksums)
-const verification = readFileSync(resolve(release, 'MICROSOFT_VERIFICATION.json'))
+const suffix = version === '0.1.0' ? '' : `_${version}`
+writeFileSync(resolve(release, `MICROSOFT_SHA256SUMS${suffix}.txt`), checksums)
+const verification = readFileSync(resolve(release, `MICROSOFT_VERIFICATION${suffix}.json`))
 const bundle = Object.fromEntries(names.map(name => [name, readFileSync(resolve(release, name))]))
 Object.assign(bundle, {
   'SHA256SUMS.txt': Buffer.from(checksums),
@@ -59,4 +60,5 @@ Object.assign(bundle, {
 })
 writeFileSync(resolve(release, `Ultiwrite_Microsoft_Distribution_${version}.zip`), deterministicZip(bundle))
 run(process.execPath, ['scripts/validate-public-source.mjs'])
+run(process.execPath, ['scripts/pack-public-connectors.mjs'])
 console.log(`Built ${names.join(', ')} and the combined handoff. These are review candidates; no external publication occurred.`)

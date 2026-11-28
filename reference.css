@@ -1,0 +1,49 @@
+/* The portal shares type and alignment across guides and endpoint references. */
+#header #page-title {
+  font-family: Georgia, Cambria, "Times New Roman", serif;
+  font-size: clamp(2rem, 1.6rem + 1.5vw, 3rem);
+  font-weight: 500;
+  line-height: 1.09;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+#content .uw-reference {
+  margin: 1.25rem 0;
+  border-top: 2px solid currentColor;
+  font-variant-numeric: tabular-nums;
+}
+
+#content .uw-entry {
+  display: grid;
+  grid-template-columns: minmax(8rem, 1fr) minmax(0, 3fr);
+  gap: 0.25rem 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid currentColor;
+  border-color: color-mix(in srgb, currentColor 30%, transparent);
+}
+
+#content .uw-entry > :is(p, [data-as="p"]) {
+  margin: 0;
+  line-height: 1.55;
+}
+
+#content .uw-reference a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  #content .uw-entry {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Keep the provider credit readable in the same light and dark modes as the guide. */
+a[href^="https://www.mintlify.com?utm_campaign=poweredBy"] {
+  color: #625e5d;
+}
+
+.dark a[href^="https://www.mintlify.com?utm_campaign=poweredBy"] {
+  color: #b9b4b2;
+}

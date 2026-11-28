@@ -1,22 +1,40 @@
 ---
 title: "Choose direct upload or a protected upload link"
 sidebarTitle: "Evidence uploads"
-description: "Respect both the evidence-admission contract and the lower hosting body limit when submitting commercial documents for analysis."
+description: "Choose a transport based on package size, the deployed body limit and the account’s upload policy."
 keywords: ["document upload","multipart","upload links","document forensics"]
 canonical: "https://dwsoffshorepartners.com/docs/partner-api/uploads"
 ---
 
-Respect both the evidence-admission contract and the lower hosting body limit when submitting commercial documents for analysis.
+Read [the account’s capabilities](/api-reference/capabilities) before accepting files. The [native upload guide](https://dwsoffshorepartners.com/docs/partner-api/uploads) describes the same admission rules.
 
-This guide mirrors the [native upload guide](https://dwsoffshorepartners.com/docs/partner-api/uploads). Check the API's returned capabilities and your account policy before submitting files.
+## Choose the transport
 
-## Small packages use multipart
+<div className="uw-reference">
 
-Direct POST /cases accepts one through six files parts. Let the HTTP client generate the multipart boundary. Only documentForensics is an additional supported form field. The API does not accept an organization override, tier selector or user ID. Read GET /capabilities rather than copying website upload assumptions.
+<div className="uw-entry">
 
-## Application limits are not platform limits
+**Direct submission**
 
-The application limits are 8 MiB per file and 12 MiB per package, but the production hosting body ceiling is approximately 4.5 MB including multipart overhead. The example client uses a conservative 4,000,000-file-byte threshold. It is not a new server limit or an entitlement. Larger packages should use the upload-link workflow.
+Send one to six `files` parts to [`POST /cases`](/api-reference/submit-evidence). Let the HTTP client set the multipart boundary. The only additional form field is `documentForensics`.
+
+</div>
+
+<div className="uw-entry">
+
+**Guided upload**
+
+For packages over the direct request limit, [create an upload link](/api-reference/upload-link) and give it to the person submitting the evidence.
+
+</div>
+
+</div>
+
+## Check both size limits
+
+The application accepts up to **8 MiB per file** and **12 MiB per package**. The production host limits a direct request to approximately **4.5 MB**, including multipart overhead. The example client switches transport at 4,000,000 file bytes to leave room for that overhead.
+
+Direct submission derives the account from the credential. It rejects organization, tier and user overrides.
 
 ## Treat the upload link as a credential
 

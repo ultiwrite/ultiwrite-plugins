@@ -39,7 +39,7 @@ const allowedTop = new Set([
   'INSTALL.md', 'server.draft.json', '.gitignore', 'RELEASE_MANIFEST.json',
   'release', 'AGENTS.md', 'POSITIONING.md', 'evals', 'hosts', 'antigravity', 'server.json', '.gitattributes',
   // The public distribution also hosts the existing customer API documentation.
-  '.mintignore', 'docs.json', 'index.mdx', 'quickstart.mdx', 'api-contract.mdx', 'api-keys.mdx', 'api-reference', 'partner-api',
+  '.mintignore', 'docs.json', 'reference.css', 'index.mdx', 'quickstart.mdx', 'api-contract.mdx', 'api-keys.mdx', 'api-reference', 'partner-api',
 ])
 
 function walk(dir, out = []) {
@@ -178,7 +178,7 @@ if (!readFileSync(join(root, 'grokbot/TESTING.md'), 'utf8').includes('NOT_RUN'))
 const claude = readJson('claude/.mcp.json')
 if (claude?.mcpServers?.ultiwrite?.type !== 'http' || claude?.mcpServers?.ultiwrite?.url !== CLAUDE_MCP_URL || Object.keys(claude?.mcpServers?.ultiwrite ?? {}).length !== 2) fail('claude mcp')
 const claudeListing = readJson('claude/.claude-plugin/plugin.json')
-if (claudeListing?.name !== 'ultiwrite' || claudeListing?.displayName !== 'Ultiwrite' || claudeListing?.icon !== './assets/logo.png' || claudeListing?.version !== '0.10.0') fail('claude directory branding')
+if (claudeListing?.name !== 'ultiwrite' || claudeListing?.displayName !== 'Ultiwrite' || claudeListing?.icon !== './assets/logo.png' || claudeListing?.version !== '0.10.1') fail('claude directory branding')
 for (const field of ['documentationUrl', 'supportUrl', 'privacyPolicyUrl', 'termsOfServiceUrl']) {
   if (typeof claudeListing?.[field] !== 'string' || !claudeListing[field].startsWith('https://dwsoffshorepartners.com/')) fail(`claude directory ${field}`)
 }
@@ -265,7 +265,7 @@ if (readFileSync(join(root, 'server.draft.json'), 'utf8').includes('NOT PUBLISHE
 // Muse native manifest (experimental, self-hosted marketplace distribution)
 const muse = readJson('claude/.muse-plugin/plugin.json')
 if (muse) {
-  if (muse.schemaVersion !== 1 || muse.name !== 'ultiwrite' || muse.version !== '0.10.0') fail('muse plugin identity')
+  if (muse.schemaVersion !== 1 || muse.name !== 'ultiwrite' || muse.version !== claudeListing?.version) fail('muse plugin identity')
   if (muse.compat?.manifestDir !== '.muse-plugin') fail('muse compat manifestDir')
   const museMcp = muse.capabilities?.mcpServers?.find(s => s.id === 'ultiwrite')
   if (!museMcp || museMcp.transport !== 'http' || museMcp.url !== MCP_URL) fail('muse mcp server')

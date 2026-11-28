@@ -106,7 +106,7 @@
     },
     {
       "path": "PUBLISH.cmd",
-      "sha256": "881881a9cc913b933a8c644a321187ec2935ea9425ed2ccb20dfd97056e97b3e"
+      "sha256": "21befd9466d53a11768bcdb6ed6250dcb8da051c391b9094834831f4dfbb7128"
     },
     {
       "path": "README.md",
@@ -418,7 +418,7 @@
     },
     {
       "path": "client/test/interoperability.test.mjs",
-      "sha256": "9063dd65a1aaa45ae52cfb2dd143b1892416a5c3def36381bab7ba5fcdb5ae63"
+      "sha256": "a6bf44273505ce81fc1c3b0e0deee3ecdde6a1dbd08345407a4497001dcf6f2b"
     },
     {
       "path": "client/test/transport.test.mjs",

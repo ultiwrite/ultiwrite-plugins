@@ -36,6 +36,7 @@ const secretNeedles = [
 const allowedTop = new Set([
   'cursor', 'claude', 'chatgpt', 'grokbot', 'client', 'emdash', 'scripts', '.github',
   'cli', 'package.json', 'package-lock.json', '.npmignore', 'PUBLISH.cmd',
+  'vscode', 'microsoft365', 'copilot', 'registry', 'DISTRIBUTION.md',
   '.cursor-plugin', '.claude-plugin', 'README.md', 'LICENSE', 'NOTICE',
   'INSTALL.md', 'server.draft.json', '.gitignore', 'RELEASE_MANIFEST.json',
   'release', 'AGENTS.md', 'POSITIONING.md', 'evals', 'hosts', 'antigravity', 'server.json', '.gitattributes',
@@ -45,7 +46,7 @@ const allowedTop = new Set([
 
 function walk(dir, out = []) {
   for (const name of readdirSync(dir)) {
-    if (['.git', 'node_modules', 'dist', 'coverage', '.cache', '__MACOSX', '.DS_Store', 'Thumbs.db'].includes(name) || name.endsWith('.tgz')) continue
+    if (['.git', 'node_modules', 'dist', 'out', '.vscode-test', 'coverage', '.cache', '__MACOSX', '.DS_Store', 'Thumbs.db'].includes(name) || name.endsWith('.tgz')) continue
     const path = join(dir, name)
     const rel = relative(root, path).split(sep).join('/')
     if (rel.split('/').some(part => part === '..' || part.startsWith('.env'))) fail(`forbidden path ${rel}`)
@@ -106,7 +107,7 @@ for (const rel of files) {
     && !/^(?:chatgpt|claude|cursor)\/(?:README\.md|LICENSE|mcp\.json|\.mcp\.json|\.(?:claude|cursor|muse)-plugin\/plugin\.json|plugin\.json|assets\/logo\.png|skills\/[a-z0-9-]+\/(?:SKILL\.md|agents\/openai\.yaml))$/.test(rel)) {
     fail(`unexpected package source ${rel}`)
   }
-  if (rel.endsWith('.png') || rel.endsWith('.zip')) continue
+  if (rel.endsWith('.png') || rel.endsWith('.zip') || rel.endsWith('.vsix')) continue
   const text = readFileSync(join(root, rel), 'utf8')
   for (const needle of secretNeedles) {
     if (text.includes(needle)) fail(`${rel} contains forbidden material`)

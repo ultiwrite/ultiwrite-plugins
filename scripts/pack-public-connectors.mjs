@@ -307,7 +307,7 @@ process.stdout.write(`${checkOnly ? 'checked' : 'packed'} ${PACKAGES.length + 1}
 
 function walk(dir, out = []) {
   for (const name of readdirSync(dir)) {
-    if (['.git', 'node_modules', 'dist', 'coverage', '.cache', '__MACOSX', '.DS_Store', 'Thumbs.db'].includes(name) || name.endsWith('.tgz')) continue
+    if (['.git', 'node_modules', 'dist', 'out', '.vscode-test', 'coverage', '.cache', '__MACOSX', '.DS_Store', 'Thumbs.db'].includes(name) || name.endsWith('.tgz')) continue
     if (name.startsWith('.env') || ['.npmrc', '.netrc', '.ssh', '.aws', '.codex'].includes(name) || /\.(pem|key|p12)$/i.test(name)) throw new Error('Refusing a private package path')
     const path = join(dir, name)
     const stat = lstatSync(path)

@@ -51,6 +51,10 @@ Download the versioned connector packages below. The host adapter bundle is `rel
 
 `release/INVENTORY.json`, `release/SHA256SUMS.txt` and `RELEASE_MANIFEST.json` record the hashes for these public repository packages. For an authenticated website download, use its accompanying checksum inventory.
 
+## Microsoft connector review
+
+The [Microsoft distribution guide](DISTRIBUTION.md) covers the VS Code 0.1.1 review candidate, GitHub Copilot, Microsoft 365 tenant validation, and MCP Registry preparation. The guide records package checks and host publication requirements.
+
 ## Preparation
 
 ```sh

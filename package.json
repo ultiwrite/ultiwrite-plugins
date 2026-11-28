@@ -18,7 +18,7 @@
   ],
   "scripts": {
     "build": "node --check cli/bin/ultiwrite.mjs && node --check cli/lib/config.mjs && node --check cli/lib/codex.mjs",
-    "test": "node --test",
+    "test": "node --test \"cli/test/*.test.mjs\" \"client/test/*.test.mjs\" \"scripts/test/*.test.mjs\" \"emdash/tests/*.test.mjs\"",
     "validate": "node scripts/validate-public-plugins.mjs && node scripts/pack-public-connectors.mjs --check",
     "test:package": "node scripts/verify-npm-package.mjs",
     "prepublishOnly": "npm run build && npm test && npm run validate && npm run test:package",

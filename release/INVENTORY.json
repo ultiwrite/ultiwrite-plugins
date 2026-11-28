@@ -1151,6 +1151,102 @@
       ]
     },
     {
+      "file": "release/Ultiwrite_Microsoft_Distribution_0.1.0.zip",
+      "status": "historical archive; kept so existing links keep working; not rebuilt",
+      "sha256": "1d3fded6ba632f7674967ab7187615aa7c14ac1d1c8d84d415438ff1f3c2d7b6",
+      "bytes": 205790,
+      "members": [
+        {
+          "name": "DISTRIBUTION.md",
+          "sha256": "f59534f33650bb8da0fc109bbc73fc589b966aa5565002335d06cba432fef715",
+          "bytes": 6643
+        },
+        {
+          "name": "MICROSOFT_VERIFICATION.json",
+          "sha256": "f7de1015fa6fa32f103da3682f89c6772e69644433ade5338b85d8b54e5efbd4",
+          "bytes": 7645
+        },
+        {
+          "name": "SHA256SUMS.txt",
+          "sha256": "b3ed99a42f849d568006e874bf09749b17720968373241a3a860c65e5be17e4e",
+          "bytes": 293
+        },
+        {
+          "name": "registry/README.md",
+          "sha256": "7934638a2ae6d32f9032c46f7924ee1b9d02fa76cae3f3644c1ba0e4ce58f168",
+          "bytes": 3271
+        },
+        {
+          "name": "registry/server.json",
+          "sha256": "2cdb37fe4e5d6fa5f3d28e219210f1205b56762a78d2d6f69067cda5a5ee73a4",
+          "bytes": 529
+        },
+        {
+          "name": "ultiwrite-copilot-plugin-0.1.0.zip",
+          "sha256": "8227161a0f3780a106cf08d8ca888d099804516ee4fa420d2eca9d5d41f18aed",
+          "bytes": 3939
+        },
+        {
+          "name": "ultiwrite-m365-source-0.1.0.zip",
+          "sha256": "d908545dc1e8e8f8038f8ed95579218d2c09614584bf6a49da4c2d9fc12a301e",
+          "bytes": 135746
+        },
+        {
+          "name": "ultiwrite-vscode-0.1.0.vsix",
+          "sha256": "10404aba6129802c913f953c9a6552a8c40f11697ee5f82f32bfb3a2f6b6e6e0",
+          "bytes": 60458
+        }
+      ]
+    },
+    {
+      "file": "release/Ultiwrite_Microsoft_Distribution_0.1.1.zip",
+      "status": "historical archive; kept so existing links keep working; not rebuilt",
+      "sha256": "bb0b54e0094a4a945760c3ef39ce4d55c10beb15a56c8ec1333d7b6da457679f",
+      "bytes": 204074,
+      "members": [
+        {
+          "name": "DISTRIBUTION.md",
+          "sha256": "5f9c76814b025aebb69d187d3fa1e651eccd61d2536bc284aa35c1437589afea",
+          "bytes": 6886
+        },
+        {
+          "name": "MICROSOFT_VERIFICATION.json",
+          "sha256": "55100e3b1c62181d789200c2da809cb4cec41cef769cb69bc0c8158d2571ef79",
+          "bytes": 1083
+        },
+        {
+          "name": "SHA256SUMS.txt",
+          "sha256": "ab09913b9f0ee015cd0f811a37759b04494289a762194ce71aa7e7b484ea82e8",
+          "bytes": 293
+        },
+        {
+          "name": "registry/README.md",
+          "sha256": "3aa339567d1b6af914c0d392f7951d43ee1a48377708f22ea87d5abacc702b80",
+          "bytes": 3265
+        },
+        {
+          "name": "registry/server.json",
+          "sha256": "5dcba9e94198cc5ad089a68c0d5e00603bb1c8ce13ffc99a48b19360c59f764c",
+          "bytes": 529
+        },
+        {
+          "name": "ultiwrite-copilot-plugin-0.1.1.zip",
+          "sha256": "67fb0beffae8cd34df794450ea4298ac03293fd866f785c74a0ec7a9cb33e158",
+          "bytes": 3931
+        },
+        {
+          "name": "ultiwrite-m365-source-0.1.1.zip",
+          "sha256": "84464d78eb7554e02f30b8f2a349a18d1ae168c5cf3e5f1ca392c1ebbbb828f1",
+          "bytes": 135735
+        },
+        {
+          "name": "ultiwrite-vscode-0.1.1.vsix",
+          "sha256": "ce562321ff41e9e6c74d3a8185f11d8d09feff9e33d249cfcd6835d970c8e649",
+          "bytes": 61205
+        }
+      ]
+    },
+    {
       "file": "release/ultiwrite-chatgpt-plugin-0.10.0.zip",
       "version": "0.10.0",
       "status": "historical archive; kept so existing links keep working; not rebuilt",
@@ -1768,6 +1864,64 @@
           "name": "skills/ultiwrite/SKILL.md",
           "sha256": "1bd96522c11083f775b833a3d4b9bebf48eb98199589e8e485adfbf7e5551471",
           "bytes": 2709
+        }
+      ]
+    },
+    {
+      "file": "release/ultiwrite-copilot-plugin-0.1.0.zip",
+      "version": "0.1.0",
+      "status": "historical archive; kept so existing links keep working; not rebuilt",
+      "sha256": "8227161a0f3780a106cf08d8ca888d099804516ee4fa420d2eca9d5d41f18aed",
+      "bytes": 3939,
+      "members": [
+        {
+          "name": "LICENSE",
+          "sha256": "0122d7b57a1ef1e40944c88e2e0261b334fcf5f779e9deb52d49463de20a977d",
+          "bytes": 1767
+        },
+        {
+          "name": "README.md",
+          "sha256": "2fe33b40fac88acea1b7c7933ab98f7a7d4fc3462f66fb7dfd41eaf71a21f55f",
+          "bytes": 4538
+        },
+        {
+          "name": "mcp.json",
+          "sha256": "9d3f3737200d1f0434bb218cc8de3c8fb3d0a22bd13b205a735c4701cf3d2858",
+          "bytes": 234
+        },
+        {
+          "name": "plugin.json",
+          "sha256": "da19d3880788fd59f39185e41876188ed72743f15640b0bf380dd6847cf44bde",
+          "bytes": 639
+        }
+      ]
+    },
+    {
+      "file": "release/ultiwrite-copilot-plugin-0.1.1.zip",
+      "version": "0.1.1",
+      "status": "historical archive; kept so existing links keep working; not rebuilt",
+      "sha256": "67fb0beffae8cd34df794450ea4298ac03293fd866f785c74a0ec7a9cb33e158",
+      "bytes": 3931,
+      "members": [
+        {
+          "name": "LICENSE",
+          "sha256": "0122d7b57a1ef1e40944c88e2e0261b334fcf5f779e9deb52d49463de20a977d",
+          "bytes": 1767
+        },
+        {
+          "name": "README.md",
+          "sha256": "bc34db287c68e5b0abb8c81c7c8e623f33f8100cab2b5504e69d86160e420e13",
+          "bytes": 4532
+        },
+        {
+          "name": "mcp.json",
+          "sha256": "9d3f3737200d1f0434bb218cc8de3c8fb3d0a22bd13b205a735c4701cf3d2858",
+          "bytes": 234
+        },
+        {
+          "name": "plugin.json",
+          "sha256": "bbaad45dfc9b9789da4be1bc31154f17f91836bdee31a8724e7bded1e9db0372",
+          "bytes": 661
         }
       ]
     },
@@ -2957,6 +3111,404 @@
           "name": "submissions/reviewer-scenarios.md",
           "sha256": "dd884de1726e2c9a89cf660f04ffaf364e7329d2005ad6c6fa8d4775f30f7b6a",
           "bytes": 3063
+        }
+      ]
+    },
+    {
+      "file": "release/ultiwrite-m365-source-0.1.0.zip",
+      "version": "0.1.0",
+      "status": "historical archive; kept so existing links keep working; not rebuilt",
+      "sha256": "d908545dc1e8e8f8038f8ed95579218d2c09614584bf6a49da4c2d9fc12a301e",
+      "bytes": 135746,
+      "members": [
+        {
+          "name": ".gitignore",
+          "sha256": "5c6538a4c9036848fb52b7cb567a285fcfa20e875626d82bb14175f8a34df628",
+          "bytes": 65
+        },
+        {
+          "name": "LICENSE",
+          "sha256": "0122d7b57a1ef1e40944c88e2e0261b334fcf5f779e9deb52d49463de20a977d",
+          "bytes": 1767
+        },
+        {
+          "name": "NOTICE",
+          "sha256": "879c535465b6737c67c9bda2b302d3a447a3275e80f06899cb8a3608fbe3dad8",
+          "bytes": 867
+        },
+        {
+          "name": "README.md",
+          "sha256": "c2762b764c3cecf281ad9ef7b8a8c80d7571f29795fc7ee5ff63c3a71537d655",
+          "bytes": 9025
+        },
+        {
+          "name": "appPackage/ai-plugin.json",
+          "sha256": "6a651260303fff4c89d1debefb2370509f8c066aec200d52823e6ccd74b8215b",
+          "bytes": 622
+        },
+        {
+          "name": "appPackage/color.png",
+          "sha256": "eb96b672b49d6dc3c5e2517b2ff465d166e2c1ab40c8b776dd2e32ddcd231124",
+          "bytes": 6300
+        },
+        {
+          "name": "appPackage/declarativeAgent.json",
+          "sha256": "d21d239e43fcde467ed4652063fc8a198f0b5d9427fe85261b3e5073c4a30f56",
+          "bytes": 1261
+        },
+        {
+          "name": "appPackage/instructions.md",
+          "sha256": "8a4063daaff014ffa6b5f8784129e35b8b34bdafd34e8a67422aab77d8dbedd9",
+          "bytes": 6348
+        },
+        {
+          "name": "appPackage/manifest.json",
+          "sha256": "edf5c7bd347959bdb16c51645d6e3ab873b6572f45d1f01d5a3fc8d4b75f9628",
+          "bytes": 1635
+        },
+        {
+          "name": "appPackage/outline.png",
+          "sha256": "824a7ca517efb4b4e9ab5c8aebe5f8625fc85f51963f0fd686c3aaedb4707815",
+          "bytes": 627
+        },
+        {
+          "name": "assets/logo-source.png",
+          "sha256": "cc0a3c229347e47a154a00c9e6dfa774c0e1f07ee9fc063935af5bc4897f4b18",
+          "bytes": 21052
+        },
+        {
+          "name": "assets/provenance.json",
+          "sha256": "91c312972b3b6b81e00308198c89b223b4065d209e7911e13c845186133cc832",
+          "bytes": 958
+        },
+        {
+          "name": "certification/README.md",
+          "sha256": "556faa606b20c56f9530a32c450319b4f2c4ea1f39502c7b40fb0285105c92a3",
+          "bytes": 3661
+        },
+        {
+          "name": "certification/intro.md",
+          "sha256": "318e76da9c0122a76ce72c310f572e931e233dd75d2c6932b885366c38603e1f",
+          "bytes": 2145
+        },
+        {
+          "name": "certification/manifest.template.json",
+          "sha256": "279a84bdac1e484ba49715e14bc4e42ffd8709141888ebf4f889f99ce965efd6",
+          "bytes": 1459
+        },
+        {
+          "name": "certification/tool-inventory.json",
+          "sha256": "7c63185ce47677aec77a6195d767f68b37e8406e9ad9a12183614702ebae8fef",
+          "bytes": 1064
+        },
+        {
+          "name": "docs/implementation-evidence.md",
+          "sha256": "295780740afb6ad343a52225d932db95e6f107aaa6d54bb5474cb3edfb3a07b4",
+          "bytes": 3724
+        },
+        {
+          "name": "docs/marketplace-listing.md",
+          "sha256": "97c1c89f0f2df7289a027805392d8b0d0d401066d8672819cefd8754fb75d2a3",
+          "bytes": 4264
+        },
+        {
+          "name": "docs/privacy-and-data-flow.md",
+          "sha256": "15b5164f94f8d3a32b6fb26438b7f5443e5dc876f2a3af0f85886dc9cadeae26",
+          "bytes": 3643
+        },
+        {
+          "name": "docs/release.md",
+          "sha256": "dacfb6acbabe4a545bbc1cce66d0a35fb999852b7f9f52c8ba80d2ad45b0d7a7",
+          "bytes": 5247
+        },
+        {
+          "name": "docs/reviewer-scenarios.md",
+          "sha256": "3376992019d1937b84f5b8f0bfa529e8df64af40a905506587a6c97253a9cc9b",
+          "bytes": 6784
+        },
+        {
+          "name": "docs/support.md",
+          "sha256": "94c1d35d19362140e9daeeaa38d2f4454e19a10ed25b6844fd198077645c9755",
+          "bytes": 3027
+        },
+        {
+          "name": "m365agents.local.yml",
+          "sha256": "b2c0333e249a76902cf0d9f2dd77708c0c1e2c100ad1af1498cf9423fce7bc37",
+          "bytes": 1903
+        },
+        {
+          "name": "m365agents.yml",
+          "sha256": "b2c0333e249a76902cf0d9f2dd77708c0c1e2c100ad1af1498cf9423fce7bc37",
+          "bytes": 1903
+        },
+        {
+          "name": "package-lock.json",
+          "sha256": "dc26f11bb8ba1c105a3d5ed5f1cb11b18871b1a8b6c0e2bf8de2034423df487d",
+          "bytes": 282692
+        },
+        {
+          "name": "package.json",
+          "sha256": "0143217e8c6ed614567e7e23e9e9ccc2eea2868692c538bfed83e43df8ad7279",
+          "bytes": 1027
+        },
+        {
+          "name": "scripts/build-source.mjs",
+          "sha256": "ac2b8d93ef25fd967ad42cbfdf4e6842ca52d20937742ce5514d5126e2f38e1b",
+          "bytes": 620
+        },
+        {
+          "name": "scripts/icons.mjs",
+          "sha256": "935c9d42d0f153eeaf742c2d488634345c50b733f9230533913a556827b12372",
+          "bytes": 2607
+        },
+        {
+          "name": "scripts/lib.mjs",
+          "sha256": "4a26de4cf3057551d4669526ec884bd1c91ec918832aaaacd7806f3fc27b2272",
+          "bytes": 11219
+        },
+        {
+          "name": "scripts/package.mjs",
+          "sha256": "54f3b708c0623ab6ff1797b8d54d1dc33a9aa67a5069c4a2faa7135f435a217f",
+          "bytes": 1166
+        },
+        {
+          "name": "scripts/preflight.mjs",
+          "sha256": "b1f3b9660eefd7287f276287bb1a502d6d8f7c996c1c1e25abce9b8e5c0b5e12",
+          "bytes": 295
+        },
+        {
+          "name": "scripts/provision-precheck.mjs",
+          "sha256": "4785b025e4d074eec6f28968a7ab5820117798030bc5df409275a33fd340a717",
+          "bytes": 428
+        },
+        {
+          "name": "scripts/provision.mjs",
+          "sha256": "999b745dd347fe06a82acd835979abedd77674c3a7e9e47387648981a04aea8e",
+          "bytes": 873
+        },
+        {
+          "name": "scripts/register-client.mjs",
+          "sha256": "4e0c6c1d9841bd568fbbd9093a3c7f604eb9cbbebb2430f6dcc08f85366549a6",
+          "bytes": 1286
+        },
+        {
+          "name": "scripts/setup.mjs",
+          "sha256": "b4ed05cbd829b03ca8e3e83d2d5a8de5497a5529ef81cd38d0260623095e438f",
+          "bytes": 633
+        },
+        {
+          "name": "scripts/validate.mjs",
+          "sha256": "5b947a0289867180765576a96ad40ff0c94add5f00633b14b39d4e850adb64aa",
+          "bytes": 500
+        },
+        {
+          "name": "scripts/validation.mjs",
+          "sha256": "71a380ef6b3f6b7f684c855b651b9ba6994470ea61d6c69a0cd6c7e1acecd579",
+          "bytes": 6975
+        },
+        {
+          "name": "tests/package.test.mjs",
+          "sha256": "339de45aee2e906394e4eea00a0aae5056cc73780d2a2b013e86c3fdd0b14b4a",
+          "bytes": 5863
+        }
+      ]
+    },
+    {
+      "file": "release/ultiwrite-m365-source-0.1.1.zip",
+      "version": "0.1.1",
+      "status": "historical archive; kept so existing links keep working; not rebuilt",
+      "sha256": "84464d78eb7554e02f30b8f2a349a18d1ae168c5cf3e5f1ca392c1ebbbb828f1",
+      "bytes": 135735,
+      "members": [
+        {
+          "name": ".gitignore",
+          "sha256": "6c73f21674bf09dd6c325f19cdd41eba54d0739057ceeeb2fc3d87be7c880e30",
+          "bytes": 64
+        },
+        {
+          "name": "LICENSE",
+          "sha256": "0122d7b57a1ef1e40944c88e2e0261b334fcf5f779e9deb52d49463de20a977d",
+          "bytes": 1767
+        },
+        {
+          "name": "NOTICE",
+          "sha256": "879c535465b6737c67c9bda2b302d3a447a3275e80f06899cb8a3608fbe3dad8",
+          "bytes": 867
+        },
+        {
+          "name": "README.md",
+          "sha256": "9a2c6857e3caffbbb5a5dedeec8af3f2515d1a9c1059ff5ce02c04dad925ece7",
+          "bytes": 9019
+        },
+        {
+          "name": "appPackage/ai-plugin.json",
+          "sha256": "6a651260303fff4c89d1debefb2370509f8c066aec200d52823e6ccd74b8215b",
+          "bytes": 622
+        },
+        {
+          "name": "appPackage/color.png",
+          "sha256": "eb96b672b49d6dc3c5e2517b2ff465d166e2c1ab40c8b776dd2e32ddcd231124",
+          "bytes": 6300
+        },
+        {
+          "name": "appPackage/declarativeAgent.json",
+          "sha256": "d21d239e43fcde467ed4652063fc8a198f0b5d9427fe85261b3e5073c4a30f56",
+          "bytes": 1261
+        },
+        {
+          "name": "appPackage/instructions.md",
+          "sha256": "8a4063daaff014ffa6b5f8784129e35b8b34bdafd34e8a67422aab77d8dbedd9",
+          "bytes": 6348
+        },
+        {
+          "name": "appPackage/manifest.json",
+          "sha256": "3a283a9a58bfe287cebadba8a4d4f08ac881aacb7533e3a28bf3342166ef23fd",
+          "bytes": 1681
+        },
+        {
+          "name": "appPackage/outline.png",
+          "sha256": "824a7ca517efb4b4e9ab5c8aebe5f8625fc85f51963f0fd686c3aaedb4707815",
+          "bytes": 627
+        },
+        {
+          "name": "assets/logo-source.png",
+          "sha256": "cc0a3c229347e47a154a00c9e6dfa774c0e1f07ee9fc063935af5bc4897f4b18",
+          "bytes": 21052
+        },
+        {
+          "name": "assets/provenance.json",
+          "sha256": "91c312972b3b6b81e00308198c89b223b4065d209e7911e13c845186133cc832",
+          "bytes": 958
+        },
+        {
+          "name": "certification/README.md",
+          "sha256": "556faa606b20c56f9530a32c450319b4f2c4ea1f39502c7b40fb0285105c92a3",
+          "bytes": 3661
+        },
+        {
+          "name": "certification/intro.md",
+          "sha256": "318e76da9c0122a76ce72c310f572e931e233dd75d2c6932b885366c38603e1f",
+          "bytes": 2145
+        },
+        {
+          "name": "certification/manifest.template.json",
+          "sha256": "6ec1bcc22051d4a7b4539d4e87435cc8a5b2e945a2ab30e5452b92580840ab6c",
+          "bytes": 1529
+        },
+        {
+          "name": "certification/tool-inventory.json",
+          "sha256": "7c63185ce47677aec77a6195d767f68b37e8406e9ad9a12183614702ebae8fef",
+          "bytes": 1064
+        },
+        {
+          "name": "docs/implementation-evidence.md",
+          "sha256": "295780740afb6ad343a52225d932db95e6f107aaa6d54bb5474cb3edfb3a07b4",
+          "bytes": 3724
+        },
+        {
+          "name": "docs/marketplace-listing.md",
+          "sha256": "83405202f501875d4be8cd5fae6a4875b621f2b42812afc63b6a37a4b1d3e889",
+          "bytes": 4258
+        },
+        {
+          "name": "docs/privacy-and-data-flow.md",
+          "sha256": "15b5164f94f8d3a32b6fb26438b7f5443e5dc876f2a3af0f85886dc9cadeae26",
+          "bytes": 3643
+        },
+        {
+          "name": "docs/release.md",
+          "sha256": "5ba4936d12a98740102a68de97ea3348109b7c728da46c50b5cbe3b4aa72c8ac",
+          "bytes": 5247
+        },
+        {
+          "name": "docs/reviewer-scenarios.md",
+          "sha256": "3376992019d1937b84f5b8f0bfa529e8df64af40a905506587a6c97253a9cc9b",
+          "bytes": 6784
+        },
+        {
+          "name": "docs/support.md",
+          "sha256": "94c1d35d19362140e9daeeaa38d2f4454e19a10ed25b6844fd198077645c9755",
+          "bytes": 3027
+        },
+        {
+          "name": "m365agents.local.yml",
+          "sha256": "b2c0333e249a76902cf0d9f2dd77708c0c1e2c100ad1af1498cf9423fce7bc37",
+          "bytes": 1903
+        },
+        {
+          "name": "m365agents.yml",
+          "sha256": "b2c0333e249a76902cf0d9f2dd77708c0c1e2c100ad1af1498cf9423fce7bc37",
+          "bytes": 1903
+        },
+        {
+          "name": "package-lock.json",
+          "sha256": "d791bcf179b99a15a543b55196ebc490fb76246cc3e294cb664682161181398a",
+          "bytes": 282692
+        },
+        {
+          "name": "package.json",
+          "sha256": "923b5014b7dadf74345b5721f5fe656aec072a923855ad696d759add40693189",
+          "bytes": 1033
+        },
+        {
+          "name": "scripts/build-source.mjs",
+          "sha256": "ac2b8d93ef25fd967ad42cbfdf4e6842ca52d20937742ce5514d5126e2f38e1b",
+          "bytes": 620
+        },
+        {
+          "name": "scripts/icons.mjs",
+          "sha256": "935c9d42d0f153eeaf742c2d488634345c50b733f9230533913a556827b12372",
+          "bytes": 2607
+        },
+        {
+          "name": "scripts/lib.mjs",
+          "sha256": "4a26de4cf3057551d4669526ec884bd1c91ec918832aaaacd7806f3fc27b2272",
+          "bytes": 11219
+        },
+        {
+          "name": "scripts/package.mjs",
+          "sha256": "54f3b708c0623ab6ff1797b8d54d1dc33a9aa67a5069c4a2faa7135f435a217f",
+          "bytes": 1166
+        },
+        {
+          "name": "scripts/preflight.mjs",
+          "sha256": "b1f3b9660eefd7287f276287bb1a502d6d8f7c996c1c1e25abce9b8e5c0b5e12",
+          "bytes": 295
+        },
+        {
+          "name": "scripts/provision-precheck.mjs",
+          "sha256": "4785b025e4d074eec6f28968a7ab5820117798030bc5df409275a33fd340a717",
+          "bytes": 428
+        },
+        {
+          "name": "scripts/provision.mjs",
+          "sha256": "999b745dd347fe06a82acd835979abedd77674c3a7e9e47387648981a04aea8e",
+          "bytes": 873
+        },
+        {
+          "name": "scripts/register-client.mjs",
+          "sha256": "4e0c6c1d9841bd568fbbd9093a3c7f604eb9cbbebb2430f6dcc08f85366549a6",
+          "bytes": 1286
+        },
+        {
+          "name": "scripts/setup.mjs",
+          "sha256": "b4ed05cbd829b03ca8e3e83d2d5a8de5497a5529ef81cd38d0260623095e438f",
+          "bytes": 633
+        },
+        {
+          "name": "scripts/validate.mjs",
+          "sha256": "5b947a0289867180765576a96ad40ff0c94add5f00633b14b39d4e850adb64aa",
+          "bytes": 500
+        },
+        {
+          "name": "scripts/validation.mjs",
+          "sha256": "71a380ef6b3f6b7f684c855b651b9ba6994470ea61d6c69a0cd6c7e1acecd579",
+          "bytes": 6975
+        },
+        {
+          "name": "tests/package.test.mjs",
+          "sha256": "339de45aee2e906394e4eea00a0aae5056cc73780d2a2b013e86c3fdd0b14b4a",
+          "bytes": 5863
         }
       ]
     }

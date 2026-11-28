@@ -46,10 +46,11 @@ jobs:
         run: |
           npm run lint
           npm run build
-      - name: Native Zapier validation
+          npm pack --dry-run
+      - name: Native Zapier structural validation and package build
         if: matrix.package == 'zapier'
         working-directory: dist/distribution/zapier
-        run: npm run validate
+        run: npm run build:local
       - uses: actions/upload-artifact@v4
         if: always()
         with:

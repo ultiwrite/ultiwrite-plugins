@@ -14,7 +14,7 @@ async function request(z,bundle,operation,params={}) {
 const idField=(key,label)=>({key,label,type:'string',required:true,helpText:'Use the exact identifier returned by this Ultiwrite account.'});
 const action=(key,label,description,op,inputFields,params)=>({key,noun:'Investigation',display:{label,description},operation:{inputFields,perform:(z,b)=>request(z,b,op,params(b.inputData||{})),sample:{state:'not_ready',meaning:'Illustrative sample only; not a real investigation result.'}}});
 module.exports={
-  version:'0.1.0',platformVersion:require('zapier-platform-core').version,
+  version:'0.1.1',platformVersion:require('zapier-platform-core').version,
   authentication:{type:'custom',fields:[{key:'apiKey',label:'Ultiwrite API key',type:'password',required:true,helpText:'Requires explicit API approval. Create a key in Dashboard > API access. Never use an MCP OAuth token or legacy provisioned key.'}],test:(z,b)=>request(z,b,'account'),connectionLabel:'Ultiwrite API account'},
   triggers:{},searches:{},
   creates:{

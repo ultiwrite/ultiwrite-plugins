@@ -6,7 +6,7 @@ The canonical message is **Asymmetric Diligence & Investigative Intelligence**: 
 
 ## Build and verify
 
-Run `node scripts/verify-distribution.mjs` from the repository root. The generated `dist/distribution/START_HERE.md` indexes every pack. `VERIFY.cmd` and `VERIFY.sh` provide launchers. Install native platform dependencies and retain resolved lockfiles before release; preparation had no working npm download access.
+Run `node scripts/verify-distribution.mjs` from the repository root. The generated `dist/distribution/START_HERE.md` indexes every pack. `VERIFY.cmd` and `VERIFY.sh` provide launchers. Install native platform dependencies and retain the resolved lockfiles before release. In the generated n8n package, run `npm run lint`, `npm run build` and `npm pack --dry-run`. In the generated Zapier package, run `npm run build:local` to check the schema and build the versioned adapter. Run `npm run validate` with Zapier access before seeking publication.
 
 Existing Claude/ChatGPT/Cursor/Grok release contents stay unchanged. Their packs contain revised listing copy for updating the original records, not duplicate publication. EmDash PR #12 remains separate.
 

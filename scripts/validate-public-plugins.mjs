@@ -34,7 +34,7 @@ const secretNeedles = [
 ]
 
 const allowedTop = new Set([
-  'cursor', 'claude', 'chatgpt', 'grokbot', 'client', 'scripts', '.github',
+  'cursor', 'claude', 'chatgpt', 'grokbot', 'client', 'emdash', 'scripts', '.github',
   '.cursor-plugin', '.claude-plugin', 'README.md', 'LICENSE', 'NOTICE',
   'INSTALL.md', 'server.draft.json', '.gitignore', 'RELEASE_MANIFEST.json',
   'release', 'AGENTS.md', 'POSITIONING.md', 'evals', 'hosts', 'antigravity', 'server.json', '.gitattributes',

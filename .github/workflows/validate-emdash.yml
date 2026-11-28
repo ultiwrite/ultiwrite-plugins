@@ -1,7 +1,7 @@
 name: Validate EmDash connector
 on:
   push:
-    branches: [feat/emdash-ultiwrite-connector]
+    branches: [main, feat/emdash-ultiwrite-connector]
     paths: ['emdash/**', '.github/workflows/validate-emdash.yml']
   pull_request:
     paths: ['emdash/**', '.github/workflows/validate-emdash.yml']
@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: '22'
       - name: Install pinned official CLI
-        run: npm install --no-audit --no-fund
+        run: npm ci --no-audit --no-fund
       - name: Test, validate and bundle without credentials
         run: npm run verify
       - name: Upload source, lockfile and built registry archive

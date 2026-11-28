@@ -20,6 +20,7 @@
     "listing": "emdash-plugin info ultiwrite.co ultiwrite --version 0.1.0"
   },
   "devDependencies": {
-    "@emdash-cms/plugin-cli": "0.13.5"
+    "@emdash-cms/plugin-cli": "0.13.5",
+    "typescript": "5.9.3"
   }
 }

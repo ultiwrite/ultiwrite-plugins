@@ -1,54 +1,54 @@
 # Ultiwrite plugins
 
-Thin connectors for Ultiwrite Commercial Diligence. Publisher: DWS Offshore Fund. Product: Ultiwrite.
+Ultiwrite is an asymmetric diligence engine: ordinary commercial documents open a wider investigation across financial, identity, integrity, operational and external-context evidence. Publisher: DWS Offshore Fund. This repository contains thin public connectors and workflow guidance; the analytical service is hosted separately.
 
-This repository is plugin packaging only. It is not the Ultiwrite service, and it does not include the private analytical implementation or customer records. The MIT license covers the original thin connector code. The service itself remains proprietary. See LICENSE and NOTICE.
+## Connector packages
 
-Remote MCP: https://mcp.dwsoffshorepartners.com/mcp (Claude 0.8.3) and https://dwsoffshorepartners.com/api/integrations/ultiwrite/mcp (ChatGPT, Cursor, Grok Bot 0.7.1). Both reach the same Ultiwrite server and account.
-Setup guide: https://dwsoffshorepartners.com/docs/mcp
-Website: https://dwsoffshorepartners.com
-Privacy: https://dwsoffshorepartners.com/privacy
-Terms: https://dwsoffshorepartners.com/terms
-Support: https://dwsoffshorepartners.com/contact
-
-| Directory | Version | What it is |
+| Directory | Version | Contents |
 | --- | --- | --- |
-| `claude/` | 0.8.3 | Claude plugin: the Ultiwrite remote MCP server (`https://mcp.dwsoffshorepartners.com/mcp`) plus five skills (`ultiwrite`, `connect-account`, `submit-evidence`, `read-report`, `follow-up`). Source for the Claude directory submission and the Claude marketplace entry. |
-| `chatgpt/` | 0.7.1 | ChatGPT/Codex plugin source for the existing unpublished listing identity. Not uploaded by this repository. |
-| `cursor/` | 0.7.1 | Cursor plugin. Manifest `.cursor-plugin/plugin.json`, remote Streamable HTTP `mcp.json`. |
-| `grokbot/` | 0.7.1 | Grok Bot submission dossier. Not consumer Grok, and not a completed host test. |
-| `client/` | 0.7.1 | Local `ultiwrite-mcp` wrapper. Not published to npm. |
+| `chatgpt/` | 0.10.0 | Existing ChatGPT/Codex identity and five workflows, with current account/usage guidance |
+| `claude/` | 0.10.1 | Existing Claude identity, connection recovery and five workflows |
+| `cursor/` | 0.10.0 | Existing Cursor identity and five discoverable workflows |
+| `grokbot/` | 0.9.0 | Separate Grok Bot submission dossier; distinct from Grok Build |
+| `client/` | 0.8.0 | Optional local OAuth/stdio adapter; npm publication outstanding |
+| `hosts/` | 0.12.1 | 55-surface compatibility matrix, 16 config examples, enterprise adoption/operations guides, directory review packets, hosted-client guide, API example and generated public tool catalog |
+
+This release supplies source and versioned artifacts for the existing canonical MCP service. Native host acceptance for this release remains NOT_RUN; prior release evidence is preserved with its original date. npm publication and marketplace submissions are separate. Historical approved package identities and archive bytes are preserved.
+
+## Connect
+
+Preferred endpoint: **https://mcp.dwsoffshorepartners.com/mcp**. The historical apex `/api/integrations/ultiwrite/mcp` route remains valid for existing connections and audiences.
+
+Sign in through Ultiwrite’s existing account flow, then approve the specific host’s scoped OAuth grant. The host account and customer account are separate. Verify `ultiwrite_account_get` after connecting, reconnecting or switching accounts. Read `ultiwrite_capabilities_get` for current capabilities, account limits, paid credits and complimentary availability. Evidence consent and server usage accounting still govern analysis.
+
+The first eligible complimentary investigation remains available once per account, with no card required. Canonical account eligibility and the existing server ledger govern complimentary and purchased usage.
+
+[Installation and host-specific configurations](hosts/README.md) · [Hosted SaaS clients](hosts/hosted-clients.md) · [Per-surface status](hosts/matrix.json) · [Canonical public tool catalog](hosts/catalog.json). Unknown host behavior and external approvals remain explicit; a model name alone is not an MCP host.
+
+[Enterprise adoption and operations](hosts/enterprise/README.md) · [Directory submission packets](hosts/submissions/README.md) · [EmDash setup](hosts/emdash.md)
 
 ## Downloads
 
-| File | Package | SHA-256 |
-| --- | --- | --- |
-| [`release/Ultiwrite_Claude_Plugin_v0.8.3.zip`](https://github.com/dennis430/ultiwrite-plugins/raw/main/release/Ultiwrite_Claude_Plugin_v0.8.3.zip) | Claude plugin 0.8.3 (current) | `97e3cfd855c3b1344a9bbfbe6cc1b9d317403d7c869ac416d3bec23989803f00` |
-| [`release/Ultiwrite_Claude_Plugin_v0.8.1.zip`](https://github.com/dennis430/ultiwrite-plugins/raw/main/release/Ultiwrite_Claude_Plugin_v0.8.1.zip) | Claude plugin 0.8.1 (superseded, kept for existing links) | `11520ccd818dddd576a7b230e08b74142f3012fb0ea2d10f4b6f37c105e6e8b0` |
-| [`release/Ultiwrite_Claude_Plugin_v0.8.0.zip`](https://github.com/dennis430/ultiwrite-plugins/raw/main/release/Ultiwrite_Claude_Plugin_v0.8.0.zip) | Claude plugin 0.8.0 (superseded, kept for existing links) | `619656fae4e9b9db2d7a7e0c813713d859cde291062c21912bb38fc7297ca28e` |
-| [`release/ultiwrite-chatgpt-plugin-0.7.1.zip`](https://github.com/dennis430/ultiwrite-plugins/raw/main/release/ultiwrite-chatgpt-plugin-0.7.1.zip) | ChatGPT plugin 0.7.1 | `457004b3d46b7aeaddabc1a5d065c181aac2b5a280369be7f9539de39d1339a4` |
-| [`release/ultiwrite-cursor-plugin-0.7.1.zip`](https://github.com/dennis430/ultiwrite-plugins/raw/main/release/ultiwrite-cursor-plugin-0.7.1.zip) | Cursor plugin 0.7.1 | `e34aa2e43d7062871de121c479ef5e8a7fe214f20b400464624605fc419e15f1` |
-| [`release/ultiwrite-claude-plugin-0.7.1.zip`](https://github.com/dennis430/ultiwrite-plugins/raw/main/release/ultiwrite-claude-plugin-0.7.1.zip) | Claude plugin 0.7.1 (superseded, kept for existing links) | `7b53857bcd7450b68a869b90d29c1112e89fcb3f707fd87ccadcacc73f906bfe` |
+Download the versioned `release/` files below or use them from a distribution checkout. The host adapter bundle is `release/ultiwrite-host-adapters-0.12.1.zip`; the optional client tarball is `release/ultiwrite-mcp-0.8.0.tgz`.
 
-`release/SHA256SUMS.txt` and `release/INVENTORY.json` list the same hashes and every archive member. `node scripts/pack-public-connectors.mjs` reproducibly rebuilds the current archives from source. Add `--check` to verify source/archive parity without rewriting them. Historical ZIPs stay unchanged.
+<!-- CURRENT_DOWNLOADS_START -->
+| Archive | SHA-256 |
+| --- | --- |
+| [`ultiwrite-chatgpt-plugin-0.10.0.zip`](https://github.com/dennis430/ultiwrite-plugins/raw/main/release/ultiwrite-chatgpt-plugin-0.10.0.zip) | `aa928684cdbb4383aea0e4cb09fe2bfd67c90181ff4b120237889826312b14b5` |
+| [`ultiwrite-cursor-plugin-0.10.0.zip`](https://github.com/dennis430/ultiwrite-plugins/raw/main/release/ultiwrite-cursor-plugin-0.10.0.zip) | `52e7b6b11346b07a05b8ccbe71467e9055a1db3274d15b770df99500f34f1dee` |
+| [`Ultiwrite_Claude_Plugin_v0.10.1.zip`](https://github.com/dennis430/ultiwrite-plugins/raw/main/release/Ultiwrite_Claude_Plugin_v0.10.1.zip) | `f7ec55a3932f859ed42565c429ab200be085875700257d283781046519c29ab1` |
+<!-- CURRENT_DOWNLOADS_END -->
 
-## Install the Claude plugin
+`release/INVENTORY.json`, `release/SHA256SUMS.txt` and `RELEASE_MANIFEST.json` record source/archive hashes and historical preservation. New packages do not replace old archives.
 
-- claude.ai, Claude Desktop, Cowork: Plugins > Add > Upload plugin (Customize > Plugins on the older interface), and choose `Ultiwrite_Claude_Plugin_v0.8.3.zip`.
-- Claude Code: `/plugin marketplace add dennis430/ultiwrite-plugins`, then `/plugin install ultiwrite@ultiwrite`. For one session, clone the repository and run `claude --plugin-dir ./claude`, or pass the extracted ZIP directory containing `.claude-plugin/plugin.json`.
-- Ask "Connect Ultiwrite and confirm which account is connected." The protected account check starts native OAuth when needed. No API key goes in any config.
+## Preparation
 
-If the sign-in window closes, open **Plugins > Ultiwrite > Connectors** and select **Connect**, or use **Customize > Connectors > Ultiwrite** on the older interface. Claude Code offers **`/mcp` > Ultiwrite > Authenticate**. Ask "Reconnect Ultiwrite" to use the bundled recovery workflow. For another account, start a fresh authorization and choose **Use a different account** on Ultiwrite's consent screen. See [Claude connection recovery](claude/README.md#connect-again-or-use-a-different-account).
+```sh
+node scripts/validate-public-plugins.mjs
+node scripts/pack-public-connectors.mjs
+node scripts/pack-public-connectors.mjs --check
+```
 
-Cursor multi-plugin entry: `.cursor-plugin/marketplace.json` points at `cursor`.
-Claude marketplace entry: `.claude-plugin/marketplace.json` points at `./claude`.
+These structural and archive checks are not authenticated host acceptance. The original discovery prompt suite remains in `evals/`. It does not establish that a model selected the plugin.
 
-Direct remote MCP, which does not require this repository:
-
-    claude mcp add --transport http ultiwrite https://mcp.dwsoffshorepartners.com/mcp
-
-Cursor settings can use either Remote MCP URL above. Do not put an API key in either config. The host completes Ultiwrite OAuth.
-
-`server.draft.json` is unpublished MCP Registry metadata. Do not treat it as a listing.
-
-Claude source and its ZIP are at 0.8.3; ChatGPT, Cursor, Grok Bot and the client remain at 0.7.1. npm is not published. The Claude directory tracks `claude/` on the configured GitHub branch. A new commit and version make the update available for Anthropic's scan; the portal's review and publication policy determines when it reaches users. GitHub availability does not establish directory approval or an installed client's version.
+Canonical editable sources are maintained in the private application packaging directories. Keep them synchronized before export. The MIT license applies to original connector files; the hosted investigative service is not included. Public positioning is maintained in [POSITIONING.md](POSITIONING.md).

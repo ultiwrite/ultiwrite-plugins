@@ -69,6 +69,10 @@
       "sha256": "2614a9f576bcedd97cb900544efc3c8e64833e14c5a9a04d06632f3fd1b3a397"
     },
     {
+      "path": ".github/workflows/validate-distribution.yml",
+      "sha256": "3a6b979be65ab09c7ab78476238ca217dc409afcf7d6287cf9af283f45af2eed"
+    },
+    {
       "path": ".github/workflows/validate-emdash.yml",
       "sha256": "59626fb7a967c9658bfe7041f630a0dbc6190f9b28e6da988a0aad1cdcbae0a7"
     },
@@ -97,6 +101,10 @@
       "sha256": "5f9c76814b025aebb69d187d3fa1e651eccd61d2536bc284aa35c1437589afea"
     },
     {
+      "path": "GEMINI.md",
+      "sha256": "41306887960fd3d8d5d40c50ffbcb6858a8827af60c33a2fe0194f41c8091f47"
+    },
+    {
       "path": "INSTALL.md",
       "sha256": "a79b810925a0efb7728d225eb9c68a09fcdf1ed5899bd0914ebafadddd109478"
     },
@@ -118,7 +126,15 @@
     },
     {
       "path": "README.md",
-      "sha256": "b46e7496882247d59529ec93dca581b11be90209a3985c73be9cf7cb42c4b949"
+      "sha256": "56f047d7b414d5a04bbe41db939f1b7aeb253c6990123abae0fb9144f468d18d"
+    },
+    {
+      "path": "VERIFY.cmd",
+      "sha256": "ebffb8f83b549855e36b07a0202d4ce1c70f7816a799ed5ed30a61df72700b29"
+    },
+    {
+      "path": "VERIFY.sh",
+      "sha256": "9a2ab229a5d9d2334b849913c11087eda04f605e6d87b9c6509c84b0796c15ea"
     },
     {
       "path": "antigravity/LICENSE",
@@ -533,8 +549,100 @@
       "sha256": "ba1903fed0f7f9ee49a2bec8cba2527803ba0b0a69b70d9d0a73e2c2df05099c"
     },
     {
+      "path": "distribution/README.md",
+      "sha256": "bd78d0bdd9fe4b5f644f4f94005209e612d7ad71646774ab4b82dcefe6384a6e"
+    },
+    {
+      "path": "distribution/VERIFICATION.md",
+      "sha256": "8e6bb82f1babb2119fc5cb2aa7a0bda6c00f5780138fbbd160f2749455f699f9"
+    },
+    {
+      "path": "distribution/adapters/chrome/manifest.json",
+      "sha256": "fcdc9f2675173c298d659bfece98835afdc8902c53c9d015b39710cc7a76ccca"
+    },
+    {
+      "path": "distribution/adapters/chrome/popup.css",
+      "sha256": "6b8a4838618b63ec83c69ae93728a9f238fc8cff74c865911d3ffb78375cf0c2"
+    },
+    {
+      "path": "distribution/adapters/chrome/popup.html",
+      "sha256": "53daf9e19b898fc3e678ef5e5555e28fde02dbedff7151b7895f09bd8d64ddd1"
+    },
+    {
+      "path": "distribution/adapters/chrome/popup.js",
+      "sha256": "04e06c0edc4985bc53e70b3c5179d08fb1825c772a90c2a0a6b47b37025d7aef"
+    },
+    {
+      "path": "distribution/adapters/google-workspace/Code.js",
+      "sha256": "1218d7482717eac07f323878599dcfe1b7588013013a3334fd079aecb3bdea9e"
+    },
+    {
+      "path": "distribution/adapters/google-workspace/appsscript.json",
+      "sha256": "63790c63edc0adcf9bd2a16bc53f9ba2d21a0ce14408086881f9c1225b941ad8"
+    },
+    {
+      "path": "distribution/adapters/n8n/Ultiwrite.node.ts",
+      "sha256": "4eaa323032b29efb717c4e1c962f1141d070c3ce6fe69481509b3fab38beb2a5"
+    },
+    {
+      "path": "distribution/adapters/n8n/UltiwriteApi.credentials.ts",
+      "sha256": "057c42d063de6cf6b6c75d2b43e9cb2f7ac12f5244b5105ac16a4c0a28658d3b"
+    },
+    {
+      "path": "distribution/adapters/wordpress/ultiwrite.php",
+      "sha256": "3a682fbb75e74887a778ab5a8668632d485f9cb0e7ef8fa781ad483b3d1d5898"
+    },
+    {
+      "path": "distribution/adapters/zapier/index.cjs",
+      "sha256": "0aa9cfcfd27ccd27ceb1d4e006e45f53c5b6413b430faef45e5e2a836c33c9cb"
+    },
+    {
+      "path": "distribution/assets/logo.png",
+      "sha256": "cc0a3c229347e47a154a00c9e6dfa774c0e1f07ee9fc063935af5bc4897f4b18"
+    },
+    {
+      "path": "distribution/catalog.json",
+      "sha256": "c02babbcbff9d52519c074e84be3d94162658fbc82359211d39724c5bbfc9a99"
+    },
+    {
+      "path": "distribution/lib/partner-client.cjs",
+      "sha256": "155e31133189ae6a0122b9741d906331031574e093498a141630c80e06d22f23"
+    },
+    {
+      "path": "distribution/tests/adapters.test.cjs",
+      "sha256": "c94b0257458b71ea35462a7798e7580bb064f93ae9c61ed46bbb2c61b686412b"
+    },
+    {
+      "path": "distribution/tests/certification.test.mjs",
+      "sha256": "c2cead9c0743ba6c866e6d39b19f78296496c4e959aa30afecaa5dc500aecd52"
+    },
+    {
+      "path": "distribution/tests/client.test.cjs",
+      "sha256": "131e6a5da45664a2f72f53850dbf896386f392d8cc90ddffdbb9cf13465e1b3e"
+    },
+    {
+      "path": "distribution/tests/generation.test.mjs",
+      "sha256": "06290a527d5d2debeefb03f37024e5552ec665c9d9a144f1cfb5869e042cc369"
+    },
+    {
+      "path": "distribution/tests/n8n.test.mjs",
+      "sha256": "6d44707b1c2f2ac8c1bc7f2d919ecfe7b74ce18f35382d98260788e86495f092"
+    },
+    {
+      "path": "distribution/tests/wordpress.php",
+      "sha256": "eda0621325afe5b4ced58331de46519609ed75ed6c09631fdc4dea1773e0d215"
+    },
+    {
+      "path": "distribution/tests/workspace.test.cjs",
+      "sha256": "909f785306d69e80fef49b05e3653babecfc5f5649bfcd10f146eebe0a1184cf"
+    },
+    {
       "path": "docs.json",
       "sha256": "056ff19d3fbb70b29a06c8899868f990a82dc750a6d6dfc7e2c7ffd1fdfe5fb3"
+    },
+    {
+      "path": "docs/handoffs/CODEX_PUBLIC_POSITIONING_2026-11-01.md",
+      "sha256": "bd176e6b184209ebb68c881882af2b398064b66ae14893961304466c7561aab8"
     },
     {
       "path": "emdash/.gitignore",
@@ -635,6 +743,14 @@
     {
       "path": "evals/reviewer-fixtures/transaction-summary.csv",
       "sha256": "5f0ac6bca1758344f1f861643536bdc2058c622b62dbc271cf656b5bb3b0a4ca"
+    },
+    {
+      "path": "gemini-extension.json",
+      "sha256": "f45c606a8f97f090a2dc57fee93f783297c8c84fda6b75ed342ae7700dea5b63"
+    },
+    {
+      "path": "glama.json",
+      "sha256": "bc4d8a48d6af9dba20e917bb9dde146944945df7adef83348acb1da4bae14456"
     },
     {
       "path": "grokbot/FIELDS.json",
@@ -1261,12 +1377,28 @@
       "sha256": "ce562321ff41e9e6c74d3a8185f11d8d09feff9e33d249cfcd6835d970c8e649"
     },
     {
+      "path": "scripts/build-distribution.mjs",
+      "sha256": "5aa55f0f1bd57e0659d997562bc238a5620a22f6a4eb6b2e201aabe570cb3e38"
+    },
+    {
       "path": "scripts/build-microsoft-distribution.mjs",
       "sha256": "ba79c8815d745e18944c1a1f4c34f2db628be654730e3084f29b49d3465a2736"
     },
     {
+      "path": "scripts/capture-mcp-tools.mjs",
+      "sha256": "02d3eb35ddc26ffc982da053dea2b59efc801e8d6e77574f2d3cb00c3b7a2bc2"
+    },
+    {
+      "path": "scripts/finalize-microsoft.mjs",
+      "sha256": "707d10a0c06739febc9936c64db261c15698dc4b2813c44a4a91e7457d77b493"
+    },
+    {
       "path": "scripts/pack-public-connectors.mjs",
       "sha256": "895014bfdfe93c2061387ae8e3c9f488f1666a08fd5e7ee6e0d2b7d8b63ed70b"
+    },
+    {
+      "path": "scripts/prepare-distribution-assets.py",
+      "sha256": "68a5722761c360d44f2005c42caae507de0bd1b408e20aa367a6656e4d25cc26"
     },
     {
       "path": "scripts/publish-cli.mjs",
@@ -1282,11 +1414,15 @@
     },
     {
       "path": "scripts/validate-public-plugins.mjs",
-      "sha256": "7bd2ce72781db9bd0e44e2e917bd34138b85fc422272890333f4b487fc4d9804"
+      "sha256": "b2cb3f13ffb8632aa0fa1c384c7a6d22c124ac814504b6deecbece7f9231af49"
     },
     {
       "path": "scripts/validate-public-source.mjs",
       "sha256": "547cfa7976605a08e0c087d70a74c455ac493a22531a0f7d1475017731f5d145"
+    },
+    {
+      "path": "scripts/verify-distribution.mjs",
+      "sha256": "7cfa80543d24db179bcc3185a506d31e9c096e12e448a3a4632cd76bcc1365f1"
     },
     {
       "path": "scripts/verify-npm-package.mjs",

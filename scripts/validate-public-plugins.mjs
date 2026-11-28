@@ -37,6 +37,7 @@ const allowedTop = new Set([
   'cursor', 'claude', 'chatgpt', 'grokbot', 'client', 'emdash', 'scripts', '.github',
   'cli', 'package.json', 'package-lock.json', '.npmignore', 'PUBLISH.cmd',
   'vscode', 'microsoft365', 'copilot', 'registry', 'DISTRIBUTION.md',
+  'distribution', 'docs', 'GEMINI.md', 'gemini-extension.json', 'glama.json', 'VERIFY.cmd', 'VERIFY.sh',
   '.cursor-plugin', '.claude-plugin', 'README.md', 'LICENSE', 'NOTICE',
   'INSTALL.md', 'server.draft.json', '.gitignore', 'RELEASE_MANIFEST.json',
   'release', 'AGENTS.md', 'POSITIONING.md', 'evals', 'hosts', 'antigravity', 'server.json', '.gitattributes',
@@ -99,7 +100,7 @@ for (const rel of files) {
   if (['api-reference', 'partner-api'].includes(top) && !/^(?:api-reference|partner-api)\/[a-z-]+\.mdx$/.test(rel)) fail(`unexpected documentation path ${rel}`)
   if (!allowedTop.has(top)) fail(`unexpected top-level path ${rel}`)
   const lower = rel.toLowerCase()
-  if (/(^|\/)(migrations|prisma|ios|app|lib)\//.test(lower) && !rel.startsWith('client/lib/') && !rel.startsWith('cli/lib/')) {
+  if (/(^|\/)(migrations|prisma|ios|app|lib)\//.test(lower) && !rel.startsWith('client/lib/') && !rel.startsWith('cli/lib/') && rel !== 'distribution/lib/partner-client.cjs') {
     fail(`forbidden tree ${rel}`)
   }
   if (/\.(pem|key|p12|env)$/.test(lower)) fail(`forbidden file ${rel}`)

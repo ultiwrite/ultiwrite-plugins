@@ -55,6 +55,10 @@ Download the versioned connector packages below. The host adapter bundle is `rel
 
 The [Microsoft distribution guide](DISTRIBUTION.md) covers the VS Code 0.1.1 review candidate, GitHub Copilot, Microsoft 365 tenant validation, and MCP Registry preparation. The guide records package checks and host publication requirements.
 
+## Distribution preparation
+
+The [channel preparation guide](distribution/README.md) covers automation adapters, directory listings and their release requirements.
+
 ## Preparation
 
 ```sh

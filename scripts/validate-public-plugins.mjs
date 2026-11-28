@@ -34,7 +34,8 @@ const secretNeedles = [
 ]
 
 const allowedTop = new Set([
-  'cursor', 'claude', 'chatgpt', 'grokbot', 'client', 'scripts', '.github',
+  'cursor', 'claude', 'chatgpt', 'grokbot', 'client', 'emdash', 'scripts', '.github',
+  'cli', 'package.json', 'package-lock.json', '.npmignore', 'PUBLISH.cmd',
   '.cursor-plugin', '.claude-plugin', 'README.md', 'LICENSE', 'NOTICE',
   'INSTALL.md', 'server.draft.json', '.gitignore', 'RELEASE_MANIFEST.json',
   'release', 'AGENTS.md', 'POSITIONING.md', 'evals', 'hosts', 'antigravity', 'server.json', '.gitattributes',
@@ -97,7 +98,7 @@ for (const rel of files) {
   if (['api-reference', 'partner-api'].includes(top) && !/^(?:api-reference|partner-api)\/[a-z-]+\.mdx$/.test(rel)) fail(`unexpected documentation path ${rel}`)
   if (!allowedTop.has(top)) fail(`unexpected top-level path ${rel}`)
   const lower = rel.toLowerCase()
-  if (/(^|\/)(migrations|prisma|ios|app|lib)\//.test(lower) && !rel.startsWith('client/lib/')) {
+  if (/(^|\/)(migrations|prisma|ios|app|lib)\//.test(lower) && !rel.startsWith('client/lib/') && !rel.startsWith('cli/lib/')) {
     fail(`forbidden tree ${rel}`)
   }
   if (/\.(pem|key|p12|env)$/.test(lower)) fail(`forbidden file ${rel}`)
@@ -260,6 +261,13 @@ for (const host of ['chatgpt', 'cursor', 'grokbot']) {
 pngSquareOpaque('chatgpt/assets/logo.png')
 const pkg = readJson('client/package.json')
 if (pkg?.name !== 'ultiwrite-mcp' || pkg?.version !== '0.8.0' || pkg?.license !== 'MIT') fail('client package')
+const installer = readJson('package.json')
+if (installer?.name !== '@ultiwrite/cli' || installer?.bin?.ultiwrite !== 'cli/bin/ultiwrite.mjs' || installer?.license !== 'MIT') fail('installer package identity or executable')
+for (const key of ['preinstall', 'install', 'postinstall', 'prepare']) {
+  if (installer?.scripts?.[key]) fail(`installer must not use ${key} lifecycle hooks`)
+}
+if (!readFileSync(join(root, 'cli/bin/ultiwrite.mjs'), 'utf8').startsWith('#!/usr/bin/env node\n')) fail('installer executable shebang')
+
 if (readFileSync(join(root, 'server.draft.json'), 'utf8').includes('NOT PUBLISHED') === false) fail('registry draft must stay unpublished')
 
 // Muse native manifest (experimental, self-hosted marketplace distribution)

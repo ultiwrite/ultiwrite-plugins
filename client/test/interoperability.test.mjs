@@ -5,6 +5,7 @@ import { createServer } from 'node:http'
 import { mkdtemp, mkdir, writeFile, readFile, rm } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { once } from 'node:events'
 import { mcpUrl, credentialPath, redact } from '../lib/pure.mjs'
 import { requestHeaders } from '../lib/transport.mjs'
@@ -13,7 +14,7 @@ import { discover } from '../lib/oauth.mjs'
 test('new connections use the clean resource; historical issuer and default credentials remain valid', () => {
   assert.equal(mcpUrl(), 'https://mcp.dwsoffshorepartners.com/mcp')
   assert.equal(mcpUrl('https://dwsoffshorepartners.com'), 'https://dwsoffshorepartners.com/api/integrations/ultiwrite/mcp')
-  assert.equal(credentialPath({ ULTIWRITE_HOME: '/tmp/example' }), '/tmp/example/.config/ultiwrite/credentials.json')
+  assert.equal(credentialPath({ ULTIWRITE_HOME: '/tmp/example' }), join('/tmp/example', '.config', 'ultiwrite', 'credentials.json'))
   assert.notEqual(credentialPath({ ULTIWRITE_HOME: '/tmp/example' }, 'second'), credentialPath({ ULTIWRITE_HOME: '/tmp/example' }))
   assert.throws(() => credentialPath({}, '../escape'))
   assert.deepEqual(redact({ nested: [{ access_token: 'secret', refresh_token: 'secret2' }] }), { nested: [{ access_token: '[redacted]', refresh_token: '[redacted]' }] })
@@ -74,7 +75,7 @@ test('bridge forwards progress before an SSE result, preserves legacy session/ve
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve))
   const issuer = `http://127.0.0.1:${server.address().port}`
   await writeFile(join(home, '.config/ultiwrite/credentials.json'), JSON.stringify({ access_token: 'fixture-secret', issuer }))
-  const child = spawn(process.execPath, [new URL('../bin/ultiwrite-mcp.js', import.meta.url).pathname, 'stdio'], { env: { ...process.env, ULTIWRITE_HOME: home } })
+  const child = spawn(process.execPath, [fileURLToPath(new URL('../bin/ultiwrite-mcp.js', import.meta.url)), 'stdio'], { env: { ...process.env, ULTIWRITE_HOME: home } })
   let output = '', errors = ''
   child.stdout.on('data', b => { output += b })
   child.stderr.on('data', b => { errors += b })

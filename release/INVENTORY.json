@@ -216,8 +216,8 @@
     {
       "file": "release/ultiwrite-chatgpt-plugin-0.11.0.zip",
       "version": "0.11.0",
-      "sha256": "e2d3855ed90df86f0cec176b5bb06c7911dd5316193b3a3228bd543b9a062357",
-      "bytes": 43218,
+      "sha256": "0c54d2f2fd0613289540b01627b82ef29af57d14f49b37ebde3f15db3dfd4377",
+      "bytes": 43104,
       "members": [
         {
           "name": "LICENSE",
@@ -226,8 +226,8 @@
         },
         {
           "name": "README.md",
-          "sha256": "2eaed801a199c146ed0baf440b94780158d20e5d58f3c9aee7323c49405432ca",
-          "bytes": 8143
+          "sha256": "a4486e53ce7712fe38bcfbc8986dc156b35ccbc2b47190b401d3ab997ccf4295",
+          "bytes": 7839
         },
         {
           "name": "assets/logo.png",
@@ -309,8 +309,8 @@
     {
       "file": "release/ultiwrite-cursor-plugin-0.11.0.zip",
       "version": "0.11.0",
-      "sha256": "848f5442eee125d15a0b38af24c3a9416531b061edd4e97e8d8d53db78f21941",
-      "bytes": 36074,
+      "sha256": "99ec899527f597544c5b9309b7b40f98c1da6e80ab962cb4aa788f986708b2f5",
+      "bytes": 35925,
       "members": [
         {
           "name": ".cursor-plugin/plugin.json",
@@ -324,8 +324,8 @@
         },
         {
           "name": "README.md",
-          "sha256": "228cc79b128e542fc70d0e9498becaa64beae7daff35216d0f479c4120a671c3",
-          "bytes": 4550
+          "sha256": "8fbeda9832f4393ebdf97840c38648eb4420200d3dfecbe218912bb420a00a8b",
+          "bytes": 4218
         },
         {
           "name": "assets/logo.png",
@@ -404,8 +404,8 @@
       "version": "0.11.0",
       "mcp_url": "https://mcp.dwsoffshorepartners.com/mcp",
       "built_by": "scripts/pack-public-connectors.mjs: sorted entries, deflate level 9, fixed 2026-10-29 timestamps",
-      "sha256": "2e791c7452aebc6ef2c79c2df0f4b63d6cfd10f7f67ee5c7ddd9e0b5416f4eba",
-      "bytes": 38579,
+      "sha256": "68477d935ed33bc1476fe43d7449beceff302ca8f3ebf77d24716a1cbbd42299",
+      "bytes": 38514,
       "members": [
         {
           "name": ".claude-plugin/plugin.json",
@@ -429,8 +429,8 @@
         },
         {
           "name": "README.md",
-          "sha256": "f9d375698267273a6e71921bcf11c30559700983338268346e00e4ae6f972067",
-          "bytes": 10220
+          "sha256": "99f0d7c32524275e95c8f0af2d56d35b8501791d3d4c51e654c7c0f7866cf274",
+          "bytes": 10047
         },
         {
           "name": "assets/logo.png",

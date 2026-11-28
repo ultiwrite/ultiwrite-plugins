@@ -1,6 +1,6 @@
 # Ultiwrite for ChatGPT and Codex
 
-Version 0.11.0 source candidate. Product: Ultiwrite. Publisher: DWS Offshore Fund. This preserves the existing Ultiwrite plugin identity; source preparation does not publish, deploy or update a directory listing.
+Ultiwrite 0.11.0 for ChatGPT and Codex, published by DWS Offshore Fund.
 
 Ultiwrite turns ordinary documents into a wider commercial investigation. Connect financial, identity, document-integrity, operational and external-context evidence across acquisitions, financing, counterparties, property and portfolios, then read reconciled findings, confidence and open questions. Submit only authorized evidence and use the live service for current capabilities and terms.
 
@@ -43,7 +43,7 @@ The MCP server entry contains only `type` and the clean canonical `url`. OAuth c
 
 ## Build and publish
 
-Run `node scripts/validate-public-plugins.mjs` and `node scripts/pack-public-connectors.mjs` from an exported candidate repository. The candidate archive is `release/ultiwrite-chatgpt-plugin-0.11.0.zip`; `--check` verifies source/archive parity. Historical 0.10.0 archives remain intact. The authenticated website and public-repository release families stay on 0.10.0 until an explicitly authorized release updates each of them.
+Run `node scripts/validate-public-plugins.mjs` and `node scripts/pack-public-connectors.mjs` from the public repository. The archive is `release/ultiwrite-chatgpt-plugin-0.11.0.zip`. Run the packaging command with `--check` to verify the archive against the source.
 
 Update the existing OpenAI listing; inspect its current portal state before uploading and preserve its identity. This source release does not prove directory upload, review, account labels in an installed host, or a completed customer journey. Its server contract and live host behavior require separate verification.
 

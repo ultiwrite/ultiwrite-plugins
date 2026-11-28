@@ -61,8 +61,16 @@
       "sha256": "8d75fbed0329d55480242ea79c61cbdd3da312c700298bfba9572b81ec325cc6"
     },
     {
+      "path": ".github/workflows/publish-cli.yml",
+      "sha256": "2614a9f576bcedd97cb900544efc3c8e64833e14c5a9a04d06632f3fd1b3a397"
+    },
+    {
+      "path": ".github/workflows/validate-emdash.yml",
+      "sha256": "59626fb7a967c9658bfe7041f630a0dbc6190f9b28e6da988a0aad1cdcbae0a7"
+    },
+    {
       "path": ".github/workflows/validate.yml",
-      "sha256": "10559fc0d6869f4c86b04883f78b491625cff39bc5622d06831792e69258701a"
+      "sha256": "656115bd3aef4517977ef5adfde12555b306719a1c5a4a9d30202e225468e2fb"
     },
     {
       "path": ".gitignore",
@@ -73,12 +81,16 @@
       "sha256": "e42a74be6906fac790fb71aeae6d3f6372cb43b70ab0470287f7d0195e7171c0"
     },
     {
+      "path": ".npmignore",
+      "sha256": "d073bfba58bfe5bb73c3dccfd9c4cc90b75b9dd64206635a304f17f39168478a"
+    },
+    {
       "path": "AGENTS.md",
       "sha256": "9ac7a22e1915e550f152fa489197b6959ed93b30ef9a3427ee39c54e437b9012"
     },
     {
       "path": "INSTALL.md",
-      "sha256": "8b81cdced27e36516228edb5c88ccf17d27a054645af793530e0a472d3e56be1"
+      "sha256": "a79b810925a0efb7728d225eb9c68a09fcdf1ed5899bd0914ebafadddd109478"
     },
     {
       "path": "LICENSE",
@@ -93,8 +105,12 @@
       "sha256": "5f24e2815faeb4eceded9c3f0241a28d8f49359a39d2846150a773e7409823e2"
     },
     {
+      "path": "PUBLISH.cmd",
+      "sha256": "21befd9466d53a11768bcdb6ed6250dcb8da051c391b9094834831f4dfbb7128"
+    },
+    {
       "path": "README.md",
-      "sha256": "289345746d6c22f0aa5434b8437fd8f89e5ba31318bb79b99856dd04f9993533"
+      "sha256": "e87ac248bf36dd7362c2e17e548dfd69c60ecd55c143fdb524d0fa2b9a662ce9"
     },
     {
       "path": "antigravity/LICENSE",
@@ -214,7 +230,7 @@
     },
     {
       "path": "chatgpt/README.md",
-      "sha256": "2eaed801a199c146ed0baf440b94780158d20e5d58f3c9aee7323c49405432ca"
+      "sha256": "a4486e53ce7712fe38bcfbc8986dc156b35ccbc2b47190b401d3ab997ccf4295"
     },
     {
       "path": "chatgpt/assets/logo.png",
@@ -294,7 +310,7 @@
     },
     {
       "path": "claude/README.md",
-      "sha256": "f9d375698267273a6e71921bcf11c30559700983338268346e00e4ae6f972067"
+      "sha256": "99f0d7c32524275e95c8f0af2d56d35b8501791d3d4c51e654c7c0f7866cf274"
     },
     {
       "path": "claude/assets/logo.png",
@@ -349,6 +365,42 @@
       "sha256": "ba1903fed0f7f9ee49a2bec8cba2527803ba0b0a69b70d9d0a73e2c2df05099c"
     },
     {
+      "path": "cli/README.md",
+      "sha256": "999760f1bee1c6e9c24c0be5f45437886e1d57f391ee4b2bd60bc0d5dc337d22"
+    },
+    {
+      "path": "cli/bin/ultiwrite.mjs",
+      "sha256": "8b12cde7738c98536636e0c614e9620ce6e3f8a68462de8dd419cc0458b838c9"
+    },
+    {
+      "path": "cli/lib/codex.mjs",
+      "sha256": "988bc2fcb7d19a113fc66f803c78fc8aac3e4986d6fe46933a9ed26d7a67c950"
+    },
+    {
+      "path": "cli/lib/config.mjs",
+      "sha256": "c5bc7379f09a22dc8de31f801d19f023fca34a1abe7640d31be4283e4bbecb0f"
+    },
+    {
+      "path": "cli/test/cli.test.mjs",
+      "sha256": "9bcc965728bdb77d4b2f558959d39dfbf1a1befd25c8165d6f5393e0aefcc9bb"
+    },
+    {
+      "path": "cli/test/codex.test.mjs",
+      "sha256": "d761315c1f6a9bb3d5afab6b4472bf74d639f953919823d4617598182e9b3bc3"
+    },
+    {
+      "path": "cli/test/config.test.mjs",
+      "sha256": "1845a57003996517d870ad04404991435db6648e69bec89473234da2cc988c43"
+    },
+    {
+      "path": "cli/test/package.test.mjs",
+      "sha256": "ecab6e6425aa67190d848e3c723a7302c527c6cf826ecaabcb5f8115cdce7711"
+    },
+    {
+      "path": "cli/test/publish.test.mjs",
+      "sha256": "8453c7fd235b0e0df0bc6eeea28436e5093b2ad1a64fce447845b4c367d85478"
+    },
+    {
       "path": "client/LICENSE",
       "sha256": "0122d7b57a1ef1e40944c88e2e0261b334fcf5f779e9deb52d49463de20a977d"
     },
@@ -378,15 +430,15 @@
     },
     {
       "path": "client/test/cli.test.mjs",
-      "sha256": "2c12a916ce1a12f74408e8876386399da6e4c5052358cd10924addde243e6a3b"
+      "sha256": "1530b2d4d02f78698d1827f92168f615149a01de24d4bf0ddbf1fa11c76081b6"
     },
     {
       "path": "client/test/interoperability.test.mjs",
-      "sha256": "9063dd65a1aaa45ae52cfb2dd143b1892416a5c3def36381bab7ba5fcdb5ae63"
+      "sha256": "a6bf44273505ce81fc1c3b0e0deee3ecdde6a1dbd08345407a4497001dcf6f2b"
     },
     {
       "path": "client/test/transport.test.mjs",
-      "sha256": "8a3a3ad854d5268dd050e2b8c33ee908ab7b800c63b12d096e7288faf6104dd4"
+      "sha256": "810e0c2f8500064b705569d39696d59fcae04262cf6fb350bc16b3ff8b85cd7a"
     },
     {
       "path": "cursor/.cursor-plugin/plugin.json",
@@ -398,7 +450,7 @@
     },
     {
       "path": "cursor/README.md",
-      "sha256": "228cc79b128e542fc70d0e9498becaa64beae7daff35216d0f479c4120a671c3"
+      "sha256": "8fbeda9832f4393ebdf97840c38648eb4420200d3dfecbe218912bb420a00a8b"
     },
     {
       "path": "cursor/assets/logo.png",
@@ -461,12 +513,104 @@
       "sha256": "056ff19d3fbb70b29a06c8899868f990a82dc750a6d6dfc7e2c7ffd1fdfe5fb3"
     },
     {
+      "path": "emdash/.gitignore",
+      "sha256": "351ba46fc3dfe9e631667f04fb7da305b8605bb1974d09f2a811e92239b856d2"
+    },
+    {
+      "path": "emdash/CHECK.cmd",
+      "sha256": "7755a186491ce88b545af6e4ceae41f6d55ea07359ff16555cce9e370c567459"
+    },
+    {
+      "path": "emdash/LICENSE",
+      "sha256": "b1ef35161a377c9b22bc2ba90fec6ab1ea0582f44bc0dff85fa9369912d40682"
+    },
+    {
+      "path": "emdash/NOTICE",
+      "sha256": "5e47d893f5cddb2c931b4af885aad4aba9dda75e0bdfdcd38fea59b01f66406c"
+    },
+    {
+      "path": "emdash/PUBLISH.cmd",
+      "sha256": "dc427713edcc724dd04e108ebfb7e18851404ff1f3389a55d86f21c05cad119b"
+    },
+    {
+      "path": "emdash/README.md",
+      "sha256": "3878867a3f83336c5657288655a5376b7421696ed6ef0c114c6845fa9b9fc4a2"
+    },
+    {
+      "path": "emdash/SECURITY.md",
+      "sha256": "dd6a7d256677ccdc6d6665772de0bf0525efb78f013c827409b39649dd69bec8"
+    },
+    {
+      "path": "emdash/VERIFICATION.md",
+      "sha256": "90ab0d61860a1b606e9f19dc7e13b4000aab29f9445211d6c61328f6e685acbf"
+    },
+    {
+      "path": "emdash/assets/icon.png",
+      "sha256": "cc0a3c229347e47a154a00c9e6dfa774c0e1f07ee9fc063935af5bc4897f4b18"
+    },
+    {
+      "path": "emdash/docs/FAQ.md",
+      "sha256": "fb031cac30f6ae69eb9c7f3d466c3c358704cb2b95f0728c697afbf8a36e7063"
+    },
+    {
+      "path": "emdash/docs/INSTALL.md",
+      "sha256": "6089f050df2e3d30c40dd81df1cc978458bef1b5a291853fdd9b45ebbbcfad64"
+    },
+    {
+      "path": "emdash/docs/LISTING.md",
+      "sha256": "d9aa850514ed93a2515de2e01b4d7b3f5717c396fe6e85cb5ad34703fc4473cc"
+    },
+    {
+      "path": "emdash/emdash-plugin.jsonc",
+      "sha256": "12c5aa930a0d8b2df5aebaf09f302fac218dac50b885e7c5f566ad1b4cf34b00"
+    },
+    {
+      "path": "emdash/package-lock.json",
+      "sha256": "c0a215adbec134e8d204ba69c64336253e71bb24a2cd1c32a76f75bfa7fbb123"
+    },
+    {
+      "path": "emdash/package.json",
+      "sha256": "beb8eb7d83a62b6bc9aa887a6a39d54f2f9baf342c1ef04bd8b8dc8fa8d937a4"
+    },
+    {
+      "path": "emdash/scripts/check-node.mjs",
+      "sha256": "de8236a15aeb9244bb5d28f8268c6da2b12b2a4e8b0d1e3b509568a3a44ff06b"
+    },
+    {
+      "path": "emdash/scripts/prepare-assets.mjs",
+      "sha256": "673b4c4104ff8bd997a54e33fac01807a040435c63aa210768aa5392ec1db0b3"
+    },
+    {
+      "path": "emdash/src/plugin.ts",
+      "sha256": "488480b1395286fd192d43ba93dffb353a015ef7de63221be31d4db8862e2dd3"
+    },
+    {
+      "path": "emdash/tests/plugin.test.mjs",
+      "sha256": "e4827262229e430da09aa7e5cb8a204e24672cd8d7ea8d8005378f5fb7f00522"
+    },
+    {
+      "path": "emdash/tsconfig.json",
+      "sha256": "53383e26c19ed16d34cc6b417e3d46f08a4773e01d50fd69ea792f8dcb5d8352"
+    },
+    {
       "path": "evals/README.md",
-      "sha256": "91348e5bf618f49c3e7f58ab53200d0bc2b116ecad8c6735df001dccaa8461e3"
+      "sha256": "4a29282ba598f9ba976bcbed35fe808d89314ad89bade3044ce31ed0aabd2c81"
     },
     {
       "path": "evals/discovery-prompts.json",
       "sha256": "5ce58cd3b8c635070bda00e4e73cd0fa7249e13fd2a002fed1460f4f3ba85797"
+    },
+    {
+      "path": "evals/reviewer-fixtures/README.md",
+      "sha256": "a4679b1e50efe8993e8f65be9235af1eb87eb2d26feb4c15a5dfa46c4e580384"
+    },
+    {
+      "path": "evals/reviewer-fixtures/operating-ledger.csv",
+      "sha256": "c5024c844bf928d6aacce7e989f561d971721a4aaeb4eefc286949b8eece234f"
+    },
+    {
+      "path": "evals/reviewer-fixtures/transaction-summary.csv",
+      "sha256": "5f0ac6bca1758344f1f861643536bdc2058c622b62dbc271cf656b5bb3b0a4ca"
     },
     {
       "path": "grokbot/FIELDS.json",
@@ -641,6 +785,14 @@
       "sha256": "32e25eaf66c31322ad5e9ea6defe3d5205ee50bf2a02a34323a4fe4d58044246"
     },
     {
+      "path": "package-lock.json",
+      "sha256": "556ce4bbe33429cdcfdfef201cdfa1eca64365f20170530903115245e9059497"
+    },
+    {
+      "path": "package.json",
+      "sha256": "e7e1a1943e0bf10a897d77524a232e7c071de526e08a70a07c80a6a8c89a20d9"
+    },
+    {
       "path": "partner-api/authentication.mdx",
       "sha256": "ff1826064bad0fade96e5cb870a21f2270ef1e0ee4a6cce9e55801f2428804c7"
     },
@@ -698,7 +850,7 @@
     },
     {
       "path": "release/INVENTORY.json",
-      "sha256": "9ed0506d2474e7066afd995b0452f2dd82ef19e4e6979f65a22115b673274ef3"
+      "sha256": "1560d20b0de2caa82c7212186da2841096bbab7c98d7d5d9fee039ac53f21cc3"
     },
     {
       "path": "release/PLUGIN_0.9.1_LIVE_RECEIPT.json",
@@ -730,7 +882,7 @@
     },
     {
       "path": "release/SHA256SUMS.txt",
-      "sha256": "42c15e7891c5c1b91231edeffd17911713889e5a34d6654bca2f50fb58ea1a26"
+      "sha256": "0f2333839c9a9cfde55b2cce7fc9763abb43ca33f212d4ba273a92b34ddb3a61"
     },
     {
       "path": "release/Ultiwrite_Claude_Plugin_v0.10.0.zip",
@@ -742,7 +894,7 @@
     },
     {
       "path": "release/Ultiwrite_Claude_Plugin_v0.11.0.zip",
-      "sha256": "2e791c7452aebc6ef2c79c2df0f4b63d6cfd10f7f67ee5c7ddd9e0b5416f4eba"
+      "sha256": "68477d935ed33bc1476fe43d7449beceff302ca8f3ebf77d24716a1cbbd42299"
     },
     {
       "path": "release/Ultiwrite_Claude_Plugin_v0.8.0.zip",
@@ -778,7 +930,7 @@
     },
     {
       "path": "release/ultiwrite-chatgpt-plugin-0.11.0.zip",
-      "sha256": "e2d3855ed90df86f0cec176b5bb06c7911dd5316193b3a3228bd543b9a062357"
+      "sha256": "0c54d2f2fd0613289540b01627b82ef29af57d14f49b37ebde3f15db3dfd4377"
     },
     {
       "path": "release/ultiwrite-chatgpt-plugin-0.7.1.zip",
@@ -818,7 +970,7 @@
     },
     {
       "path": "release/ultiwrite-cursor-plugin-0.11.0.zip",
-      "sha256": "848f5442eee125d15a0b38af24c3a9416531b061edd4e97e8d8d53db78f21941"
+      "sha256": "99ec899527f597544c5b9309b7b40f98c1da6e80ab962cb4aa788f986708b2f5"
     },
     {
       "path": "release/ultiwrite-cursor-plugin-0.7.1.zip",
@@ -869,12 +1021,20 @@
       "sha256": "fc3b7bbc6ef1d60b63f72070ea3ac294ad0d825c2dc80c859b10c7d27b49717d"
     },
     {
+      "path": "scripts/publish-cli.mjs",
+      "sha256": "bb779eeaf6a8633a7febdb7e09cdf5f9fd9055ac2a2e4d90cae8b32d7ae4b6bc"
+    },
+    {
       "path": "scripts/test/release.test.mjs",
       "sha256": "aff656835956c988a723a73486793e93481ecfea18f9d0018e59dc9fe1fca017"
     },
     {
       "path": "scripts/validate-public-plugins.mjs",
-      "sha256": "68d4a3609d3f9c9ae5f20d0d71b2359125d94165ccebed4de81d0b8465c35374"
+      "sha256": "4fbb69aa2dfb4785b059e099a87633154192d8303f38ed7de84d378cdf2b7a82"
+    },
+    {
+      "path": "scripts/verify-npm-package.mjs",
+      "sha256": "30cd3f16ff7e737f588dfa21f6342e80dcfa831ed45782e640f68b5f395bf631"
     },
     {
       "path": "server.draft.json",

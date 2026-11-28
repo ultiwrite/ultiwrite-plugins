@@ -94,7 +94,7 @@
     },
     {
       "path": "DISTRIBUTION.md",
-      "sha256": "cd5dae43e6b3d7fd58a602d63e032cc0e8d9cc3308f66b7b1103f22e62d288e9"
+      "sha256": "5f9c76814b025aebb69d187d3fa1e651eccd61d2536bc284aa35c1437589afea"
     },
     {
       "path": "INSTALL.md",
@@ -1046,15 +1046,23 @@
     },
     {
       "path": "release/INVENTORY.json",
-      "sha256": "24a8f080b01fc2ef4514b97beb1235bb2edc2d7239ce29492c0c123e955f3d13"
+      "sha256": "2bc5c4944e931c9e470295371dc84e5f2d653a8ed1a909eb42db16999e5ebed7"
     },
     {
       "path": "release/MICROSOFT_SHA256SUMS.txt",
       "sha256": "b3ed99a42f849d568006e874bf09749b17720968373241a3a860c65e5be17e4e"
     },
     {
+      "path": "release/MICROSOFT_SHA256SUMS_0.1.1.txt",
+      "sha256": "ab09913b9f0ee015cd0f811a37759b04494289a762194ce71aa7e7b484ea82e8"
+    },
+    {
       "path": "release/MICROSOFT_VERIFICATION.json",
       "sha256": "f7de1015fa6fa32f103da3682f89c6772e69644433ade5338b85d8b54e5efbd4"
+    },
+    {
+      "path": "release/MICROSOFT_VERIFICATION_0.1.1.json",
+      "sha256": "55100e3b1c62181d789200c2da809cb4cec41cef769cb69bc0c8158d2571ef79"
     },
     {
       "path": "release/PLUGIN_0.9.1_LIVE_RECEIPT.json",
@@ -1086,7 +1094,7 @@
     },
     {
       "path": "release/SHA256SUMS.txt",
-      "sha256": "237a318472e0cee78f7c3776d4f5d783a59c06b52f4c5ca07687825e8e9661d6"
+      "sha256": "852018d1c7f4385494524865ca7a6ea623975345cdb2ad7a153ee23c1e01ac34"
     },
     {
       "path": "release/Ultiwrite_Claude_Plugin_v0.10.0.zip",
@@ -1133,6 +1141,10 @@
       "sha256": "1d3fded6ba632f7674967ab7187615aa7c14ac1d1c8d84d415438ff1f3c2d7b6"
     },
     {
+      "path": "release/Ultiwrite_Microsoft_Distribution_0.1.1.zip",
+      "sha256": "bb0b54e0094a4a945760c3ef39ce4d55c10beb15a56c8ec1333d7b6da457679f"
+    },
+    {
       "path": "release/ultiwrite-chatgpt-plugin-0.10.0.zip",
       "sha256": "aa928684cdbb4383aea0e4cb09fe2bfd67c90181ff4b120237889826312b14b5"
     },
@@ -1175,6 +1187,10 @@
     {
       "path": "release/ultiwrite-copilot-plugin-0.1.0.zip",
       "sha256": "8227161a0f3780a106cf08d8ca888d099804516ee4fa420d2eca9d5d41f18aed"
+    },
+    {
+      "path": "release/ultiwrite-copilot-plugin-0.1.1.zip",
+      "sha256": "67fb0beffae8cd34df794450ea4298ac03293fd866f785c74a0ec7a9cb33e158"
     },
     {
       "path": "release/ultiwrite-cursor-plugin-0.10.0.zip",
@@ -1233,12 +1249,20 @@
       "sha256": "d908545dc1e8e8f8038f8ed95579218d2c09614584bf6a49da4c2d9fc12a301e"
     },
     {
+      "path": "release/ultiwrite-m365-source-0.1.1.zip",
+      "sha256": "84464d78eb7554e02f30b8f2a349a18d1ae168c5cf3e5f1ca392c1ebbbb828f1"
+    },
+    {
       "path": "release/ultiwrite-vscode-0.1.0.vsix",
       "sha256": "10404aba6129802c913f953c9a6552a8c40f11697ee5f82f32bfb3a2f6b6e6e0"
     },
     {
+      "path": "release/ultiwrite-vscode-0.1.1.vsix",
+      "sha256": "ce562321ff41e9e6c74d3a8185f11d8d09feff9e33d249cfcd6835d970c8e649"
+    },
+    {
       "path": "scripts/build-microsoft-distribution.mjs",
-      "sha256": "193d2b597937dab20e75f4e65ea095f089a1c37a0fb0155c45c50c80924c65a3"
+      "sha256": "ba79c8815d745e18944c1a1f4c34f2db628be654730e3084f29b49d3465a2736"
     },
     {
       "path": "scripts/pack-public-connectors.mjs",

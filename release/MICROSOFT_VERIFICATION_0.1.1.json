@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "product": "Ultiwrite",
+  "distribution_version": "0.1.1",
+  "status": "REVIEW_CANDIDATE",
+  "observed_date": "2026-11-28",
+  "source_repository": "ultiwrite/ultiwrite-plugins",
+  "toolchain": { "node": "24.22.3", "npm": "11.19.1" },
+  "checks": [
+    { "id": "vscode-client-tests", "result": "PASS", "passed": 24, "scope": "OAuth, transport, upload and saved-case continuation with synthetic HTTP servers" },
+    { "id": "vscode-vsix-build", "result": "PASS" },
+    { "id": "microsoft365-source-tests", "result": "PASS", "passed": 10, "scope": "Source validation against Microsoft schemas, exact PKCE registration, deterministic source archive and rejection of missing provisioning configuration" },
+    { "id": "portable-manifest-validation", "result": "PASS", "scope": "Official Agent Plugins and MCP Registry schemas" }
+  ],
+  "pending": [
+    "Authenticated VS Code and Microsoft 365 host journeys",
+    "Marketplace publisher verification and Microsoft tenant/app/auth provisioning",
+    "Microsoft Partner Center and MCP Registry publication"
+  ]
+}

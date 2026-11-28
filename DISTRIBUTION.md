@@ -1,22 +1,22 @@
 # Ultiwrite Microsoft distribution
 
-Version 0.1.0 introduces a VS Code extension, a GitHub Copilot agent plugin, a Microsoft 365 Copilot agent project, and domain-owned MCP Registry metadata. These connect to the existing Ultiwrite service and preserve its account, entitlement, evidence, and report boundaries.
+This distribution includes a VS Code extension, a GitHub Copilot agent plugin, a Microsoft 365 Copilot agent project, and domain-owned MCP Registry metadata. These connect to the existing Ultiwrite service and preserve its account, entitlement, evidence, and report boundaries.
 
-Build the refreshed VS Code 0.1.1 candidate from [its own source](vscode/README.md#build-and-test). The current Copilot and Microsoft 365 source also uses 0.1.1 with the confirmed publisher name. The combined handoff below records the original 0.1.0 packages. Rebuild that kit from its [original revision](https://github.com/ultiwrite/ultiwrite-plugins/commit/ea6451a50aa41393bd75b0dcae2fd6a5be67a101).
+The current VS Code, GitHub Copilot and Microsoft 365 review packages use version 0.1.1. Rebuild the historical 0.1.0 kit from its [original revision](https://github.com/ultiwrite/ultiwrite-plugins/commit/ea6451a50aa41393bd75b0dcae2fd6a5be67a101).
 
 ## Deliverables and status
 
 | Deliverable | Location | Release boundary |
 | --- | --- | --- |
-| VS Code extension | `vscode/`; `release/ultiwrite-vscode-0.1.0.vsix` | Review installation candidate. Confirm the actual Marketplace publisher ID before submission. |
-| GitHub Copilot plugin | `copilot/`; `release/ultiwrite-copilot-plugin-0.1.0.zip` | Portable Agent Plugins 1.0 MCP package. Repository marketplace at `.github/plugin/marketplace.json`. |
-| Microsoft 365 Copilot agent | `microsoft365/`; `release/ultiwrite-m365-source-0.1.0.zip` | Complete source/provisioning project. Installable tenant package requires real Microsoft app/auth registration outputs. |
+| VS Code extension | `vscode/`; `release/ultiwrite-vscode-0.1.1.vsix` | Review installation candidate. Confirm the actual Marketplace publisher ID before submission. |
+| GitHub Copilot plugin | `copilot/`; `release/ultiwrite-copilot-plugin-0.1.1.zip` | Portable Agent Plugins 1.0 MCP package. Repository marketplace at `.github/plugin/marketplace.json`. |
+| Microsoft 365 Copilot agent | `microsoft365/`; `release/ultiwrite-m365-source-0.1.1.zip` | Complete source/provisioning project. Installable tenant package requires real Microsoft app/auth registration outputs. |
 | Official MCP Registry | `registry/server.json` | Unpublished candidate `com.dwsoffshorepartners/ultiwrite`; requires domain proof and authorized publication. |
-| Combined handoff | `release/Ultiwrite_Microsoft_Distribution_0.1.0.zip` | Contains the three artifacts, registry metadata, checksums, verification record, and this guide. |
+| Combined handoff | `release/Ultiwrite_Microsoft_Distribution_0.1.1.zip` | Contains the three artifacts, registry metadata, checksums, verification record, and this guide. |
 
-See `release/MICROSOFT_VERIFICATION.json` (or `MICROSOFT_VERIFICATION.json` inside the combined handoff) for the exact checks actually performed and the boundaries still unverified. A successful build or local installation is not a signed-in customer investigation, Microsoft certification, or marketplace approval.
+See `release/MICROSOFT_VERIFICATION_0.1.1.json` (or `MICROSOFT_VERIFICATION.json` inside the combined handoff) for the exact checks actually performed and the boundaries still unverified. A successful build or local installation is not a signed-in customer investigation, Microsoft certification, or marketplace approval.
 
-## Rebuild the original 0.1.0 review packages
+## Rebuild the review packages
 
 Node.js 22.8 or later, npm, and Git are required. From the repository root:
 
@@ -63,12 +63,12 @@ copilot plugin marketplace add /absolute/path/to/ultiwrite-plugins
 copilot plugin install ultiwrite@ultiwrite-copilot
 ```
 
-After authorized merge, replace the local path with `dennis430/ultiwrite-plugins`. See `copilot/README.md` for connection and usage instructions. This creates a repository-distributed plugin; it does not claim inclusion in GitHub's curated MCP registry.
+After authorized merge, use `ultiwrite/ultiwrite-plugins` in place of the local path. See `copilot/README.md` for connection and usage instructions. This creates a repository-distributed plugin; it does not claim inclusion in GitHub's curated MCP registry.
 
 For the official MCP Registry, finish the domain-owned publisher setup described in `registry/README.md`, validate, publish after authorization, and confirm the actual public listing. Keep the publishing key outside the source tree. No credential or DNS proof is required to build these review packages.
 
 ## Commercial and publication boundaries
 
-Public brand: **Ultiwrite**. Legal publisher: **DWS Offshore Fund** Existing backend account permissions, allowances, paid investigative entitlements, and API-access controls remain authoritative. The client does not mint credits or grant API access. Current commercial terms come from the account/service; no prices are embedded in these public packages.
+Public brand: **Ultiwrite**. Legal publisher: **DWS Offshore Fund**. Existing backend account permissions, allowances, paid investigative entitlements, and API-access controls remain authoritative. The client does not mint credits or grant API access. Current commercial terms come from the account/service; no prices are embedded in these public packages.
 
 [Product](https://dwsoffshorepartners.com) · [MCP documentation](https://dwsoffshorepartners.com/docs/mcp) · [Support](https://dwsoffshorepartners.com/contact) · [Privacy](https://dwsoffshorepartners.com/privacy) · [Terms](https://dwsoffshorepartners.com/terms)

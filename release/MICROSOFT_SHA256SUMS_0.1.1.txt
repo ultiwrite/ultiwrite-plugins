@@ -1,0 +1,3 @@
+ce562321ff41e9e6c74d3a8185f11d8d09feff9e33d249cfcd6835d970c8e649  ultiwrite-vscode-0.1.1.vsix
+84464d78eb7554e02f30b8f2a349a18d1ae168c5cf3e5f1ca392c1ebbbb828f1  ultiwrite-m365-source-0.1.1.zip
+67fb0beffae8cd34df794450ea4298ac03293fd866f785c74a0ec7a9cb33e158  ultiwrite-copilot-plugin-0.1.1.zip

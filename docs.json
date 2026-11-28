@@ -1,14 +1,14 @@
 {
   "theme": "mint",
-  "name": "Ultiwrite API documentation",
+  "name": "Ultiwrite API",
   "description": "Integrate Ultiwrite asymmetric diligence and investigative intelligence with authorized evidence uploads, saved investigations, reports and webhooks.",
   "colors": {
-    "primary": "#D39891",
+    "primary": "#884A43",
     "light": "#E7B7B0",
     "dark": "#9A645E"
   },
   "api": {
-    "openapi": "https://dwsoffshorepartners.com/.well-known/openapi.json",
+    "openapi": "hosts/openapi.json",
     "playground": {
       "display": "simple",
       "proxy": false
@@ -17,10 +17,16 @@
       "languages": [
         "bash",
         "javascript",
-        "python"
+        "typescript",
+        "python",
+        "java",
+        "csharp",
+        "go",
+        "php",
+        "ruby"
       ],
       "prefill": false,
-      "autogenerate": true
+      "autogenerate": false
     },
     "url": "full"
   },
@@ -64,7 +70,7 @@
         {
           "anchor": "API reference",
           "icon": "code",
-          "href": "https://dwsoffshorepartners.com/docs/api"
+          "href": "https://dwsoffshorepartners.com/docs/api-reference"
         },
         {
           "anchor": "Product documentation",
@@ -86,6 +92,7 @@
         "group": "Partner API",
         "pages": [
           "partner-api/overview",
+          "partner-api/languages",
           "partner-api/authentication",
           "partner-api/workflow",
           "partner-api/uploads",

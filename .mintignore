@@ -3,6 +3,7 @@
 /*
 !/.mintignore
 !/docs.json
+!/reference.css
 !/index.mdx
 !/quickstart.mdx
 !/api-keys.mdx
@@ -13,3 +14,8 @@
 /api-reference/**
 !/partner-api/*.mdx
 !/api-reference/*.mdx
+
+# Canonical generated contract; docs builds do not fetch the live backend.
+!/hosts/
+/hosts/**
+!/hosts/openapi.json

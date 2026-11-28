@@ -1,7 +1,7 @@
 ---
-title: "Ultiwrite developer documentation"
+title: "Build an evidence integration"
 sidebarTitle: "Introduction"
-description: "Connect commercial workflows to Ultiwrite evidence analysis, saved findings and Decision Briefs using approved API keys, delegated OAuth or MCP."
+description: "Trace an evidence package from an authorized account to a saved investigation, its findings and its Decision Brief."
 keywords:
   - "Ultiwrite"
   - "Partner API"
@@ -9,35 +9,47 @@ keywords:
   - "investigative intelligence"
 ---
 
-Ultiwrite accepts an evidence package, investigates the documents and relevant evidence, reconciles findings, and releases a saved report. Use these docs to connect that workflow to your application or authorized assistant.
-
-This portal is a second presentation of the [existing Ultiwrite API documentation](https://dwsoffshorepartners.com/docs/api), not a separate API. Endpoint definitions come from the same canonical OpenAPI contract.
-
-<Columns cols={2}>
-  <Card title="Make your first API request" icon="rocket" href="/quickstart">
-    Get API approval, create a key, and check the account your server can access.
-  </Card>
-
-  <Card title="Read the API reference" icon="code" href="https://dwsoffshorepartners.com/docs/api">
-    Find the current operations and the canonical live OpenAPI contract.
-  </Card>
-</Columns>
+Ultiwrite connects submitted documents with evidence about businesses, people, assets and relationships. Choose how your application or assistant will use the resulting investigation.
 
 ## Choose your connection
 
-| Connection | Use it for | Authorization |
-| --- | --- | --- |
-| Partner REST API | Submit evidence and retrieve saved results from your backend | Dashboard API key or Partner OAuth, with explicit account approval |
-| MCP | Let an authorized assistant submit evidence and read saved reports | MCP OAuth grant |
-| Website | Upload evidence and review results in your browser | Signed-in Ultiwrite account |
+<div className="uw-reference">
+
+<div className="uw-entry">
+
+**Backend service**
+
+[Make your first API request](/quickstart) with a dashboard key or delegated Partner OAuth. Both require explicit account approval.
+
+</div>
+
+<div className="uw-entry">
+
+**Assistant**
+
+[Connect through MCP](https://dwsoffshorepartners.com/docs/integrations/mcp-overview) to submit authorized evidence and read saved reports under an MCP OAuth grant.
+
+</div>
+
+<div className="uw-entry">
+
+**Browser**
+
+[Open the dashboard](https://dwsoffshorepartners.com/dashboard) to upload evidence and review the report in your signed-in account.
+
+</div>
+
+</div>
 
 These entry points use the same account, canonical analysis workflow and saved reports. Their credentials have separate authority. A Partner API key cannot authenticate MCP, and an MCP token cannot authenticate the Partner API.
 
 ## Build a complete integration
 
-Authorize the account, inspect capabilities and usage, submit evidence, and save the returned case ID. Follow any requested continuation until the case links a report. Retrieve findings and the Decision Brief, preserve provenance and completeness, then present the account's entitled delivery options.
+1. **Check the account.** Read its [capabilities](/api-reference/capabilities) and [usage](/api-reference/usage) before accepting evidence.
+2. **Keep the case ID.** [Submit the package](/partner-api/uploads) and [resume the same case](/partner-api/workflow) whenever it returns a continuation.
+3. **Read the released report.** Retrieve the [findings and Decision Brief](/partner-api/results) with their sources and limitations. Offer only the delivery formats returned for that account.
 
-The [complete Partner API guides](/partner-api/overview) cover authentication, evidence uploads, asynchronous processing, pagination, usage and recovery. The [downloadable example client](https://dwsoffshorepartners.com/docs/downloads/partner-api/README.md) provides bounded submission and resume helpers.
+The [language guide](/partner-api/languages) provides a read-only account check in nine languages and links to the complete runnable examples. The [complete Partner API guides](/partner-api/overview) cover authentication, evidence uploads, asynchronous processing, pagination, usage and recovery. The [downloadable example client](https://dwsoffshorepartners.com/docs/downloads/partner-api/README.md) provides bounded submission and resume helpers.
 
 ## API access
 
@@ -47,8 +59,6 @@ Analysis credits and API requests are separate balances. Every admitted API requ
 
 ## Contract and delivery
 
-The [live OpenAPI document](https://dwsoffshorepartners.com/.well-known/openapi.json) is the machine contract for the deployed API. The [native API reference](https://dwsoffshorepartners.com/docs/api) and [integration guides](https://dwsoffshorepartners.com/docs/partner-api/overview) remain the detailed reference for supported operations and boundaries.
+The endpoint reference uses a checked-in snapshot of the canonical registry. The [live OpenAPI document](https://dwsoffshorepartners.com/.well-known/openapi.json) is the machine contract for the deployed API. The [native API reference](https://dwsoffshorepartners.com/docs/api) and [integration guides](https://dwsoffshorepartners.com/docs/partner-api/overview) remain the detailed reference for supported operations and boundaries.
 
-Report export returns entitled delivery options. PDF, Excel and ZIP download links require a signed-in browser session on the same Ultiwrite account. The API credential does not download those file bytes. Results are advisory and preserve the evidence's limitations; your application retains commercial decision authority.
-
-For assistant connections, follow the [MCP connection guide](https://dwsoffshorepartners.com/docs/integrations/mcp-overview).
+Report export returns entitled website links and an `apiDownloads` map. Follow the Partner artifact paths with the current API bearer for entitled JSON/PDF/CSV/XLSX/ZIP bytes. Website links retain their signed-in same-account browser boundary, and no public report URL is created. Results are advisory and preserve the evidence's limitations; your application retains commercial decision authority.

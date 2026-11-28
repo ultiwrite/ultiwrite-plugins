@@ -3,7 +3,7 @@
 // It does not publish, deploy, or contact a marketplace.
 import { createHash } from 'node:crypto'
 import { readFileSync, readdirSync, lstatSync } from 'node:fs'
-import { join, relative, sep } from 'node:path'
+import { isAbsolute, join, relative, resolve, sep } from 'node:path'
 
 const root = process.argv[2] ? process.argv[2] : process.cwd()
 const errors = []
@@ -23,6 +23,10 @@ const secretNeedles = [
   'AK' + 'IA',
   'gh' + 'p_',
   'github' + '_pat_',
+  'sk-' + 'proj-',
+  'sk-' + 'ant-',
+  'Bearer ' + 'ey',
+  'upload?t=' + 'v1_',
   'postgres' + '://',
   'postgresql' + '://',
   'mongodb' + '://',
@@ -33,7 +37,9 @@ const allowedTop = new Set([
   'cursor', 'claude', 'chatgpt', 'grokbot', 'client', 'scripts', '.github',
   '.cursor-plugin', '.claude-plugin', 'README.md', 'LICENSE', 'NOTICE',
   'INSTALL.md', 'server.draft.json', '.gitignore', 'RELEASE_MANIFEST.json',
-  'release', 'AGENTS.md', 'POSITIONING.md', 'evals',
+  'release', 'AGENTS.md', 'POSITIONING.md', 'evals', 'hosts', 'antigravity', 'server.json', '.gitattributes',
+  // The public distribution also hosts the existing customer API documentation.
+  '.mintignore', 'docs.json', 'reference.css', 'index.mdx', 'quickstart.mdx', 'api-contract.mdx', 'api-keys.mdx', 'api-reference', 'partner-api',
 ])
 
 function walk(dir, out = []) {
@@ -88,12 +94,17 @@ const files = walk(root)
 if (!files.length) fail('empty tree')
 for (const rel of files) {
   const top = rel.split('/')[0]
+  if (['api-reference', 'partner-api'].includes(top) && !/^(?:api-reference|partner-api)\/[a-z-]+\.mdx$/.test(rel)) fail(`unexpected documentation path ${rel}`)
   if (!allowedTop.has(top)) fail(`unexpected top-level path ${rel}`)
   const lower = rel.toLowerCase()
   if (/(^|\/)(migrations|prisma|ios|app|lib)\//.test(lower) && !rel.startsWith('client/lib/')) {
     fail(`forbidden tree ${rel}`)
   }
   if (/\.(pem|key|p12|env)$/.test(lower)) fail(`forbidden file ${rel}`)
+  if (/^(chatgpt|claude|cursor)\//.test(rel)
+    && !/^(?:chatgpt|claude|cursor)\/(?:README\.md|LICENSE|mcp\.json|\.mcp\.json|\.(?:claude|cursor|muse)-plugin\/plugin\.json|plugin\.json|assets\/logo\.png|skills\/[a-z0-9-]+\/(?:SKILL\.md|agents\/openai\.yaml))$/.test(rel)) {
+    fail(`unexpected package source ${rel}`)
+  }
   if (rel.endsWith('.png') || rel.endsWith('.zip')) continue
   const text = readFileSync(join(root, rel), 'utf8')
   for (const needle of secretNeedles) {
@@ -126,7 +137,7 @@ const plugin = readJson('cursor/.cursor-plugin/plugin.json')
 const pluginKeys = ['name', 'displayName', 'version', 'description', 'author', 'publisher', 'license', 'homepage', 'repository', 'logo', 'keywords', 'category', 'skills']
 if (plugin) {
   for (const key of Object.keys(plugin)) if (!pluginKeys.includes(key)) fail(`plugin.json has ${key}`)
-  if (plugin.name !== 'ultiwrite' || plugin.version !== '0.9.3' || plugin.license !== 'MIT') fail('plugin identity')
+  if (plugin.name !== 'ultiwrite' || plugin.version !== '0.10.0' || plugin.license !== 'MIT') fail('plugin identity')
   if (plugin.author?.url || plugin.author?.name !== 'DWS Offshore Fund' || plugin.author?.email !== 'nick@ultiwrite.co') fail('plugin author')
   if (plugin.logo !== 'assets/logo.png') fail('plugin logo path')
   if ('skills' in plugin) fail('Cursor must discover every skills/ workflow; do not override discovery with a single path')
@@ -167,7 +178,7 @@ if (!readFileSync(join(root, 'grokbot/TESTING.md'), 'utf8').includes('NOT_RUN'))
 const claude = readJson('claude/.mcp.json')
 if (claude?.mcpServers?.ultiwrite?.type !== 'http' || claude?.mcpServers?.ultiwrite?.url !== CLAUDE_MCP_URL || Object.keys(claude?.mcpServers?.ultiwrite ?? {}).length !== 2) fail('claude mcp')
 const claudeListing = readJson('claude/.claude-plugin/plugin.json')
-if (claudeListing?.name !== 'ultiwrite' || claudeListing?.displayName !== 'Ultiwrite' || claudeListing?.icon !== './assets/logo.png' || claudeListing?.version !== '0.9.3') fail('claude directory branding')
+if (claudeListing?.name !== 'ultiwrite' || claudeListing?.displayName !== 'Ultiwrite' || claudeListing?.icon !== './assets/logo.png' || claudeListing?.version !== '0.10.1') fail('claude directory branding')
 for (const field of ['documentationUrl', 'supportUrl', 'privacyPolicyUrl', 'termsOfServiceUrl']) {
   if (typeof claudeListing?.[field] !== 'string' || !claudeListing[field].startsWith('https://dwsoffshorepartners.com/')) fail(`claude directory ${field}`)
 }
@@ -176,7 +187,7 @@ const openaiInterface = chatgptListing?.extensions?.['com.openai']?.interface
 if (chatgptListing?.name !== 'ultiwrite' || chatgptListing?.$schema !== 'https://agent-plugins.org/schemas/1.0.0/plugin.schema.json') fail('ChatGPT portable identity or schema')
 if (chatgptListing?.apps || chatgptListing?.extensions?.['com.openai']?.apps || files.includes('chatgpt/.app.json')) fail('public ChatGPT package must not include private app bindings')
 if (openaiInterface?.logoDark !== './assets/logo.png' || openaiInterface?.composerIconDark !== './assets/logo.png') fail('ChatGPT dark icons must use the canonical asset')
-if (openaiInterface?.displayName !== 'Ultiwrite' || openaiInterface?.logo !== './assets/logo.png' || openaiInterface?.composerIcon !== './assets/logo.png' || chatgptListing?.version !== '0.9.3') fail('ChatGPT directory branding')
+if (openaiInterface?.displayName !== 'Ultiwrite' || openaiInterface?.logo !== './assets/logo.png' || openaiInterface?.composerIcon !== './assets/logo.png' || chatgptListing?.version !== '0.10.0') fail('ChatGPT directory branding')
 pngSquareOpaque('claude/assets/logo.png')
 // Anthropic directory rules the CLI validator does not check (claude.com/docs/plugins/pre-submission-checklist).
 const claudeFiles = files.filter(rel => rel.startsWith('claude/'))
@@ -241,15 +252,85 @@ if (chatgptServer?.type !== 'streamable-http' || chatgptServer?.url !== CHATGPT_
 if (JSON.stringify(Object.keys(chatgptServer ?? {}).sort()) !== JSON.stringify(['type', 'url'])) fail('ChatGPT uses the portable parser-safe transport and URL only; OAuth is discovered from the service')
 if (openaiInterface?.category !== 'Business & Operations') fail('ChatGPT must preserve the canonical listing category')
 if (chatgptListing?.extensions?.['com.openai']?.review?.test_cases?.positive?.length !== 5 || chatgptListing?.extensions?.['com.openai']?.review?.test_cases?.negative?.length !== 3) fail('ChatGPT must preserve five positive and three negative review cases')
-const canonicalLogoSha = 'cc0a3c229347e47a154a00c9e6dfa774c0e1f07ee9fc063935af5bc4897f4b18'
-for (const host of ['chatgpt', 'claude', 'cursor', 'grokbot']) {
-  const logo = readFileSync(join(root, host, 'assets/logo.png'))
-  if (createHash('sha256').update(logo).digest('hex') !== canonicalLogoSha) fail(`${host} logo differs from the supplied canonical Uw image`)
+const canonicalLogo = readFileSync(join(root, 'claude/assets/logo.png'))
+if (createHash('sha256').update(canonicalLogo).digest('hex') !== 'cc0a3c229347e47a154a00c9e6dfa774c0e1f07ee9fc063935af5bc4897f4b18') fail('canonical Uw icon bytes changed')
+for (const host of ['chatgpt', 'cursor', 'grokbot']) {
+  if (!readFileSync(join(root, host, 'assets/logo.png')).equals(canonicalLogo)) fail(`${host} logo differs from the approved Ultiwrite identity`)
 }
 pngSquareOpaque('chatgpt/assets/logo.png')
 const pkg = readJson('client/package.json')
-if (pkg?.name !== 'ultiwrite-mcp' || pkg?.version !== '0.7.1' || pkg?.license !== 'MIT') fail('client package')
+if (pkg?.name !== 'ultiwrite-mcp' || pkg?.version !== '0.8.0' || pkg?.license !== 'MIT') fail('client package')
 if (readFileSync(join(root, 'server.draft.json'), 'utf8').includes('NOT PUBLISHED') === false) fail('registry draft must stay unpublished')
+
+// Muse native manifest (experimental, self-hosted marketplace distribution)
+const muse = readJson('claude/.muse-plugin/plugin.json')
+if (muse) {
+  if (muse.schemaVersion !== 1 || muse.name !== 'ultiwrite' || muse.version !== claudeListing?.version) fail('muse plugin identity')
+  if (muse.compat?.manifestDir !== '.muse-plugin') fail('muse compat manifestDir')
+  const museMcp = muse.capabilities?.mcpServers?.find(s => s.id === 'ultiwrite')
+  if (!museMcp || museMcp.transport !== 'http' || museMcp.url !== MCP_URL) fail('muse mcp server')
+  for (const id of ['ultiwrite', 'connect-account', 'submit-evidence', 'read-report', 'follow-up']) {
+    if (!muse.capabilities?.skills?.some(s => s.id === id && s.path === `skills/${id}/SKILL.md`)) fail(`muse skill ${id}`)
+  }
+}
+// Antigravity pack (plugin.json + mcp_config.json + skill)
+const agy = readJson('antigravity/plugin.json')
+if (agy) {
+  if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(agy.name ?? '')) fail('antigravity name must be kebab-case')
+  for (const field of ['displayName', 'description', 'version', 'logo']) if (!agy[field]) fail(`antigravity ${field} required for Marketplace`)
+  if (agy.version !== '0.10.0' || agy.logo !== 'assets/logo.png') fail('antigravity identity')
+  if (agy.author?.name !== 'DWS Offshore Fund') fail('antigravity author')
+}
+const agyMcp = readJson('antigravity/mcp_config.json')
+if (agyMcp?.mcpServers?.ultiwrite?.serverUrl !== MCP_URL) fail('antigravity mcp serverUrl')
+const agySkill = readFileSync(join(root, 'antigravity/skills/ultiwrite/SKILL.md'), 'utf8')
+if (!agySkill.startsWith('---\nname: ultiwrite\n')) fail('antigravity skill name')
+if (!/^description: .+/m.test(agySkill)) fail('antigravity skill description')
+pngSquareOpaque('antigravity/assets/logo.png')
+// MCP Registry server.json (publishable metadata; publishing is a separate founder step)
+const registry = readJson('server.json')
+if (registry) {
+  if (registry.$schema !== 'https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json') fail('registry $schema')
+  if (registry.name !== 'io.github.dennis430/ultiwrite') fail('registry name')
+  if (typeof registry.description !== 'string' || registry.description.length < 1 || registry.description.length > 100) fail('registry description must be 1-100 chars')
+  if (registry.description.includes('NOT PUBLISHED')) fail('registry description must not contain draft marker')
+  if (registry.version !== '0.10.0') fail('registry version')
+  if (registry.remotes?.[0]?.type !== 'streamable-http' || registry.remotes?.[0]?.url !== MCP_URL) fail('registry remote')
+  if (registry.repository?.url !== 'https://github.com/dennis430/ultiwrite-plugins' || registry.repository?.source !== 'github') fail('registry repository')
+}
+
+// The submission inventory describes prepared source, not provider acceptance.
+// Keep its links inside the public tree and preserve explicit external dependencies.
+const profiles = readJson('hosts/submissions/profiles.json')
+const hostMatrix = readJson('hosts/matrix.json')
+const requiredProfiles = ['openai', 'claude', 'cursor', 'antigravity', 'grok', 'grokbot', 'meta-muse', 'emdash', 'mcp-registry', 'microsoft']
+if (profiles) {
+  if (profiles.schemaVersion !== 1 || profiles.product !== 'Ultiwrite' || profiles.publisher !== 'DWS Offshore Fund') fail('submission inventory identity')
+  if (profiles.endpoint !== MCP_URL || profiles.repository !== 'https://github.com/dennis430/ultiwrite-plugins') fail('submission inventory endpoint or repository')
+  if (profiles.packageVersion !== hostMatrix?.packageVersion) fail('submission inventory version must match host bundle')
+  if (JSON.stringify(profiles.scopes) !== JSON.stringify(['ultiwrite:read', 'ultiwrite:evidence'])) fail('submission inventory scope drift')
+  if (!Array.isArray(profiles.profiles)) fail('submission profiles must be an array')
+  else {
+    const ids = profiles.profiles.map(profile => profile.id)
+    if (new Set(ids).size !== ids.length || JSON.stringify([...ids].sort()) !== JSON.stringify([...requiredProfiles].sort())) fail('submission inventory must cover every required platform exactly once')
+    for (const profile of profiles.profiles) {
+      if (!['existing-plugin', 'configuration', 'dossier', 'registry-draft'].includes(profile.kind)) fail(`submission profile ${profile.id} kind`)
+      if (profile.sourceStatus !== 'PREPARED' || profile.submissionStatus !== 'NOT_SUBMITTED_BY_THIS_RELEASE' || profile.providerAcceptance !== 'NOT_VERIFIED' || profile.hostAcceptance !== 'NOT_RUN') fail(`submission profile ${profile.id} must not claim submission or host acceptance`)
+      if (!Array.isArray(profile.externalRequirements) || !profile.externalRequirements.length || profile.externalRequirements.some(value => typeof value !== 'string' || !value.trim())) fail(`submission profile ${profile.id} requires real external dependencies`)
+      if (!Array.isArray(profile.artifacts) || !profile.artifacts.length) fail(`submission profile ${profile.id} artifacts missing`)
+      for (const path of [profile.guide, ...(Array.isArray(profile.artifacts) ? profile.artifacts : [])]) {
+        if (typeof path !== 'string' || !path || isAbsolute(path) || path.includes('\\') || /^[a-z]+:/i.test(path)) { fail(`submission profile ${profile.id} invalid public path`); continue }
+        const target = relative(resolve(root), resolve(root, 'hosts/submissions', path)).split(sep).join('/')
+        if (target === '..' || target.startsWith('../') || !files.includes(target)) fail(`submission profile ${profile.id} missing or escaped public path`)
+      }
+    }
+  }
+}
+for (const path of ['hosts/enterprise/README.md', 'hosts/enterprise/security.md', 'hosts/enterprise/operations.md', 'hosts/enterprise/acceptance.md', 'hosts/emdash.md', 'hosts/submissions/README.md', 'hosts/submissions/reviewer-scenarios.md']) {
+  if (!files.includes(path)) fail(`missing enterprise guide ${path}`)
+}
+const emdash = hostMatrix?.surfaces?.find(surface => surface.surface === 'EmDash coding-agent application')
+if (emdash?.source !== 'https://emdash.ai/docs/library/mcp' || emdash?.hostAcceptance !== 'NOT_RUN' || emdash?.configuration !== 'emdash.md') fail('EmDash source and acceptance boundary')
 
 if (errors.length) {
   process.stderr.write(errors.map(item => `FAIL ${item}`).join('\n') + '\n')

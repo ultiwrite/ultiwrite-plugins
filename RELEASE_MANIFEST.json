@@ -62,7 +62,7 @@
     },
     {
       "path": ".github/plugin/marketplace.json",
-      "sha256": "ecec4578bed2ebd9552b7ffad76c06f11ab9db761324438951fc664af7a30c43"
+      "sha256": "3a49d7f91bf34395c99f29c67f71d5f662b260e2ac38371a615bceba6f984a35"
     },
     {
       "path": ".github/workflows/publish-cli.yml",
@@ -94,7 +94,7 @@
     },
     {
       "path": "DISTRIBUTION.md",
-      "sha256": "aa5be3f44f72e8df9e07d0a7b37fed44504bfca4113aeed3ed5c6079488ffa8a"
+      "sha256": "cd5dae43e6b3d7fd58a602d63e032cc0e8d9cc3308f66b7b1103f22e62d288e9"
     },
     {
       "path": "INSTALL.md",
@@ -454,7 +454,7 @@
     },
     {
       "path": "copilot/README.md",
-      "sha256": "2fe33b40fac88acea1b7c7933ab98f7a7d4fc3462f66fb7dfd41eaf71a21f55f"
+      "sha256": "bc34db287c68e5b0abb8c81c7c8e623f33f8100cab2b5504e69d86160e420e13"
     },
     {
       "path": "copilot/mcp.json",
@@ -462,7 +462,7 @@
     },
     {
       "path": "copilot/plugin.json",
-      "sha256": "da19d3880788fd59f39185e41876188ed72743f15640b0bf380dd6847cf44bde"
+      "sha256": "bbaad45dfc9b9789da4be1bc31154f17f91836bdee31a8724e7bded1e9db0372"
     },
     {
       "path": "cursor/.cursor-plugin/plugin.json",
@@ -822,7 +822,7 @@
     },
     {
       "path": "microsoft365/README.md",
-      "sha256": "c2762b764c3cecf281ad9ef7b8a8c80d7571f29795fc7ee5ff63c3a71537d655"
+      "sha256": "9a2c6857e3caffbbb5a5dedeec8af3f2515d1a9c1059ff5ce02c04dad925ece7"
     },
     {
       "path": "microsoft365/appPackage/ai-plugin.json",
@@ -842,7 +842,7 @@
     },
     {
       "path": "microsoft365/appPackage/manifest.json",
-      "sha256": "edf5c7bd347959bdb16c51645d6e3ab873b6572f45d1f01d5a3fc8d4b75f9628"
+      "sha256": "3a283a9a58bfe287cebadba8a4d4f08ac881aacb7533e3a28bf3342166ef23fd"
     },
     {
       "path": "microsoft365/appPackage/outline.png",
@@ -866,7 +866,7 @@
     },
     {
       "path": "microsoft365/certification/manifest.template.json",
-      "sha256": "279a84bdac1e484ba49715e14bc4e42ffd8709141888ebf4f889f99ce965efd6"
+      "sha256": "6ec1bcc22051d4a7b4539d4e87435cc8a5b2e945a2ab30e5452b92580840ab6c"
     },
     {
       "path": "microsoft365/certification/tool-inventory.json",
@@ -878,7 +878,7 @@
     },
     {
       "path": "microsoft365/docs/marketplace-listing.md",
-      "sha256": "97c1c89f0f2df7289a027805392d8b0d0d401066d8672819cefd8754fb75d2a3"
+      "sha256": "83405202f501875d4be8cd5fae6a4875b621f2b42812afc63b6a37a4b1d3e889"
     },
     {
       "path": "microsoft365/docs/privacy-and-data-flow.md",
@@ -886,7 +886,7 @@
     },
     {
       "path": "microsoft365/docs/release.md",
-      "sha256": "dacfb6acbabe4a545bbc1cce66d0a35fb999852b7f9f52c8ba80d2ad45b0d7a7"
+      "sha256": "5ba4936d12a98740102a68de97ea3348109b7c728da46c50b5cbe3b4aa72c8ac"
     },
     {
       "path": "microsoft365/docs/reviewer-scenarios.md",
@@ -906,11 +906,11 @@
     },
     {
       "path": "microsoft365/package-lock.json",
-      "sha256": "dc26f11bb8ba1c105a3d5ed5f1cb11b18871b1a8b6c0e2bf8de2034423df487d"
+      "sha256": "d791bcf179b99a15a543b55196ebc490fb76246cc3e294cb664682161181398a"
     },
     {
       "path": "microsoft365/package.json",
-      "sha256": "0143217e8c6ed614567e7e23e9e9ccc2eea2868692c538bfed83e43df8ad7279"
+      "sha256": "923b5014b7dadf74345b5721f5fe656aec072a923855ad696d759add40693189"
     },
     {
       "path": "microsoft365/scripts/build-source.mjs",
@@ -1014,19 +1014,19 @@
     },
     {
       "path": "registry/README.md",
-      "sha256": "7934638a2ae6d32f9032c46f7924ee1b9d02fa76cae3f3644c1ba0e4ce58f168"
+      "sha256": "3aa339567d1b6af914c0d392f7951d43ee1a48377708f22ea87d5abacc702b80"
     },
     {
       "path": "registry/package-lock.json",
-      "sha256": "d7f48b4145b1c627718d90c079f3db2e006194a4fdecf687802f4de2a8a7a760"
+      "sha256": "665cff671ef26832c4b9b8b8100895d3d15ec0c51fdaad594c98788439c2104b"
     },
     {
       "path": "registry/package.json",
-      "sha256": "f0b54ff394bd30f5b8ace552777c5ee3ec3e3e5318f06086a780e6b83a20608b"
+      "sha256": "45cf990a7fdad74bd0d28f3c43a8ac236ddde1efeeceae62411a75d99dec916b"
     },
     {
       "path": "registry/server.json",
-      "sha256": "2cdb37fe4e5d6fa5f3d28e219210f1205b56762a78d2d6f69067cda5a5ee73a4"
+      "sha256": "5dcba9e94198cc5ad089a68c0d5e00603bb1c8ce13ffc99a48b19360c59f764c"
     },
     {
       "path": "registry/validate.mjs",

@@ -8,7 +8,7 @@
 - Endpoint: `https://dwsoffshorepartners.com/api/integrations/ultiwrite/mcp`
 - Transport: Streamable HTTP
 - Product: Ultiwrite — Asymmetric Diligence
-- Legal publisher: DWS Offshore Fund, Inc.
+- Legal publisher: DWS Offshore Fund
 - Ownership: prove control of `dwsoffshorepartners.com` with the official publisher's DNS or HTTP verification flow.
 
 The metadata intentionally omits a server-source repository: this public repository contains connector packaging, while the hosted service is proprietary. Remote-only listings do not require an npm package. Credentials, publishing keys, DNS record values, and customer data are not part of this package.

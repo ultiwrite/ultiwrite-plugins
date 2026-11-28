@@ -1,11 +1,13 @@
 {
   "name": "ultiwrite-microsoft365-agent-source",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "type": "module",
   "description": "Source and tenant provisioning for the Ultiwrite Microsoft 365 Copilot declarative agent",
   "license": "MIT",
-  "engines": { "node": ">=22.8.0" },
+  "engines": {
+    "node": ">=22.8.0"
+  },
   "scripts": {
     "setup": "node scripts/setup.mjs",
     "preflight": "node scripts/preflight.mjs",

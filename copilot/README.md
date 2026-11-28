@@ -56,6 +56,6 @@ The host holds the OAuth grant. Only evidence the user authorizes is submitted t
 
 [Setup guide](https://dwsoffshorepartners.com/docs/mcp) · [Support](https://dwsoffshorepartners.com/contact) · [Privacy](https://dwsoffshorepartners.com/privacy) · [Terms](https://dwsoffshorepartners.com/terms)
 
-Publisher: DWS Offshore Fund, Inc. Product: Ultiwrite. Original connector material is MIT licensed; the remote analytical service remains proprietary.
+Publisher: DWS Offshore Fund Product: Ultiwrite. Original connector material is MIT licensed; the remote analytical service remains proprietary.
 
 Authoring reference: [GitHub Copilot CLI plugin reference](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-plugin-reference).

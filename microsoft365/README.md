@@ -1,6 +1,6 @@
 # Ultiwrite for Microsoft 365 Copilot
 
-Source for a Microsoft 365 Copilot declarative agent that connects to the existing Ultiwrite MCP service. Publisher: **DWS Offshore Fund, Inc.** Product: **Ultiwrite**. Version: **0.1.0**.
+Source for a Microsoft 365 Copilot declarative agent that connects to the existing Ultiwrite MCP service. Publisher: **DWS Offshore Fund** Product: **Ultiwrite**. Version: **0.1.1**.
 
 The package adds six conversation starters and instructions for account connection, commercial evidence submission, case progress, saved report review, and browser exports. The agent discovers the service's tools at runtime. It contains no analytical engine or customer records.
 
@@ -20,7 +20,7 @@ npm run check
 npm run build
 ```
 
-Output: `dist/ultiwrite-m365-source-0.1.0.zip`, its SHA-256 file, and a member-by-member inventory. This archive includes all source, lockfile, instructions, approved icon sources, documents, scripts, and tests needed to reproduce the build. It excludes dependencies, local tenant state, caches, and previously built packages.
+Output: `dist/ultiwrite-m365-source-0.1.1.zip`, its SHA-256 file, and a member-by-member inventory. This archive includes all source, lockfile, instructions, approved icon sources, documents, scripts, and tests needed to reproduce the build. It excludes dependencies, local tenant state, caches, and previously built packages.
 
 Validation uses the official app 1.29, declarative agent 1.6, plugin 2.4, and Toolkit YAML 1.13 schemas shipped with the pinned Microsoft 365 Agents Toolkit CLI 1.1.18. No account is needed for these local checks. Synthetic IDs are substituted only in memory during source validation and are rejected by release packaging.
 
@@ -43,14 +43,14 @@ npm run register-client -- --env dev
 npm run atk -- auth login m365
 npm run provision -- --env dev
 npm run package -- --env dev
-npm run atk -- validate --package-file dist/ultiwrite-m365-dev-0.1.0.zip --env dev
+npm run atk -- validate --package-file dist/ultiwrite-m365-dev-0.1.1.zip --env dev
 ```
 
 `setup` writes local configuration while preserving existing values. `preflight` makes only public discovery GET requests. `register-client` makes one explicit public OAuth client registration on Ultiwrite and saves only its client ID; rerunning it reuses an existing configured ID. It does not authenticate a user. If the registration fails with an invalid redirect, enable the exact callback on the service and retry after deployment. Do not broaden the callback to a wildcard.
 
 `provision` invokes the pinned official Toolkit. It creates or reuses the Microsoft app, creates or reuses the Enterprise token-store OAuth configuration, compiles and validates the package, updates the tenant app, and extends it to Microsoft 365 with personal visibility. It records `TEAMS_APP_ID`, `ULTIWRITE_MCP_AUTH_ID`, `M365_TITLE_ID`, and `M365_APP_ID` locally. Provisioning changes external Microsoft resources and requires the operator's authorized account. It does not create a Partner Center offer or publish publicly.
 
-The standalone package output is `dist/ultiwrite-m365-dev-0.1.0.zip`. The Toolkit also produces `appPackage/build/appPackage.dev.zip` during provisioning. Use the exact package that passed the target host's validation and the [reviewer scenarios](docs/reviewer-scenarios.md). For production, repeat the workflow with `--env prod`, which removes the development suffix; retain the provisioned app ID across updates.
+The standalone package output is `dist/ultiwrite-m365-dev-0.1.1.zip`. The Toolkit also produces `appPackage/build/appPackage.dev.zip` during provisioning. Use the exact package that passed the target host's validation and the [reviewer scenarios](docs/reviewer-scenarios.md). For production, repeat the workflow with `--env prod`, which removes the development suffix; retain the provisioned app ID across updates.
 
 ## Authentication design
 

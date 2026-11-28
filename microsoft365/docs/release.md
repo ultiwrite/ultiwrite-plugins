@@ -29,7 +29,7 @@ npm run register-client -- --env prod
 npm run atk -- auth login m365
 npm run provision -- --env prod
 npm run package -- --env prod
-npm run atk -- validate --package-file dist/ultiwrite-m365-prod-0.1.0.zip --env prod
+npm run atk -- validate --package-file dist/ultiwrite-m365-prod-0.1.1.zip --env prod
 ```
 
 The exact command that creates the real Microsoft app and OAuth token-store reference is `npm run provision -- --env prod`. It requires the preceding public client ID and an authorized Microsoft sign-in. `register-client` must not be repeatedly run with erased configuration: it creates a new provider registration when no ID is stored. Keep the local environment file for update continuity and store it with the publisher's normal operational configuration controls.

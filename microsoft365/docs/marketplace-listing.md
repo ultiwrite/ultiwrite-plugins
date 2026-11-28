@@ -1,6 +1,6 @@
 # Marketplace listing copy
 
-Prepared for the Microsoft 365 Copilot declarative agent, version 0.1.0. This is submission copy, not a published listing. Confirm the target offer accepts the exact package and capabilities before uploading.
+Prepared for the Microsoft 365 Copilot declarative agent, version 0.1.1. This is submission copy, not a published listing. Confirm the target offer accepts the exact package and capabilities before uploading.
 
 ## Identity
 
@@ -8,7 +8,7 @@ Prepared for the Microsoft 365 Copilot declarative agent, version 0.1.0. This is
 | --- | --- |
 | Product name | Ultiwrite |
 | Full name | Ultiwrite — Asymmetric Diligence |
-| Publisher | DWS Offshore Fund, Inc. |
+| Publisher | DWS Offshore Fund |
 | Short description | Investigate commercial evidence and read saved Ultiwrite diligence reports. |
 | Suggested category | Business / Productivity, subject to the categories available in Partner Center |
 | Suggested search terms | commercial diligence, investigative intelligence, evidence, decision brief, underwriting, report review |

@@ -2,7 +2,7 @@
 
 Version 0.1.0 introduces a VS Code extension, a GitHub Copilot agent plugin, a Microsoft 365 Copilot agent project, and domain-owned MCP Registry metadata. These connect to the existing Ultiwrite service and preserve its account, entitlement, evidence, and report boundaries.
 
-Build the refreshed VS Code 0.1.1 candidate from [its own source](vscode/README.md#build-and-test). The combined handoff below records the original 0.1.0 packages. Rebuild that kit from its [original revision](https://github.com/ultiwrite/ultiwrite-plugins/commit/ea6451a50aa41393bd75b0dcae2fd6a5be67a101).
+Build the refreshed VS Code 0.1.1 candidate from [its own source](vscode/README.md#build-and-test). The current Copilot and Microsoft 365 source also uses 0.1.1 with the confirmed publisher name. The combined handoff below records the original 0.1.0 packages. Rebuild that kit from its [original revision](https://github.com/ultiwrite/ultiwrite-plugins/commit/ea6451a50aa41393bd75b0dcae2fd6a5be67a101).
 
 ## Deliverables and status
 
@@ -50,7 +50,7 @@ The corresponding private-engine change is prepared separately. This source proj
 
 From `microsoft365/`, follow its README to set up a local environment, register the public OAuth client once, sign into the Microsoft 365 tenant, provision through Agents Toolkit, and create the tenant app ZIP. The packaging command refuses missing or placeholder app/auth registration IDs. No source archive should be uploaded as an installable app package.
 
-For public distribution, enroll DWS Offshore Fund, Inc. in Partner Center's **Microsoft 365 and Copilot** program and submit the tested supported agent package under **Apps and agents for Microsoft 365 and Copilot**. Include customer setup requirements and reviewer access through the private submission process. Test in each host advertised by the listing.
+For public distribution, enroll DWS Offshore Fund in Partner Center's **Microsoft 365 and Copilot** program and submit the tested supported agent package under **Apps and agents for Microsoft 365 and Copilot**. Include customer setup requirements and reviewer access through the private submission process. Test in each host advertised by the listing.
 
 Direct Microsoft MCP server certification is a separate preview route with its own authentication and Azure Key Vault requirements. This primary agent project does not claim that certification or compatibility with its confidential-client requirements.
 
@@ -69,6 +69,6 @@ For the official MCP Registry, finish the domain-owned publisher setup described
 
 ## Commercial and publication boundaries
 
-Public brand: **Ultiwrite**. Legal publisher: **DWS Offshore Fund, Inc.** Existing backend account permissions, allowances, paid investigative entitlements, and API-access controls remain authoritative. The client does not mint credits or grant API access. Current commercial terms come from the account/service; no prices are embedded in these public packages.
+Public brand: **Ultiwrite**. Legal publisher: **DWS Offshore Fund** Existing backend account permissions, allowances, paid investigative entitlements, and API-access controls remain authoritative. The client does not mint credits or grant API access. Current commercial terms come from the account/service; no prices are embedded in these public packages.
 
 [Product](https://dwsoffshorepartners.com) · [MCP documentation](https://dwsoffshorepartners.com/docs/mcp) · [Support](https://dwsoffshorepartners.com/contact) · [Privacy](https://dwsoffshorepartners.com/privacy) · [Terms](https://dwsoffshorepartners.com/terms)

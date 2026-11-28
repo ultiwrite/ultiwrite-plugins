@@ -12,7 +12,8 @@ async function authFixture(options = {}) {
   const server = http.createServer(async (req, res) => {
     const buffers = []; for await (const value of req) buffers.push(value); const raw = Buffer.concat(buffers).toString();
     const json = value => { res.setHeader('content-type', 'application/json'); res.end(JSON.stringify(value)); };
-    if (req.url === '/.well-known/oauth-protected-resource') return json({ resource: origin + MCP_PATH });
+    if (req.url === '/.well-known/oauth-protected-resource') return json({ resource: origin, authorization_servers: [origin] });
+    if (req.url === '/.well-known/oauth-protected-resource' + MCP_PATH) return json({ resource: origin + MCP_PATH, authorization_servers: [options.metadataIssuer ?? origin] });
     if (req.url === '/.well-known/oauth-authorization-server') return json({ issuer: origin, authorization_endpoint: origin + '/authorize', token_endpoint: origin + '/token', registration_endpoint: origin + '/register', code_challenge_methods_supported: ['S256'] });
     if (req.url === '/register') { storedClient = JSON.parse(raw); assert.equal(storedClient.application_type, 'native'); assert.equal(storedClient.token_endpoint_auth_method, 'none'); return json({ client_id: 'fixture-client' }); }
     if (req.url === '/token') {
@@ -62,6 +63,15 @@ test('unexpected OAuth issuer never persists a connection', async () => {
   const f = await authFixture({ badIssuer: true });
   try { await assert.rejects(f.auth.signIn(), /did not come from Ultiwrite/); assert.equal(f.data.size, 0); }
   finally { await f.close(); }
+});
+
+test('MCP discovery refuses protected metadata that does not name the expected issuer', async () => {
+  const f = await authFixture({ metadataIssuer: 'https://unexpected.invalid' });
+  try {
+    await assert.rejects(f.auth.signIn(), /metadata does not match/);
+    assert.equal(f.state().browserUrl, undefined);
+    assert.equal(f.data.size, 0);
+  } finally { await f.close(); }
 });
 
 test('concurrent token refreshes are serialized and rotate refresh tokens', async () => {

@@ -4,6 +4,7 @@ import { basename } from 'node:path';
 export const ORIGIN = 'https://dwsoffshorepartners.com';
 export const MCP_PATH = '/api/integrations/ultiwrite/mcp';
 export const MCP_URL = ORIGIN + MCP_PATH;
+export const EXTENSION_VERSION = '0.1.1';
 export const SCOPES = ['ultiwrite:read', 'ultiwrite:evidence'] as const;
 export const TOOL_NAMES = ['ultiwrite_account_get', 'ultiwrite_capabilities_get', 'ultiwrite_cases_list', 'ultiwrite_case_status', 'ultiwrite_coherence_get', 'ultiwrite_findings_get', 'ultiwrite_report_export', 'ultiwrite_evidence_submit'] as const;
 export type ToolName = typeof TOOL_NAMES[number];
@@ -63,6 +64,16 @@ export function toolPayload(result: JsonObject): JsonObject {
     try { const parsed = JSON.parse(part.text); if (parsed && typeof parsed === 'object') return parsed; } catch { /* Some tools return plain descriptive text. */ }
   }
   return { text: (result.content ?? []).filter((part: JsonObject) => part.type === 'text').map((part: JsonObject) => part.text).join('\n') };
+}
+
+export function caseContinuation(status: JsonObject, caseId: string): JsonObject | undefined {
+  const continuation = status.continuation;
+  if (status.processing?.automatic === true || continuation?.tool !== 'ultiwrite_evidence_submit' || continuation.caseId !== caseId) return;
+
+  const args = continuation.arguments;
+  if (args === undefined) return { files: [], documentForensics: null, caseId, handoffId: null };
+  if (args && args.caseId === caseId && args.handoffId === null && args.documentForensics === null
+    && Array.isArray(args.files) && args.files.length === 0 && Object.keys(args).length === 4) return args;
 }
 
 export function safeServiceUrl(value: unknown, origin = ORIGIN): URL {
@@ -145,7 +156,7 @@ export class ServiceClient {
   private async initialize(signal?: AbortSignal): Promise<void> {
     const generation = this.generation;
     if (!this.initialized) this.initialized = (async () => {
-      const result = await this.rpc('initialize', { protocolVersion: this.protocol, capabilities: {}, clientInfo: { name: 'ultiwrite-vscode', version: '0.1.0' } }, signal);
+      const result = await this.rpc('initialize', { protocolVersion: this.protocol, capabilities: {}, clientInfo: { name: 'ultiwrite-vscode', version: EXTENSION_VERSION } }, signal);
       if (typeof result.protocolVersion === 'string') this.protocol = result.protocolVersion;
       await this.rpc('notifications/initialized', {}, signal, true);
     })().catch(error => { if (generation === this.generation) { this.initialized = undefined; this.sessionId = undefined; } throw error; });
@@ -165,16 +176,28 @@ export class ServiceClient {
     return payload;
   }
 
+  listCases(cursor: string | null, signal?: AbortSignal): Promise<JsonObject> {
+    return this.call('ultiwrite_cases_list', { limit: 20, cursor }, signal);
+  }
+
+  reportLinks(reportId: string, signal?: AbortSignal): Promise<JsonObject> {
+    return this.call('ultiwrite_report_export', { reportId, representation: null, documentCursor: null, snapshot: null, pageToken: null }, signal);
+  }
+
   async followCase(caseId: string, progress: (state: string) => void, signal: AbortSignal, intervalMs = 5000, durationMs = 15 * 60_000): Promise<JsonObject | undefined> {
     const deadline = Date.now() + durationMs;
+    const generation = this.generation;
     while (Date.now() < deadline) {
       signal.throwIfAborted();
+      this.checkGeneration(generation);
       const value = await this.call('ultiwrite_case_status', { caseId }, signal);
-      const state = String(value.workflowStatus ?? value.status ?? 'processing');
+      const state = String(value.processing?.state ?? value.workflowStatus ?? value.status ?? 'processing');
       progress(state);
-      if (typeof value.linkedReportId === 'string' || ['failed', 'action_required', 'complete', 'completed'].includes(state)) return value;
-      if (value.continuation?.tool === 'ultiwrite_evidence_submit' && value.continuation.caseId === caseId) {
-        const advanced = await this.call('ultiwrite_evidence_submit', { caseId }, signal);
+      if (typeof value.linkedReportId === 'string' || ['failed', 'needs_action', 'action_required', 'complete', 'completed'].includes(state)) return value;
+      const continuation = caseContinuation(value, caseId);
+      if (continuation) {
+        this.checkGeneration(generation);
+        const advanced = await this.call('ultiwrite_evidence_submit', continuation, signal);
         if (typeof advanced.linkedReportId === 'string') return advanced;
         if (typeof advanced.reportId === 'string') return { ...advanced, linkedReportId: advanced.reportId };
       }
@@ -201,11 +224,10 @@ export class ServiceClient {
     return value;
   }
 
-  async upload(files: SelectedFile[], documentForensics: boolean | undefined, progress: (message: string) => void, signal?: AbortSignal): Promise<JsonObject> {
+  async upload(files: SelectedFile[], documentForensics: boolean, progress: (message: string) => void, signal?: AbortSignal): Promise<JsonObject> {
     signal?.throwIfAborted();
-    // Omission preserves the account/server default; false is only sent for an explicit user choice.
-    const option = documentForensics === undefined ? {} : { documentForensics };
-    const opened = await this.call('ultiwrite_evidence_submit', option, signal, true);
+    if (typeof documentForensics !== 'boolean') throw new ServiceError('Choose whether to include Document Forensics before transferring files.');
+    const opened = await this.call('ultiwrite_evidence_submit', { files: [], documentForensics, caseId: null, handoffId: null }, signal, true);
     const link = safeUploadLink(opened.uploadLink, this.origin);
     const staging = (step: string) => new URL(`/api/integrations/ultiwrite/upload/staging/${step}${link.search}`, link);
     const minted = await this.post(staging('presign'), { files: files.map(({ name, size, contentType }) => ({ name, size, contentType })) }, signal);
@@ -258,6 +280,6 @@ export class ServiceClient {
     }
     signal?.throwIfAborted();
     progress('Starting the investigation');
-    return this.post(new URL(`/api/integrations/ultiwrite/upload${link.search}`, link), { files: receipts, ...option }, signal);
+    return this.post(new URL(`/api/integrations/ultiwrite/upload${link.search}`, link), { files: receipts, documentForensics }, signal);
   }
 }

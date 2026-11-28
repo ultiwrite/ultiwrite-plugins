@@ -2,7 +2,7 @@
   "name": "ultiwrite",
   "displayName": "Ultiwrite — Asymmetric Diligence",
   "description": "Investigate authorized business evidence with Ultiwrite. Connect Copilot to your account, upload selected files, and retrieve saved diligence reports.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "ultiwrite",
   "license": "MIT",
   "repository": {

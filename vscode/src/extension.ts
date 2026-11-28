@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { AuthController } from './auth';
-import { JsonObject, MCP_URL, ORIGIN, ServiceClient, ServiceError, safeServiceUrl, selectFiles } from './service';
+import { EXTENSION_VERSION, JsonObject, MCP_URL, ORIGIN, ServiceClient, ServiceError, caseContinuation, safeServiceUrl, selectFiles } from './service';
 
 interface CaseChoice extends vscode.QuickPickItem { caseId?: string; reportId?: string; }
 interface Row { label: string; command?: string; detail?: string; icon?: string; }
@@ -89,7 +89,7 @@ export function activate(context: vscode.ExtensionContext): { providerId: string
     provideMcpServerDefinitions: async () => {
       const session = await auth.saved();
       // Reading SecretStorage is noninteractive. Changes to these in-memory headers let VS Code refresh a rotated grant.
-      return [new vscode.McpHttpServerDefinition('Ultiwrite', vscode.Uri.parse(MCP_URL), session && session.expiresAt > Date.now() ? { Authorization: `Bearer ${session.accessToken}` } : {}, '0.1.0')];
+      return [new vscode.McpHttpServerDefinition('Ultiwrite', vscode.Uri.parse(MCP_URL), session && session.expiresAt > Date.now() ? { Authorization: `Bearer ${session.accessToken}` } : {}, EXTENSION_VERSION)];
     },
     resolveMcpServerDefinition: async (server, token) => {
       const active = cancellation(token);
@@ -154,10 +154,10 @@ export function activate(context: vscode.ExtensionContext): { providerId: string
   });
 
   const browse = async (onlyReports = false): Promise<CaseChoice | undefined> => {
-    let cursor: string | undefined;
+    let cursor: string | null = null;
     const choices: CaseChoice[] = [];
     for (;;) {
-      const page = await progress('Load Ultiwrite cases', signal => api.call('ultiwrite_cases_list', { limit: 20, ...(cursor ? { cursor } : {}) }, signal));
+      const page = await progress('Load Ultiwrite cases', signal => api.listCases(cursor, signal));
       choices.push(...caseChoices(page));
       const available = choices.filter(value => !onlyReports || value.reportId || value.caseId);
       const more: CaseChoice = { label: '$(more) Load more', description: 'Retrieve the next page' };
@@ -177,7 +177,7 @@ export function activate(context: vscode.ExtensionContext): { providerId: string
       reportId = status.linkedReportId ?? status.reportId;
     }
     if (!reportId) { await vscode.window.showInformationMessage('This case does not yet have a saved report. Check its analysis status.'); return; }
-    const exported = await progress('Load report links', signal => api.call('ultiwrite_report_export', { reportId }, signal));
+    const exported = await progress('Load report links', signal => api.reportLinks(reportId, signal));
     const links = reportLinks(exported);
     if (!links.length) { await vscode.window.showInformationMessage('No usable report links were returned. Open your dashboard to check the saved report.'); return; }
     const selected = await vscode.window.showQuickPick(links, { title: 'Open an Ultiwrite report', placeHolder: 'Your browser must be signed in to the same Ultiwrite account' });
@@ -189,19 +189,22 @@ export function activate(context: vscode.ExtensionContext): { providerId: string
     if (!choice) return;
     if (!choice.caseId) return showReport(choice);
     latest = choice;
+    const generation = identityGeneration;
     const value = await progress('Check Ultiwrite analysis', signal => api.call('ultiwrite_case_status', { caseId: choice!.caseId }, signal));
-    const state = String(value.workflowStatus ?? value.status ?? 'Status returned');
+    if (generation !== identityGeneration) return;
+    const state = String(value.processing?.state ?? value.workflowStatus ?? value.status ?? 'Status returned');
     const reportId = value.linkedReportId ?? value.reportId;
     if (typeof reportId === 'string') latest = { ...choice, reportId };
     home.status = `Analysis: ${state}`;
     home.refresh();
-    const canContinue = value.continuation?.tool === 'ultiwrite_evidence_submit' && value.continuation?.caseId === choice.caseId;
-    const options = reportId ? ['Open report'] : canContinue ? ['Continue analysis'] : ['Open dashboard'];
+    const continuation = caseContinuation(value, choice.caseId);
+    const options = reportId ? ['Open report'] : continuation ? ['Continue analysis'] : ['Open dashboard'];
     const selected = await vscode.window.showInformationMessage(`Ultiwrite: ${state}. ${reportId ? 'A saved report is available.' : 'A completed report has not been confirmed.'}`, ...options);
+    if (generation !== identityGeneration) return;
     if (selected === 'Open report') await showReport(latest);
     if (selected === 'Open dashboard') await vscode.env.openExternal(vscode.Uri.parse(ORIGIN + '/dashboard'));
-    if (selected === 'Continue analysis') {
-      const advanced = await progress('Continue the existing investigation', signal => api.call('ultiwrite_evidence_submit', { caseId: choice!.caseId }, signal));
+    if (selected === 'Continue analysis' && continuation) {
+      const advanced = await progress('Continue the existing investigation', signal => api.call('ultiwrite_evidence_submit', continuation, signal));
       home.status = `Analysis: ${String(advanced.workflowStatus ?? advanced.status ?? 'continuation requested')}`;
       home.refresh();
       await vscode.window.showInformationMessage('The existing investigation was continued. Use Check Analysis Status for the next update.');

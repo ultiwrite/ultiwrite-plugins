@@ -4,6 +4,8 @@
 
 Run `npm test`. These isolated synthetic tests are integration proof of the client implementation. They are not a production account journey.
 
+The request fixtures use the required fields from the public MCP catalog at [`ad3830b`](https://github.com/ultiwrite/ultiwrite-plugins/blob/ad3830b594b905210f5868b2432ad7b655a12d08/hosts/catalog.json). Upload handoffs and saved continuations send the required nullable selectors. The signed upload finalizer takes an explicit boolean for Document Forensics. The case list sends a null cursor on its first page, and report delivery sends null for the optional representation and paging values. The discovery fixture serves different metadata for the website and the MCP resource, matching the deployed OAuth challenge.
+
 Run `npm run test:host` on a desktop or Xvfb to verify real VS Code activation and commands. Run `npm run package` and install the VSIX in an isolated VS Code profile to verify package installation.
 
 ## Live acceptance — NOT_RUN until an authorized account completes it

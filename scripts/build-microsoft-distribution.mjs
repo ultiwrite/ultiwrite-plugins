@@ -10,6 +10,9 @@ import { fileURLToPath } from 'node:url'
 const root = fileURLToPath(new URL('..', import.meta.url))
 const release = resolve(root, 'release')
 const skipInstall = process.argv.includes('--skip-install')
+const version = JSON.parse(readFileSync(resolve(root, 'copilot/plugin.json'))).version
+const vscodeVersion = JSON.parse(readFileSync(resolve(root, 'vscode/package.json'))).version
+if (vscodeVersion !== version) throw new Error(`The ${version} combined kit requires matching source versions. Build VS Code ${vscodeVersion} with npm --prefix vscode run package, or check out the original kit revision to reproduce it.`)
 const schemasAt = process.argv.indexOf('--schemas')
 if (schemasAt >= 0 && !process.argv[schemasAt + 1]) throw new Error('--schemas needs a directory')
 
@@ -34,7 +37,6 @@ run(process.execPath, ['scripts/validate-microsoft-distribution.mjs'])
 run(process.execPath, ['scripts/pack-public-connectors.mjs', '--check'])
 
 const { deterministicZip } = await import('../microsoft365/scripts/lib.mjs')
-const version = JSON.parse(readFileSync(resolve(root, 'copilot/plugin.json'))).version
 mkdirSync(release, { recursive: true })
 const pluginEntries = Object.fromEntries(['plugin.json', 'mcp.json', 'README.md', 'LICENSE'].map(file => [file, readFileSync(resolve(root, 'copilot', file))]))
 const copilotName = `ultiwrite-copilot-plugin-${version}.zip`

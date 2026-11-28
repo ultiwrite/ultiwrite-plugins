@@ -2,6 +2,8 @@
 
 Version 0.1.0 introduces a VS Code extension, a GitHub Copilot agent plugin, a Microsoft 365 Copilot agent project, and domain-owned MCP Registry metadata. These connect to the existing Ultiwrite service and preserve its account, entitlement, evidence, and report boundaries.
 
+Build the refreshed VS Code 0.1.1 candidate from [its own source](vscode/README.md#build-and-test). The combined handoff below records the original 0.1.0 packages. Rebuild that kit from its [original revision](https://github.com/ultiwrite/ultiwrite-plugins/commit/ea6451a50aa41393bd75b0dcae2fd6a5be67a101).
+
 ## Deliverables and status
 
 | Deliverable | Location | Release boundary |
@@ -14,7 +16,7 @@ Version 0.1.0 introduces a VS Code extension, a GitHub Copilot agent plugin, a M
 
 See `release/MICROSOFT_VERIFICATION.json` (or `MICROSOFT_VERIFICATION.json` inside the combined handoff) for the exact checks actually performed and the boundaries still unverified. A successful build or local installation is not a signed-in customer investigation, Microsoft certification, or marketplace approval.
 
-## Build all review packages locally
+## Rebuild the original 0.1.0 review packages
 
 Node.js 22.8 or later, npm, and Git are required. From the repository root:
 

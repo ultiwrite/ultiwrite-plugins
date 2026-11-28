@@ -4,7 +4,8 @@ const http = require('node:http');
 const { mkdtemp, writeFile, rm } = require('node:fs/promises');
 const { tmpdir } = require('node:os');
 const { join } = require('node:path');
-const { ServiceClient, selectFiles, safeUploadLink, safeStorageUrl, safeServiceUrl, parseRpc, toolPayload } = require('../out/service');
+const { EXTENSION_VERSION, ServiceClient, caseContinuation, selectFiles, safeUploadLink, safeStorageUrl, safeServiceUrl, parseRpc, toolPayload } = require('../out/service');
+const submitArguments = caseId => ({ files: [], documentForensics: null, caseId, handoffId: null });
 
 async function fixture(options = {}) {
   const directory = await mkdtemp(join(tmpdir(), 'ultiwrite-vscode-test-'));
@@ -58,20 +59,31 @@ test('actual selected bytes reach single storage; refresh rotates; explicit DF f
     assert.equal(result.caseId, 'synthetic-case');
     assert.deepEqual(Buffer.concat(f.received), f.bytes);
     assert.equal(f.state().finalized, 1); assert.equal(f.state().refreshed, 1); assert.equal(f.state().initCount, 1);
-    assert.equal(f.state().committed.documentForensics, false); assert.equal(f.state().continuation.documentForensics, false);
+    assert.equal(f.state().committed.documentForensics, false);
+    assert.deepEqual(f.state().continuation, { ...submitArguments(null), documentForensics: false });
     assert.equal(f.state().committed.files[0].bindingToken, 'signed-receipt');
   } finally { await f.close(); }
 });
 
 test('multipart chunks reassemble exactly and true DF is preserved', async () => {
   const f = await fixture({ multipart: true });
-  try { await f.client.upload(await selectFiles([f.file]), true, () => {}); assert.deepEqual(Buffer.concat(f.received), f.bytes); assert.equal(f.state().committed.documentForensics, true); assert.equal(f.state().finalized, 1); }
+  try {
+    await f.client.upload(await selectFiles([f.file]), true, () => {});
+    assert.deepEqual(Buffer.concat(f.received), f.bytes);
+    assert.deepEqual(f.state().continuation, { ...submitArguments(null), documentForensics: true });
+    assert.equal(f.state().committed.documentForensics, true);
+    assert.equal(f.state().finalized, 1);
+  }
   finally { await f.close(); }
 });
 
-test('service transport preserves omission; UI separately requires explicit DF because current staging server coerces omission', async () => {
+test('a missing forensics choice cannot start a VS Code staged upload', async () => {
   const f = await fixture();
-  try { await f.client.upload(await selectFiles([f.file]), undefined, () => {}); assert.equal('documentForensics' in f.state().committed, false); assert.equal('documentForensics' in f.state().continuation, false); }
+  try {
+    await assert.rejects(f.client.upload(await selectFiles([f.file]), undefined, () => {}), /Choose whether to include Document Forensics/);
+    assert.equal(f.state().initCount, 0);
+    assert.equal(f.state().finalized, 0);
+  }
   finally { await f.close(); }
 });
 
@@ -132,14 +144,44 @@ test('follow-up advances only the returned existing case and stops on a saved re
     else {
       calls.push(rpc.params);
       if (rpc.params.name === 'ultiwrite_evidence_submit') { continued++; result = { structuredContent: { caseId: 'same-case', status: 'processing' } }; }
-      else result = { structuredContent: continued ? { workflowStatus: 'completed', linkedReportId: 'saved-report' } : { workflowStatus: 'processing', continuation: { tool: 'ultiwrite_evidence_submit', caseId: 'same-case' } } };
+      else result = { structuredContent: continued ? { workflowStatus: 'completed', linkedReportId: 'saved-report' } : { workflowStatus: 'processing', continuation: { tool: 'ultiwrite_evidence_submit', caseId: 'same-case', arguments: submitArguments('same-case') } } };
     }
     return new Response(JSON.stringify({ jsonrpc: '2.0', id: rpc.id, result }), { headers: { 'content-type': 'application/json' } });
   });
   const result = await client.followCase('same-case', () => {}, new AbortController().signal, 1, 3000);
   assert.equal(result.linkedReportId, 'saved-report');
   assert.equal(continued, 1);
-  assert.deepEqual(calls.filter(call => call.name === 'ultiwrite_evidence_submit').map(call => call.arguments), [{ caseId: 'same-case' }]);
+  assert.deepEqual(calls.filter(call => call.name === 'ultiwrite_evidence_submit').map(call => call.arguments), [submitArguments('same-case')]);
+});
+
+test('only a same-case foreground continuation can be issued', () => {
+  const continuation = { tool: 'ultiwrite_evidence_submit', caseId: 'same-case', arguments: submitArguments('same-case') };
+  assert.deepEqual(caseContinuation({ continuation }, 'same-case'), submitArguments('same-case'));
+  assert.equal(caseContinuation({ continuation, processing: { automatic: true } }, 'same-case'), undefined);
+  assert.equal(caseContinuation({ continuation: { ...continuation, arguments: submitArguments('different-case') } }, 'same-case'), undefined);
+  assert.equal(caseContinuation({ continuation: { ...continuation, arguments: { ...continuation.arguments, documentForensics: true } } }, 'same-case'), undefined);
+  assert.deepEqual(caseContinuation({ continuation: { ...continuation, arguments: undefined } }, 'same-case'), submitArguments('same-case'));
+});
+
+test('case pages and report links send the exact current required fields', async () => {
+  const calls = [];
+  const client = new ServiceClient(async () => 'fixture-access', async (_url, request) => {
+    const rpc = JSON.parse(request.body);
+    if (rpc.method === 'notifications/initialized') return new Response(null, { status: 202 });
+    if (rpc.method === 'initialize') assert.equal(rpc.params.clientInfo.version, EXTENSION_VERSION);
+    else calls.push(rpc.params);
+    const result = rpc.method === 'initialize' ? { protocolVersion: '2025-03-26' } : { structuredContent: {} };
+    return new Response(JSON.stringify({ jsonrpc: '2.0', id: rpc.id, result }), { headers: { 'content-type': 'application/json' } });
+  });
+  await client.listCases(null);
+  await client.listCases('opaque-cursor');
+  await client.reportLinks('saved-report');
+  assert.deepEqual(calls, [
+    { name: 'ultiwrite_cases_list', arguments: { cursor: null, limit: 20 } },
+    { name: 'ultiwrite_cases_list', arguments: { cursor: 'opaque-cursor', limit: 20 } },
+    { name: 'ultiwrite_report_export', arguments: { reportId: 'saved-report', representation: null, documentCursor: null, snapshot: null, pageToken: null } },
+  ]);
+  assert.equal(EXTENSION_VERSION, require('../package.json').version);
 });
 
 test('a foreign case continuation cannot redirect follow-up work', async () => {

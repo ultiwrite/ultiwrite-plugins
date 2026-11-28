@@ -55,10 +55,11 @@ export class AuthController {
   private async discover(signal?: AbortSignal): Promise<Discovery> {
     if (this.discovery) return this.discovery;
     const [resource, auth] = await Promise.all([
-      this.json(this.origin + '/.well-known/oauth-protected-resource', {}, signal),
+      this.json(this.origin + '/.well-known/oauth-protected-resource' + MCP_PATH, {}, signal),
       this.json(this.origin + '/.well-known/oauth-authorization-server', {}, signal),
     ]);
-    if (resource.resource !== this.origin + MCP_PATH || auth.issuer !== this.origin || !auth.code_challenge_methods_supported?.includes('S256')) throw new ServiceError('The Ultiwrite OAuth metadata does not match the expected service.');
+    if (resource.resource !== this.origin + MCP_PATH || !Array.isArray(resource.authorization_servers) || !resource.authorization_servers.includes(this.origin)
+      || auth.issuer !== this.origin || !auth.code_challenge_methods_supported?.includes('S256')) throw new ServiceError('The Ultiwrite OAuth metadata does not match the expected service.');
     const endpoint = (value: unknown) => safeServiceUrl(value, this.origin).href;
     this.discovery = { authorization: endpoint(auth.authorization_endpoint), token: endpoint(auth.token_endpoint), registration: endpoint(auth.registration_endpoint), revoke: endpoint(auth.revocation_endpoint ?? this.origin + '/api/integrations/ultiwrite/oauth/revoke') };
     return this.discovery;

@@ -30,7 +30,7 @@
     },
     {
       "path": "DISTRIBUTION.md",
-      "sha256": "f59534f33650bb8da0fc109bbc73fc589b966aa5565002335d06cba432fef715"
+      "sha256": "aa5be3f44f72e8df9e07d0a7b37fed44504bfca4113aeed3ed5c6079488ffa8a"
     },
     {
       "path": "INSTALL.md",
@@ -46,7 +46,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "b465316df287cfb15bd4378e702fd52093fb243893301ad127b184274ba361a1"
+      "sha256": "6e36e2b5f68265c76ddf6ad557a50b0cd5c40afc62be69b9cefdc6c1875a6e3e"
     },
     {
       "path": "chatgpt/LICENSE",
@@ -450,7 +450,7 @@
     },
     {
       "path": "scripts/build-microsoft-distribution.mjs",
-      "sha256": "875e06213aa4360211c58d963dcbcdacff0db8aa8ae535a83f806109e00bdc40"
+      "sha256": "193d2b597937dab20e75f4e65ea095f089a1c37a0fb0155c45c50c80924c65a3"
     },
     {
       "path": "scripts/pack-public-connectors.mjs",
@@ -458,7 +458,7 @@
     },
     {
       "path": "scripts/validate-microsoft-distribution.mjs",
-      "sha256": "516466da4807956cc87dbe6a52118546d48273b220a88bacc578ea93846c8a46"
+      "sha256": "14749a6b391a24d1b53ab0dc53ad046cb37b963714b6d00bb63daf1539694097"
     },
     {
       "path": "scripts/validate-public-plugins.mjs",
@@ -482,7 +482,7 @@
     },
     {
       "path": "vscode/CHANGELOG.md",
-      "sha256": "a432d0f40af5e440830b2a75f4fe8a37bb90d9974839c19e2202ae3cd9d1ab92"
+      "sha256": "47041ff77642602b27a38657c417f93ca91f0ccc3e4537b9b0b36de0d8f46aa7"
     },
     {
       "path": "vscode/LICENSE",
@@ -494,11 +494,11 @@
     },
     {
       "path": "vscode/README.md",
-      "sha256": "ed83e4d9d8ae65092c6fa3b7455bdeb8a3118a56524239805418d954e43afbc8"
+      "sha256": "a77fe3d38d99bc3f124e9ec3e22494494aa14e4cdb63d1f6a6b4edc2cda9d67b"
     },
     {
       "path": "vscode/TESTING.md",
-      "sha256": "81a2d6e0f37571bbe0f6203167097f1a0af82160d66c0a914ffd533b3a22180a"
+      "sha256": "f045756cd931999db983b591055eeaafd24581589b74cf16bbab82b6ae5fac45"
     },
     {
       "path": "vscode/assets/logo.png",
@@ -506,11 +506,11 @@
     },
     {
       "path": "vscode/package-lock.json",
-      "sha256": "e0b7003657f680df3f3c77bf067689b1a41451b83ea9b49f476b187ad55b2d8d"
+      "sha256": "91b662cabb2036a10fd59581ba5720dc2cfc7b2264166377ad8387dfd6d6825b"
     },
     {
       "path": "vscode/package.json",
-      "sha256": "e01ff5981ffe01110dde91e886d518668da3579f687361e83bf5d36edc7d3788"
+      "sha256": "09ba2444c2e8c8a72c0a0a8c59c4a3ef5abe423011dac64f60333e224e340a18"
     },
     {
       "path": "vscode/scripts/package.cjs",
@@ -518,19 +518,19 @@
     },
     {
       "path": "vscode/src/auth.ts",
-      "sha256": "934cfcc390081f54242d7c41a9dae83b7e2682e1912fa4061aa8e5d68ffe05a3"
+      "sha256": "4252fcf2fff80c29434a311271d8d4d2f18816cf8c015a63f1a07ecde8641ff5"
     },
     {
       "path": "vscode/src/extension.ts",
-      "sha256": "5200cadf0d8546ce42229f3c441e6cb16b3f56b0774fa2dd881c68bc02adefdb"
+      "sha256": "634b5184bd0bf9eafb0c99fcc5f9f5f0d3d7d845fb0f0aeeb05b5fb5ecc8cdc3"
     },
     {
       "path": "vscode/src/service.ts",
-      "sha256": "ec96b35e00f3f06b9c321d7afad02ba64f5631fc6e19cd9bfcb6d45719433a0d"
+      "sha256": "93e1fcacb1abb1b61ff534c86d04ed0fc97877b2f6f69ddad44407c0b38faf52"
     },
     {
       "path": "vscode/test/auth.test.cjs",
-      "sha256": "862ce51ad72d7eb54c0789490ccd21077b257c4a7518e4698ccdcd9c722acfb2"
+      "sha256": "d6267ca54dcc2460ff507fa078afa0c35c732b4649e3fe5febac1c25a7051f0a"
     },
     {
       "path": "vscode/test/host-suite.cjs",
@@ -542,7 +542,7 @@
     },
     {
       "path": "vscode/test/service.test.cjs",
-      "sha256": "b82aeca75bef485b0d139befcb2ff287b9210696bce566a5351fd287786a5217"
+      "sha256": "b5f9f9c337c4145bfd42305d83092b2f032617e3c9632e6294f6d18293d6600e"
     },
     {
       "path": "vscode/tsconfig.json",

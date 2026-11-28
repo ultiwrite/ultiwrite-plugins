@@ -4,7 +4,7 @@ Investigate authorized business evidence from VS Code and connect GitHub Copilot
 
 Ultiwrite expands financial and operating evidence, company records, digital footprints and document integrity signals into a connected investigation. Use the extension to transfer selected files, follow the existing investigation, and open the report saved by Ultiwrite.
 
-**Review candidate 0.1.0.** The proposed Marketplace publisher identifier is `ultiwrite`. A publisher account, final Marketplace publication and a live authenticated customer acceptance run remain separate release steps.
+**Review candidate 0.1.1.** The proposed Marketplace publisher identifier is `ultiwrite`. Confirm publisher ownership and complete an authenticated customer acceptance run before Marketplace submission.
 
 ## Start an investigation
 
@@ -32,7 +32,7 @@ Example prompts:
 
 For files on your computer, use **Analyze Selected Files**. A path pasted into chat does not transfer the original file bytes. If Copilot returns an authenticated browser upload handoff, use that exact handoff instead; don't also upload the same files through the extension.
 
-The remote service is [Ultiwrite's canonical MCP endpoint](https://dwsoffshorepartners.com/api/integrations/ultiwrite/mcp). The engine runs on Ultiwrite's infrastructure.
+This candidate uses [the supported apex MCP endpoint](https://dwsoffshorepartners.com/api/integrations/ultiwrite/mcp) for compatibility with saved VS Code grants. The engine runs on Ultiwrite's infrastructure.
 
 ### Candidate limitation: renewal during a Copilot call
 
@@ -73,7 +73,7 @@ npm test
 npm run package
 ```
 
-The output is `dist/ultiwrite-0.1.0.vsix`. The locked build compiles against stable VS Code 1.102 APIs. The tests run isolated loopback servers and synthetic evidence, exercising actual single/multipart byte transfer, OAuth callbacks/PKCE, token refresh, cancellation, origin restrictions, file-change detection and prevention of partial final submissions.
+The output is `dist/ultiwrite-0.1.1.vsix`. The locked build compiles against stable VS Code 1.102 APIs. The tests run isolated loopback servers and synthetic evidence, exercising actual single/multipart byte transfer, OAuth callbacks and PKCE, token refresh, cancellation, origin restrictions, file-change detection and prevention of partial final submissions.
 
 For an actual VS Code extension-host smoke test:
 
@@ -93,4 +93,4 @@ This downloads an official VS Code build and requires a desktop display or Xvfb 
 
 Publishing is a separate authorized release operation. No Marketplace submission, publisher verification, production change or live customer acceptance is performed by the build command. This package does not rely on GitHub Actions.
 
-Publisher: **DWS Offshore Fund, Inc.** Product: **Ultiwrite**. The MIT license covers the original connector code; the analytical service remains proprietary.
+Publisher **DWS Offshore Fund**. Product **Ultiwrite**. The MIT license covers the original connector code.

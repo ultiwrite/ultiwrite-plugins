@@ -34,7 +34,7 @@ for (const file of ['copilot/LICENSE', 'copilot/README.md', 'registry/README.md'
 if (existsSync(resolve(root, 'vscode/package.json'))) {
   const extension = read('vscode/package.json')
   assert.equal(extension.name, 'ultiwrite')
-  assert.equal(extension.version, plugin.version)
+  assert.match(extension.version, /^[0-9]+\.[0-9]+\.[0-9]+$/, 'VS Code must declare its own package version')
   assert.equal(extension.license, 'MIT')
   assert.ok(extension.contributes?.mcpServerDefinitionProviders?.length, 'VS Code must register its MCP provider')
   assert.ok(!extension.enabledApiProposals?.length, 'Marketplace package must use stable VS Code APIs')

@@ -2,11 +2,21 @@
 
 Use the package for the target host. All hosts connect to the same Ultiwrite service and existing account. Account permissions, investigation allowance and saved reports stay with that account.
 
+## Terminal installer
+
+Run the installer with Node.js 22 or later and Git:
+
+```sh
+npx --yes github:ultiwrite/ultiwrite-plugins#main install cursor
+```
+
+Use `claude-code`, `vscode`, or `codex` in place of `cursor`. Add `--dry-run` to review changes, then complete OAuth in your client. The [CLI guide](cli/README.md) covers Cline and Windsurf, hosted-app setup, removal and publishing. `@ultiwrite/cli` is currently distributed through GitHub source.
+
 | Host | Source/package | Connection recovery |
 | --- | --- | --- |
-| ChatGPT/Codex | `chatgpt/`, `release/ultiwrite-chatgpt-plugin-0.9.3.zip` | Plugin settings > Ultiwrite > Connect/Reconnect; Connect another account where offered |
-| Claude | `claude/`, `release/Ultiwrite_Claude_Plugin_v0.9.3.zip` | Plugins > Ultiwrite > Connectors > Connect; Claude Code `/mcp` > Authenticate |
-| Cursor | `cursor/`, `release/ultiwrite-cursor-plugin-0.9.3.zip` | Existing Ultiwrite MCP server's authentication control |
+| ChatGPT/Codex | `chatgpt/`, `release/ultiwrite-chatgpt-plugin-0.11.0.zip` | Plugin settings > Ultiwrite > Connect/Reconnect; Connect another account where offered |
+| Claude | `claude/`, `release/Ultiwrite_Claude_Plugin_v0.11.0.zip` | Plugins > Ultiwrite > Connectors > Connect; Claude Code `/mcp` > Authenticate |
+| Cursor | `cursor/`, `release/ultiwrite-cursor-plugin-0.11.0.zip` | Existing Ultiwrite MCP server's authentication control |
 | Grok Bot | `grokbot/` submission dossier | Host's supported MCP account controls |
 
 ChatGPT: update the original Ultiwrite listing rather than creating a duplicate. The previously recorded original identity is `plugin_asdk_app_6ad72494738c8191af2df24a75ab4afc`; inspect current publisher state before replacing a draft. A ZIP build alone does not upload or approve the listing.
@@ -32,18 +42,18 @@ Start with “Connect Ultiwrite and confirm which account is connected.” The p
 
 ## Permissions and default features
 
-Reading requires `ultiwrite:read`; evidence submission also requires `ultiwrite:evidence`. Select access in the real authorization flow. Host approval modes determine when a tool invocation needs approval and remain separate from account scopes.
+Reading requires `ultiwrite:read`; evidence submission and audited case dispositions also require `ultiwrite:evidence`. Select access in the real authorization flow. Host approval modes determine when a tool invocation needs approval and remain separate from account scopes.
 
-The five packaged workflows permit automatic invocation by default. Claude also declares `defaultEnabled: true` for new installations. Existing user-disabled choices and workspace policies take precedence. A default-enabled workflow does not start work, select a paid Document Forensics add-on, grant credits or approve a charge.
+The six packaged workflows permit automatic invocation by default. Claude also declares `defaultEnabled: true` for new installations. Existing user-disabled choices and workspace policies take precedence. A default-enabled workflow does not start work, record a disposition, select a paid Document Forensics add-on, grant credits or approve a charge.
 
 ## Release status
 
-Version 0.9.1 combines current account and workflow controls with the asymmetric diligence descriptions. It is published in this repository, and the production website serves the same versioned plugin archives. See [the live release receipt](release/PLUGIN_0.9.1_LIVE_RECEIPT.json) for the merged commits, deployment and verified download hashes. The historical ChatGPT 0.7.1 download retains its original bytes, and the 0.7.0 download remains available as version 0.7.0. Updating the original directory listing, recording the demo and running the installed-host review cases remain separate steps; no duplicate identity is needed.
+The public repository includes ChatGPT, Claude and Cursor 0.11.0 packages, Grok Bot dossier 0.9.0, and optional local adapter 0.8.0. See [the host guide](hosts/README.md) for setup and verification status by host.
+
+Sign in through Ultiwrite’s existing account flow and approve scoped OAuth access. Connection does not grant usage. Check the returned accountStatus with `ultiwrite_capabilities_get` before a requested investigation. The first eligible complimentary investigation remains available once per account, with no card required. Existing paid entitlements, report access and canonical usage accounting remain unchanged.
 
 ## Source validation
 
-Run `node scripts/validate-public-plugins.mjs`, rebuild with `node scripts/pack-public-connectors.mjs`, then verify with `node scripts/pack-public-connectors.mjs --check`. Historical archives remain intact. Test installation, account labels, switching, reconnect and declined permissions in the intended host before claiming the installed experience is verified.
+Export to a new empty directory with `node scripts/export-plugin-distribution.mjs --out <outside-path>`. In that controlled export, run `node scripts/validate-public-plugins.mjs`, rebuild with `node scripts/pack-public-connectors.mjs`, then verify with `node scripts/pack-public-connectors.mjs --check`. Historical archives remain intact. Test installation, account labels, switching, reconnect, declined permissions and the case-disposition retry in the intended host before claiming the installed experience is verified.
 
-The local npm wrapper remains at 0.7.1 and is not published by this connector release. Do not advertise `npx ultiwrite-mcp` until the real package is published and a clean registry installation succeeds.
-
-Version 0.9.3 uses the supplied canonical black-background gold Uw image for all plugin and skill icon fields. Existing accounts, permissions, workflows and automatic-invocation choices are preserved. Update/reload the existing plugin or upload its new full archive as supported by the host. Application assets take effect on the next Vercel deployment; this release does not trigger deployment. Stored app logos and directory artwork require separate host verification.
+The local npm wrapper is prepared at 0.8.0 and is not published by this connector release. Do not advertise `npx ultiwrite-mcp` until the real package is published and a clean registry installation succeeds.

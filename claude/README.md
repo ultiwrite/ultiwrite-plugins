@@ -1,6 +1,6 @@
 # Ultiwrite for Claude
 
-Ultiwrite Asymmetric Diligence, published by DWS Offshore Fund. Version 0.9.3.
+Ultiwrite Asymmetric Diligence, published by DWS Offshore Fund. Version 0.11.0.
 
 Ultiwrite examines the documents behind a commercial opportunity: an operating business, a merchant application, a residual or ISO book, a portfolio, a property, a financing or a counterparty. It classifies every file, runs every applicable analysis (document integrity, independent verification, identity and entity coherence, processing economics, portfolio relationships, cross-document contradictions, provenance and confidence) and saves one reconciled report. This plugin connects Claude to that same engine and teaches Claude how to use it. Claude does not produce the findings; Ultiwrite does.
 
@@ -12,12 +12,13 @@ Ultiwrite examines the documents behind a commercial opportunity: an operating b
 - `skills/submit-evidence`: submit authorized files through the signed upload link and follow the case.
 - `skills/read-report`: read, page and explain a saved report, its Decision Brief and downloads.
 - `skills/follow-up`: turn unresolved findings into a specific evidence request list.
+- `skills/case-disposition`: record the user's typed case disposition with an immutable audit receipt.
 
 No commands, hooks, agents, executables or local servers are included. Nothing runs on your machine.
 
 ## Workflow controls and defaults
 
-All five skills are independently discoverable and include human-readable display metadata. Their `policy.allow_implicit_invocation` is true for hosts that consume OpenAI skill metadata. Claude's manifest also sets `defaultEnabled: true`, the supported default for a newly installed plugin; an existing user choice to disable it takes precedence.
+All six skills are independently discoverable and include human-readable display metadata. Their `policy.allow_implicit_invocation` is true for hosts that consume OpenAI skill metadata. Claude's manifest also sets `defaultEnabled: true`, the supported default for a newly installed plugin; an existing user choice to disable it takes precedence.
 
 Use Claude's own skill, connector and permission controls. A disabled workflow must not be invoked through another skill. Default availability does not grant OAuth scopes, start an investigation, select a paid add-on or authorize a charge. Ultiwrite's consent screen and account permissions remain the authority for service access.
 
@@ -27,11 +28,11 @@ An Ultiwrite account, which you can create during sign-in or at https://dwsoffsh
 
 ## Install
 
-- claude.ai, Claude Desktop and Cowork: add Ultiwrite from the Claude directory once it is listed, or upload `Ultiwrite_Claude_Plugin_v0.9.3.zip` from Plugins > Add > Upload plugin (Customize > Plugins on the older interface).
+- claude.ai, Claude Desktop and Cowork: add Ultiwrite from the Claude directory once it is listed, or upload `Ultiwrite_Claude_Plugin_v0.11.0.zip` from Plugins > Add > Upload plugin (Customize > Plugins on the older interface).
 - Claude Code: add the marketplace with `/plugin marketplace add dennis430/ultiwrite-plugins`, then run `/plugin install ultiwrite@ultiwrite`. For one session, clone this repository and run `claude --plugin-dir ./claude`, or extract the ZIP and pass the extracted directory containing `.claude-plugin/plugin.json`. `--plugin-dir` takes a directory, not a ZIP file.
 - Connector only, without the skills: add a custom connector with URL `https://mcp.dwsoffshorepartners.com/mcp`, or run `claude mcp add --transport http ultiwrite https://mcp.dwsoffshorepartners.com/mcp`.
 
-Ask "Connect Ultiwrite and confirm which account is connected." Claude calls the protected `ultiwrite_account_get` tool, which triggers its native Connect prompt when authorization is needed. Capability information describes the service; the account check verifies the connected identity. Approve `ultiwrite:read` to read cases and reports and `ultiwrite:evidence` when you want to submit evidence. No API key or password is ever entered in chat or stored in this plugin.
+Ask "Connect Ultiwrite and confirm which account is connected." Claude calls the protected `ultiwrite_account_get` tool, which triggers its native Connect prompt when authorization is needed. Capability information describes the service; the account check verifies the connected identity. Approve `ultiwrite:read` to read cases and reports and `ultiwrite:evidence` when you want to submit evidence or record an explicit case disposition. No API key or password is ever entered in chat or stored in this plugin.
 
 ## Connect again or use a different account
 
@@ -60,6 +61,8 @@ Claude owns its connection controls and decides whether it offers simultaneous a
 
 When Claude cannot forward compatible original file objects, `ultiwrite_evidence_submit` returns a signed upload link bound to your account. Use the expiry and instructions returned by the service. You upload the files in your browser; the case then appears in `ultiwrite_cases_list` and analysis runs on Ultiwrite's servers. The link result can be marked `attachment_not_transferred`; that is the expected handoff, not a failure, and no analysis is used until files are uploaded.
 
+When Claude can forward the actual file object, use `role: "customer_requirement_set"` only for user-identified customer criteria, contracts, mandates or evidence standards. The role preserves supplied standing without making file text binding authority or independently verified fact. The browser handoff is evidence-only. Saved requirement applicability is separate from satisfaction. A typed case disposition requires the user's explicit choice and does not rewrite the assessment, close the workflow or establish an observed outcome.
+
 ## Privacy
 
 The plugin itself collects nothing and contains no telemetry. When you use it, Claude sends tool requests to Ultiwrite at `mcp.dwsoffshorepartners.com` and `dwsoffshorepartners.com`: your OAuth access token, case and report ids, and paging cursors. Files you upload through the signed link go directly from your browser to Ultiwrite. Ultiwrite stores submitted evidence and saved reports in your organization's account and returns report content to Claude only for accounts you are authorized to read. No data is sent to any other destination by this plugin. Data collection, use, storage, sharing and retention are governed by the Ultiwrite privacy policy: https://dwsoffshorepartners.com/privacy. Questions: https://dwsoffshorepartners.com/contact.
@@ -78,3 +81,9 @@ The plugin itself collects nothing and contains no telemetry. When you use it, C
 Website https://dwsoffshorepartners.com · Docs https://dwsoffshorepartners.com/docs/mcp · Privacy https://dwsoffshorepartners.com/privacy · Terms https://dwsoffshorepartners.com/terms · Support https://dwsoffshorepartners.com/contact
 
 The MIT license in `LICENSE` covers this plugin's files. The Ultiwrite service is proprietary and governed by its terms.
+
+## Universal MCP preparation
+
+Sign in through Ultiwrite’s existing account flow and approve the connected host’s scoped OAuth access. Connection does not grant usage. Discover current account limits, paid credits and complimentary availability with `ultiwrite_capabilities_get`; its `accountStatus` is informational and server admission rechecks eligibility. The first eligible complimentary investigation remains available once per account, with no card required. Existing paid entitlements and saved reports remain available under the same account controls.
+
+Host configurations, the canonical public tool catalog and per-surface limitations are prepared in the root `hosts/` directory. Live host acceptance was skipped at the owner’s request; package preparation is not publication or deployment.

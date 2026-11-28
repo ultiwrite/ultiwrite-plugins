@@ -8,7 +8,7 @@ import subprocess
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-EXCLUDED = {'.git', 'node_modules', 'dist', '__pycache__', '.venv', 'build', '.cache'}
+EXCLUDED = {'.git', 'node_modules', 'dist', '__pycache__', '.venv', 'build', '.cache', '.m365', '.local'}
 
 
 def main():
@@ -17,32 +17,39 @@ def main():
     args = parser.parse_args()
     subprocess.run(['node', str(ROOT / 'scripts' / 'validate-distribution.mjs')], check=True, cwd=ROOT)
     payload = {}
-    for folder in ('distribution', 'cursor'):
+    for folder in ('distribution/aws', 'distribution/google', 'distribution/meta', 'distribution/microsoft',
+                   'distribution/salesforce', 'distribution/shared', 'cursor', 'microsoft365', 'registry', 'copilot'):
         for path in sorted((ROOT / folder).rglob('*')):
             rel = path.relative_to(ROOT)
-            if any(part in EXCLUDED for part in rel.parts):
+            if any(part in EXCLUDED for part in rel.parts) or rel.parts[:2] == ('microsoft365', 'env'):
                 continue
             if path.is_symlink():
                 raise ValueError(f'Symlink cannot be packaged: {rel}')
             if path.is_file():
-                if path.name.startswith('.env') or path.suffix in {'.pem', '.key', '.p12'} or '.local.' in path.name:
+                local_file = '.local.' in path.name and rel.as_posix() != 'microsoft365/m365agents.local.yml'
+                if path.name.startswith('.env') or path.suffix in {'.pem', '.key', '.p12'} or local_file:
                     raise ValueError(f'Private/local configuration cannot be packaged: {rel}')
                 payload[rel.as_posix()] = path.read_bytes()
     manifest = json.loads((ROOT / 'cursor' / '.cursor-plugin' / 'plugin.json').read_text(encoding='utf-8'))
-    for rel in ('LICENSE', 'NOTICE', 'POSITIONING.md', 'evals/README.md', 'evals/discovery-prompts.json', 'scripts/validate-distribution.mjs', 'scripts/pack-distribution.py', f'release/ultiwrite-cursor-plugin-{manifest["version"]}.zip'):
+    microsoft = json.loads((ROOT / 'microsoft365' / 'package.json').read_text(encoding='utf-8'))
+    version = microsoft['version']
+    microsoft_packages = (f'ultiwrite-m365-source-{version}.zip', f'ultiwrite-copilot-plugin-{version}.zip',
+                          f'ultiwrite-vscode-{version}.vsix', f'Ultiwrite_Microsoft_Distribution_{version}.zip',
+                          f'MICROSOFT_SHA256SUMS_{version}.txt', f'MICROSOFT_VERIFICATION_{version}.json')
+    cursor_zip = f'release/ultiwrite-cursor-plugin-{manifest["version"]}.zip'
+    for rel in ('LICENSE', 'NOTICE', 'POSITIONING.md', 'server.json', 'distribution/MARKETPLACES.md',
+                'hosts/muse.md', 'vscode/README.md', cursor_zip, 'DISTRIBUTION.md',
+                *(f'release/{name}' for name in microsoft_packages)):
         payload[rel] = (ROOT / rel).read_bytes()
     payload['START_HERE.md'] = (
-        '# Ultiwrite remaining MCP submission kit\n\n'
-        'Open [the seven-channel guide](distribution/README.md) for every signup link, prepared file, account step and remaining integration requirement.\n\n'
-        'Already registered with Microsoft? Open [Microsoft next steps](distribution/microsoft/NEXT_STEPS.md) to create the app, configure OAuth and build the real-ID upload package.\n\n'
-        'The prepared Cursor ZIP is in `release/`. Its editable plugin is in `cursor/`. '
-        'Microsoft has a source package and builder that requires real Microsoft app/auth IDs. '
-        'Other channel folders contain their supported source or clearly labeled submission worksheets.\n\n'
-        'No marketplace submission, account creation or production deployment is claimed. '
-        'ChatGPT, Claude and Grok packages are outside this handoff.\n'
+        '# Ultiwrite marketplace handoffs\n\n'
+        'Open [the channel guide](distribution/MARKETPLACES.md). '
+        'The Microsoft source and Cursor archives are in `release/`.\n'
     ).encode()
     profile = json.loads((ROOT / 'distribution/shared/profile.json').read_text(encoding='utf-8'))
-    inventory = {'product': profile['product'], 'legalEntity': profile['legalEntity'], 'dba': profile['dba'], 'kitVersion': profile['kitVersion'], 'preparedPackageVersion': manifest['version'], 'preparedWorkflowContract': '0.9.2', 'files': [
+    inventory = {'product': profile['product'], 'legalEntity': profile['legalEntity'], 'dba': profile['dba'],
+                 'kitVersion': profile['kitVersion'], 'cursorVersion': manifest['version'],
+                 'microsoftSourceVersion': microsoft['version'], 'files': [
         {'path': name, 'bytes': len(data), 'sha256': hashlib.sha256(data).hexdigest()}
         for name, data in sorted(payload.items())
     ]}

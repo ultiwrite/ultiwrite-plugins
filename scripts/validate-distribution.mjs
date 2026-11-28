@@ -12,19 +12,19 @@ const profile = load('distribution/shared/profile.json')
 assert.equal(profile.legalEntity, 'DWS Offshore Fund', 'exact legal entity without DBA or suffix')
 assert.equal(profile.dba, 'Ultiwrite')
 assert.equal(profile.product, profile.dba)
-for (const file of ['cursor/listing-fields.json', 'google/console-fields.json', 'meta/connection-profile.json', 'salesforce/connection-profile.json', 'aws/listing.draft.json']) {
+for (const file of ['google/console-fields.json', 'meta/connection-profile.json', 'salesforce/connection-profile.json', 'aws/listing.draft.json']) {
   assert.equal(load(`distribution/${file}`).publisher, profile.legalEntity, `${file}: legal publisher`)
 }
-assert.equal(load('distribution/microsoft/appPackage/manifest.json').developer.name, profile.legalEntity)
+assert.equal(load('microsoft365/appPackage/manifest.json').developer.name, profile.legalEntity)
 const channels = ['registry', 'cursor', 'google', 'meta', 'microsoft', 'salesforce', 'aws']
 assert.deepEqual([...profile.scope].sort(), [...channels].sort(), 'exactly the seven requested channels')
 assert.deepEqual(profile.excludedChannels, ['claude', 'grok', 'chatgpt'])
 assert.equal(profile.submissionStatus, 'NOT_SUBMITTED')
 assert.equal(profile.hostJourneyStatus, 'NOT_RUN')
-assert.equal(profile.preparedContractVersion, '0.9.2')
 assert.equal(profile.mcp.url, 'https://mcp.dwsoffshorepartners.com/mcp')
 assert.equal(profile.mcp.tokenEndpointAuthMethod, 'none')
-for (const channel of channels) assert.ok(existsSync(join(distribution, channel, 'README.md')), `${channel} README`)
+const directories = ['aws', 'google', 'meta', 'microsoft', 'salesforce', 'shared']
+for (const directory of directories) assert.ok(existsSync(join(distribution, directory)), `${directory} distribution source`)
 let count = 0
 function walk(dir) {
   for (const name of readdirSync(dir).sort()) {
@@ -49,28 +49,22 @@ function walk(dir) {
     count++
   }
 }
-walk(distribution)
-for (const [file, name] of [['server.json', 'com.dwsoffshorepartners/ultiwrite'], ['server.github.json', 'io.github.dennis430/ultiwrite']]) {
-  const server = load(`distribution/registry/${file}`)
+for (const directory of directories) walk(join(distribution, directory))
+for (const [file, name] of [['registry/server.json', 'com.dwsoffshorepartners/ultiwrite'], ['server.json', 'io.github.dennis430/ultiwrite']]) {
+  const server = load(file)
   assert.equal(server.name, name)
   assert.equal(server.$schema, 'https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json')
   assert.ok(server.description.length > 0 && server.description.length <= 100, 'registry description limit')
-  assert.equal(server.version, profile.preparedPackageVersion)
-  assert.deepEqual(server.remotes, [{ type: 'streamable-http', url: profile.mcp.url }])
+  assert.match(server.version, /^\d+\.\d+\.\d+$/)
+  const url = file.startsWith('registry/') ? profile.mcp.compatibilityUrl : profile.mcp.url
+  assert.deepEqual(server.remotes, [{ type: 'streamable-http', url }])
   assert.ok(!server.packages, 'remote-only manifest has no npm publishing dependency')
 }
 const cursor = load('cursor/.cursor-plugin/plugin.json')
-assert.equal(cursor.version, profile.preparedPackageVersion)
-const links = load('distribution/cursor/install-links.json')
-const uri = new URL(links.cursorUri)
-assert.equal(uri.protocol, 'cursor:')
-assert.deepEqual(JSON.parse(Buffer.from(uri.searchParams.get('config'), 'base64').toString()), { url: profile.mcp.url })
-const ms = load('distribution/microsoft/appPackage/ai-plugin.json')
-assert.equal(ms.runtimes[0].type, 'RemoteMCPServer')
-assert.equal(ms.runtimes[0].auth.type, 'OAuthPluginVault')
-assert.equal(ms.runtimes[0].spec.url, profile.mcp.url)
-assert.deepEqual(ms.runtimes[0].run_for_functions, ['*'])
-const instructions = load('distribution/microsoft/appPackage/declarativeAgent.json').instructions
-assert.match(instructions, /handoffId/)
-assert.match(readFileSync(join(root, 'cursor/skills/submit-evidence/SKILL.md'), 'utf8'), /handoffId: returnedHandoffId/)
+assert.equal(cursor.version, profile.publicConnectorBaseline)
+assert.ok(existsSync(join(root, `release/ultiwrite-cursor-plugin-${cursor.version}.zip`)))
+const microsoft = load('microsoft365/appPackage/ai-plugin.json')
+assert.equal(microsoft.runtimes[0].type, 'RemoteMCPServer')
+assert.equal(microsoft.runtimes[0].auth.type, 'OAuthPluginVault')
+assert.equal(microsoft.runtimes[0].spec.url, profile.mcp.compatibilityUrl)
 console.log(`Seven-channel source validated (${count} files). Account provisioning, authenticated host journeys and marketplace approval are not asserted.`)

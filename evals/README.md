@@ -1,12 +1,16 @@
 # Discovery and selection evaluation
 
-This suite tests whether ordinary customer requests are routed to an appropriate Ultiwrite workflow and whether unrelated or restricted requests leave it unused. It covers explicit product mentions, unbranded commercial investigations, account recovery, saved reports, status, permission boundaries and negative prompts.
+This suite tests whether ordinary customer requests are routed to an appropriate Ultiwrite workflow and whether unrelated or restricted requests leave it unused. It covers explicit product mentions, unbranded commercial investigations, account recovery, saved reports, status, explicit saved-case recovery, queued versus active execution, permission boundaries and negative prompts. The saved-case scenarios include paused contradictions requests, legacy unknown slice counts and expired-authority recovery.
 
 ## Current evidence
 
 Host evaluations for this metadata revision: **NOT RUN**.
 
 No recall rate, selection improvement, directory ranking, proactive recommendation or successful customer analysis is claimed from this dataset. Structural package validation and source/archive parity verify packaging only.
+
+## Evidence reconciliation fixture
+
+The [synthetic reviewer fixture](reviewer-fixtures/README.md) contains two internally consistent financial records that disagree about the same reporting period. Use both CSV files together to check whether the saved assessment identifies and quantifies the conflict.
 
 ## Run the suite
 

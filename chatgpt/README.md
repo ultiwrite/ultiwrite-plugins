@@ -1,12 +1,12 @@
 # Ultiwrite for ChatGPT and Codex
 
-Version 0.9.3. Product: Ultiwrite. Publisher: DWS Offshore Fund. This is the source package for the existing Ultiwrite plugin identity.
+Ultiwrite 0.11.0 for ChatGPT and Codex, published by DWS Offshore Fund.
 
 Ultiwrite turns ordinary documents into a wider commercial investigation. Connect financial, identity, document-integrity, operational and external-context evidence across acquisitions, financing, counterparties, property and portfolios, then read reconciled findings, confidence and open questions. Submit only authorized evidence and use the live service for current capabilities and terms.
 
 ## Installed experience
 
-The portable plugin contains a remote MCP connection that discovers OAuth from the protected-resource challenge, current Ultiwrite branding, developer and policy links, and five separately discoverable skills:
+The portable plugin contains a remote MCP connection that discovers OAuth from the protected-resource challenge, current Ultiwrite branding, developer and policy links, and six separately discoverable skills:
 
 | Skill | What it does |
 | --- | --- |
@@ -15,15 +15,16 @@ The portable plugin contains a remote MCP connection that discovers OAuth from t
 | `submit-evidence` | Submit authorized files or open the secure upload handoff |
 | `read-report` | Read saved findings, confidence, Decision Brief and download links |
 | `follow-up` | Turn unresolved findings into evidence requests |
+| `case-disposition` | Record the user's typed case disposition with an immutable audit receipt |
 
 Every skill includes its own display name, short description and `policy.allow_implicit_invocation: true`. The onboarding entry opens `connect-account`. New installations therefore allow automatic workflow selection; a host policy or a user's disabled skill stays authoritative. This setting does not force an existing user's toggle back on.
 
-ChatGPT renders the **Permissions**, **Connected accounts**, **Connect another account** and **Skills** controls. The service supplies OAuth discovery and a verified account profile; the package supplies skills and listing metadata. It does not render a substitute settings page or change ChatGPT's global approval policy. Host versions and workspace policy determine the controls shown.
+Compatible host versions may offer **Permissions**, **Connected accounts**, **Connect another account** and **Skills** controls. The service supplies OAuth discovery and a verified account profile; the package supplies skills and listing metadata. It does not render a substitute settings page or change ChatGPT's global approval policy. Host versions and workspace policy determine the controls shown.
 
 ## Account selection and permissions
 
 1. Install the package or open the existing Ultiwrite plugin.
-2. Choose **Connect** and complete Ultiwrite's OAuth flow. `ultiwrite:read` permits account/report reads; `ultiwrite:evidence` permits evidence submission. The service advertises both permissions through OAuth discovery; the user chooses access in the actual consent flow.
+2. Choose **Connect** and complete Ultiwrite's OAuth flow. `ultiwrite:read` permits account/report reads; `ultiwrite:evidence` permits evidence submission and audited case dispositions. The service advertises both permissions through OAuth discovery; the user chooses access in the actual consent flow.
 3. Ask “Which Ultiwrite account is connected?” The protected `ultiwrite_account_get` call returns the verified profile from the selected grant. The server marks it with OpenAI's profile metadata so compatible hosts can name connected accounts.
 4. To add an identity, use **Connect another account** when the host offers it. To replace one, reconnect and choose **Use a different account** on Ultiwrite's consent screen. Verify the returned identity before continuing.
 5. If the sign-in window closed or the grant expired, use the plugin's persistent Connect/Reconnect control; reinstalling is unnecessary.
@@ -32,9 +33,9 @@ The host permission modes determine when ChatGPT asks before using tools. They d
 
 ## Evidence and reports
 
-Use only original file objects supported by the host and live tool schema. When the host cannot forward file contents, Ultiwrite returns an account-bound upload link. Follow the returned expiry and upload instructions; obtaining a link alone is not an analysis. The service returns current accepted inputs, limits and offers through `ultiwrite_capabilities_get`.
+Use only original file objects supported by the host and live tool schema. A file may carry `role: "customer_requirement_set"` only when the user identifies it as customer-supplied criteria, a contract, mandate or evidence standard; this preserves supplied standing without making its text binding authority or verified fact. The browser upload handoff is evidence-only and cannot preserve that specialized role. When the host cannot forward file contents, Ultiwrite returns an account-bound upload link. Follow the returned expiry and upload instructions; obtaining a link alone is not an analysis. The service returns current accepted inputs, limits and offers through `ultiwrite_capabilities_get`.
 
-Read the actual saved workflow state before describing results. Reports retain their saved findings, confidence, evidence and limitations. PDF, Excel or ZIP downloads open in the browser signed in to the same account; the plugin does not expose public report links or process payments.
+Status and report reads do not restart work. A paused saved investigation needs one explicit resume request from its original upload account, following the current returned continuation without uploading files again. Accepted durable work then continues on the server. Distinguish queued, active, retrying, paused and required-action states; a saved automatic continuation alone does not prove a worker is active. Read the actual saved workflow state before describing results. Reports retain their saved findings, confidence, evidence and limitations. Questions about unresolved claims and relationships use the saved section details and their evidence references, including paginated or omitted long text. Requirement applicability remains separate from satisfaction and preserves customer-supplied standing. Summary counts and empty compatibility lists do not replace those details. A typed disposition requires the user's explicit choice and yields a receipt bound to the addressed assessment; it does not rewrite the report, close the workflow or prove an outcome. PDF, Excel or ZIP downloads open in the browser signed in to the same account; the plugin does not expose public report links or process payments.
 
 ## Portable client compatibility
 
@@ -42,7 +43,7 @@ The MCP server entry contains only `type` and the clean canonical `url`. OAuth c
 
 ## Build and publish
 
-Run `node scripts/validate-public-plugins.mjs` and `node scripts/pack-public-connectors.mjs` from the repository root. The current archive is `release/ultiwrite-chatgpt-plugin-0.9.3.zip`; `--check` verifies source/archive parity. Historical archives remain intact.
+Run `node scripts/validate-public-plugins.mjs` and `node scripts/pack-public-connectors.mjs` from the public repository. The archive is `release/ultiwrite-chatgpt-plugin-0.11.0.zip`. Run the packaging command with `--check` to verify the archive against the source.
 
 Update the existing OpenAI listing; inspect its current portal state before uploading and preserve its identity. This source release does not prove directory upload, review, account labels in an installed host, or a completed customer journey. Its server contract and live host behavior require separate verification.
 
@@ -53,3 +54,9 @@ MCP: https://mcp.dwsoffshorepartners.com/mcp
 Website: https://dwsoffshorepartners.com · Setup: https://dwsoffshorepartners.com/docs/mcp · Support: https://dwsoffshorepartners.com/contact · Privacy: https://dwsoffshorepartners.com/privacy · Terms: https://dwsoffshorepartners.com/terms
 
 OAuth credentials stay with the host. This package contains no credentials or telemetry. Authorized requests and submitted evidence are processed by the existing Ultiwrite service under its privacy policy and account controls. The MIT license covers this thin package only; the analytical service remains proprietary.
+
+## Universal MCP preparation
+
+Sign in through Ultiwrite’s existing account flow and approve the connected host’s scoped OAuth access. Connection does not grant usage. Discover current account limits, paid credits and complimentary availability with `ultiwrite_capabilities_get`; its `accountStatus` is informational and server admission rechecks eligibility. The first eligible complimentary investigation remains available once per account, with no card required. Existing paid entitlements and saved reports remain available under the same account controls.
+
+Host configurations, the canonical public tool catalog and per-surface limitations are prepared in the root `hosts/` directory. Live host acceptance was skipped at the owner’s request; package preparation is not publication or deployment.

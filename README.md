@@ -2,6 +2,16 @@
 
 Ultiwrite is an asymmetric diligence engine: ordinary commercial documents open a wider investigation across financial, identity, integrity, operational and external-context evidence. Publisher: DWS Offshore Fund. This repository contains thin public connectors and workflow guidance; the analytical service is hosted separately.
 
+## Install from your terminal
+
+Run the installer with Node.js 22 or later and Git:
+
+```sh
+npx --yes github:ultiwrite/ultiwrite-plugins#main install cursor
+```
+
+Use `claude-code`, `vscode`, or `codex` in place of `cursor`. Add `--dry-run` to review changes, then complete OAuth in your client. The [CLI guide](cli/README.md) covers Cline and Windsurf, hosted-app setup, removal and publishing. `@ultiwrite/cli` is currently distributed through GitHub source.
+
 ## Connector packages
 
 | Directory | Version | Contents |

@@ -61,12 +61,16 @@
       "sha256": "8d75fbed0329d55480242ea79c61cbdd3da312c700298bfba9572b81ec325cc6"
     },
     {
+      "path": ".github/workflows/publish-cli.yml",
+      "sha256": "2614a9f576bcedd97cb900544efc3c8e64833e14c5a9a04d06632f3fd1b3a397"
+    },
+    {
       "path": ".github/workflows/validate-emdash.yml",
       "sha256": "59626fb7a967c9658bfe7041f630a0dbc6190f9b28e6da988a0aad1cdcbae0a7"
     },
     {
       "path": ".github/workflows/validate.yml",
-      "sha256": "10559fc0d6869f4c86b04883f78b491625cff39bc5622d06831792e69258701a"
+      "sha256": "656115bd3aef4517977ef5adfde12555b306719a1c5a4a9d30202e225468e2fb"
     },
     {
       "path": ".gitignore",
@@ -77,12 +81,16 @@
       "sha256": "e42a74be6906fac790fb71aeae6d3f6372cb43b70ab0470287f7d0195e7171c0"
     },
     {
+      "path": ".npmignore",
+      "sha256": "d073bfba58bfe5bb73c3dccfd9c4cc90b75b9dd64206635a304f17f39168478a"
+    },
+    {
       "path": "AGENTS.md",
       "sha256": "9ac7a22e1915e550f152fa489197b6959ed93b30ef9a3427ee39c54e437b9012"
     },
     {
       "path": "INSTALL.md",
-      "sha256": "6ab482cfa01b404221aef276c00d2147689acc24f79d07c6b8f566d4dcb4264a"
+      "sha256": "050451e749f950059dbf4e766814f388c06491451a66f10b1d289851522a7519"
     },
     {
       "path": "LICENSE",
@@ -97,8 +105,12 @@
       "sha256": "5f24e2815faeb4eceded9c3f0241a28d8f49359a39d2846150a773e7409823e2"
     },
     {
+      "path": "PUBLISH.cmd",
+      "sha256": "21befd9466d53a11768bcdb6ed6250dcb8da051c391b9094834831f4dfbb7128"
+    },
+    {
       "path": "README.md",
-      "sha256": "68db082b327ef655cac2770a0bc46ecd3bb9484b781ca1a3214eea0d646027aa"
+      "sha256": "66cce0fc079f60d6d14b889a58bb9c6c1664c7b16f1954c24ce63417743b9215"
     },
     {
       "path": "antigravity/LICENSE",
@@ -337,6 +349,42 @@
       "sha256": "ba1903fed0f7f9ee49a2bec8cba2527803ba0b0a69b70d9d0a73e2c2df05099c"
     },
     {
+      "path": "cli/README.md",
+      "sha256": "999760f1bee1c6e9c24c0be5f45437886e1d57f391ee4b2bd60bc0d5dc337d22"
+    },
+    {
+      "path": "cli/bin/ultiwrite.mjs",
+      "sha256": "8b12cde7738c98536636e0c614e9620ce6e3f8a68462de8dd419cc0458b838c9"
+    },
+    {
+      "path": "cli/lib/codex.mjs",
+      "sha256": "988bc2fcb7d19a113fc66f803c78fc8aac3e4986d6fe46933a9ed26d7a67c950"
+    },
+    {
+      "path": "cli/lib/config.mjs",
+      "sha256": "c5bc7379f09a22dc8de31f801d19f023fca34a1abe7640d31be4283e4bbecb0f"
+    },
+    {
+      "path": "cli/test/cli.test.mjs",
+      "sha256": "9bcc965728bdb77d4b2f558959d39dfbf1a1befd25c8165d6f5393e0aefcc9bb"
+    },
+    {
+      "path": "cli/test/codex.test.mjs",
+      "sha256": "d761315c1f6a9bb3d5afab6b4472bf74d639f953919823d4617598182e9b3bc3"
+    },
+    {
+      "path": "cli/test/config.test.mjs",
+      "sha256": "1845a57003996517d870ad04404991435db6648e69bec89473234da2cc988c43"
+    },
+    {
+      "path": "cli/test/package.test.mjs",
+      "sha256": "ecab6e6425aa67190d848e3c723a7302c527c6cf826ecaabcb5f8115cdce7711"
+    },
+    {
+      "path": "cli/test/publish.test.mjs",
+      "sha256": "8453c7fd235b0e0df0bc6eeea28436e5093b2ad1a64fce447845b4c367d85478"
+    },
+    {
       "path": "client/LICENSE",
       "sha256": "0122d7b57a1ef1e40944c88e2e0261b334fcf5f779e9deb52d49463de20a977d"
     },
@@ -366,15 +414,15 @@
     },
     {
       "path": "client/test/cli.test.mjs",
-      "sha256": "2c12a916ce1a12f74408e8876386399da6e4c5052358cd10924addde243e6a3b"
+      "sha256": "1530b2d4d02f78698d1827f92168f615149a01de24d4bf0ddbf1fa11c76081b6"
     },
     {
       "path": "client/test/interoperability.test.mjs",
-      "sha256": "9063dd65a1aaa45ae52cfb2dd143b1892416a5c3def36381bab7ba5fcdb5ae63"
+      "sha256": "a6bf44273505ce81fc1c3b0e0deee3ecdde6a1dbd08345407a4497001dcf6f2b"
     },
     {
       "path": "client/test/transport.test.mjs",
-      "sha256": "8a3a3ad854d5268dd050e2b8c33ee908ab7b800c63b12d096e7288faf6104dd4"
+      "sha256": "810e0c2f8500064b705569d39696d59fcae04262cf6fb350bc16b3ff8b85cd7a"
     },
     {
       "path": "cursor/.cursor-plugin/plugin.json",
@@ -522,11 +570,23 @@
     },
     {
       "path": "evals/README.md",
-      "sha256": "91348e5bf618f49c3e7f58ab53200d0bc2b116ecad8c6735df001dccaa8461e3"
+      "sha256": "4a29282ba598f9ba976bcbed35fe808d89314ad89bade3044ce31ed0aabd2c81"
     },
     {
       "path": "evals/discovery-prompts.json",
       "sha256": "5ce58cd3b8c635070bda00e4e73cd0fa7249e13fd2a002fed1460f4f3ba85797"
+    },
+    {
+      "path": "evals/reviewer-fixtures/README.md",
+      "sha256": "a4679b1e50efe8993e8f65be9235af1eb87eb2d26feb4c15a5dfa46c4e580384"
+    },
+    {
+      "path": "evals/reviewer-fixtures/operating-ledger.csv",
+      "sha256": "c5024c844bf928d6aacce7e989f561d971721a4aaeb4eefc286949b8eece234f"
+    },
+    {
+      "path": "evals/reviewer-fixtures/transaction-summary.csv",
+      "sha256": "5f0ac6bca1758344f1f861643536bdc2058c622b62dbc271cf656b5bb3b0a4ca"
     },
     {
       "path": "grokbot/FIELDS.json",
@@ -699,6 +759,14 @@
     {
       "path": "index.mdx",
       "sha256": "32e25eaf66c31322ad5e9ea6defe3d5205ee50bf2a02a34323a4fe4d58044246"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "556ce4bbe33429cdcfdfef201cdfa1eca64365f20170530903115245e9059497"
+    },
+    {
+      "path": "package.json",
+      "sha256": "e7e1a1943e0bf10a897d77524a232e7c071de526e08a70a07c80a6a8c89a20d9"
     },
     {
       "path": "partner-api/authentication.mdx",
@@ -913,12 +981,20 @@
       "sha256": "fc3b7bbc6ef1d60b63f72070ea3ac294ad0d825c2dc80c859b10c7d27b49717d"
     },
     {
+      "path": "scripts/publish-cli.mjs",
+      "sha256": "bb779eeaf6a8633a7febdb7e09cdf5f9fd9055ac2a2e4d90cae8b32d7ae4b6bc"
+    },
+    {
       "path": "scripts/test/release.test.mjs",
       "sha256": "4f30fac24a9eff19853a5f2e9bcdc393f798f6e62605be133a0016e4d8214c9b"
     },
     {
       "path": "scripts/validate-public-plugins.mjs",
-      "sha256": "d47b023c3262f126d49450cb99bc1f08b739bfe94c438f5899d3dffb8c12780a"
+      "sha256": "7158f76c2599ef84c1780d37e03dfe33ef9b4d99002df77557eed131dac9186b"
+    },
+    {
+      "path": "scripts/verify-npm-package.mjs",
+      "sha256": "30cd3f16ff7e737f588dfa21f6342e80dcfa831ed45782e640f68b5f395bf631"
     },
     {
       "path": "server.draft.json",

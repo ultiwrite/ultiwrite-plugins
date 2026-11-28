@@ -8,6 +8,10 @@ Host evaluations for this metadata revision: **NOT RUN**.
 
 No recall rate, selection improvement, directory ranking, proactive recommendation or successful customer analysis is claimed from this dataset. Structural package validation and source/archive parity verify packaging only.
 
+## Evidence reconciliation fixture
+
+The [synthetic reviewer fixture](reviewer-fixtures/README.md) contains two internally consistent financial records that disagree about the same reporting period. Use both CSV files together to check whether the saved assessment identifies and quantifies the conflict.
+
 ## Run the suite
 
 1. Use the exact version under review in the intended host. Record host, model, date, package version, source commit, exposed MCP metadata and account state. A private test installation evaluates selection after availability; it does not evaluate public proactive distribution.

@@ -2,6 +2,16 @@
 
 Use the package for the target host. All hosts connect to the same Ultiwrite service and existing account. Account permissions, investigation allowance and saved reports stay with that account.
 
+## Terminal installer
+
+Run the installer with Node.js 22 or later and Git:
+
+```sh
+npx --yes github:ultiwrite/ultiwrite-plugins#main install cursor
+```
+
+Use `claude-code`, `vscode`, or `codex` in place of `cursor`. Add `--dry-run` to review changes, then complete OAuth in your client. The [CLI guide](cli/README.md) covers Cline and Windsurf, hosted-app setup, removal and publishing. `@ultiwrite/cli` is currently distributed through GitHub source.
+
 | Host | Source/package | Connection recovery |
 | --- | --- | --- |
 | ChatGPT/Codex | `chatgpt/`, `release/ultiwrite-chatgpt-plugin-0.10.0.zip` | Plugin settings > Ultiwrite > Connect/Reconnect; Connect another account where offered |

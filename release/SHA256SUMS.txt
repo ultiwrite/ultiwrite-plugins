@@ -29,7 +29,9 @@ e34aa2e43d7062871de121c479ef5e8a7fe214f20b400464624605fc419e15f1  ultiwrite-curs
 eb3403b7e52e5301a112864fb8cd50351e012cf63ff1c5af124fbbae5a5c0129  ultiwrite-cursor-plugin-0.8.0.zip
 345d714ba6205a70dc38f43e1f45d82e83e01ab9499f1410197b44b5e7f440fd  ultiwrite-cursor-plugin-0.9.0.zip
 f41346af459431fd1f174111b5da3b361c54ee660575ca008a65d51bf1e556cc  ultiwrite-cursor-plugin-0.9.1.zip
+be339549b23bdc07268a6748eb408daaa346fe9287bac1e34ba9659ddb3582d7  ultiwrite-cursor-plugin-0.9.2.zip
 6d8977daea01083dd3fb98cdec3826e29699274195d6e1dc16b6808447b4635e  ultiwrite-cursor-plugin-0.9.3.zip
+ddddc32e186b41ba88a2e0d9b85b144fcbd6081f679917571f793163651a5ba5  ultiwrite-cursor-plugin-0.9.4.zip
 2d0b8352d1e381bf24df398de2f2328d905b740dc820077e27b5e4909b01046d  ultiwrite-host-adapters-0.10.0.zip
 b89733750567de78228a5a4d13b2cdf7bfc9000fea88acb1c40cae5f65c13fc5  ultiwrite-host-adapters-0.10.1.zip
 f8c92354676bb3a84d2e851cb8d6889d2c882d256658db2b7db8ff6d96d726b0  ultiwrite-host-adapters-0.11.0.zip
@@ -37,3 +39,4 @@ f8c92354676bb3a84d2e851cb8d6889d2c882d256658db2b7db8ff6d96d726b0  ultiwrite-host
 8e5a2901122a133be7329a75622167c13aedb5bd8e67c5a3349c8f5e5b917eb3  ultiwrite-host-adapters-0.12.1.zip
 d908545dc1e8e8f8038f8ed95579218d2c09614584bf6a49da4c2d9fc12a301e  ultiwrite-m365-source-0.1.0.zip
 84464d78eb7554e02f30b8f2a349a18d1ae168c5cf3e5f1ca392c1ebbbb828f1  ultiwrite-m365-source-0.1.1.zip
+86b12c4a430ef212af685c5df0a905f21d4333c6573e2229e6d34498b662ff88  ultiwrite-marketplace-handoffs-1.0.3.zip

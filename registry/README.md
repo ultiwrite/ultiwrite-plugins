@@ -37,3 +37,7 @@ Do not publish the same endpoint under an alternative namespace as an experiment
 Confirm public metadata and protected-resource discovery; verify a fresh OAuth connection and authorized end-to-end investigation on a dedicated test account. Check that listing descriptions match the current service and that support/privacy/terms links work. The account's current commercial terms come from `ultiwrite_capabilities_get`; no stale prices are embedded here.
 
 Schema reference: [Publishing remote servers](https://modelcontextprotocol.io/registry/remote-servers).
+
+## Prepare domain ownership proof
+
+Run `node registry/prepare-domain.mjs /absolute/private/ultiwrite-registry` to create a private Ed25519 key and its public proof. The script requires a new directory outside this repository. Add the public TXT value from `dns-record.txt` to the apex DNS records or serve the generated `mcp-registry-auth` file at `/.well-known/mcp-registry-auth` on `dwsoffshorepartners.com`. Follow the official publisher CLI authentication workflow after the proof is reachable. Choose either this domain identity or the existing GitHub candidate in the root `server.json` for the listing.

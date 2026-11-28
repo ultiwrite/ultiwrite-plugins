@@ -70,7 +70,7 @@
     },
     {
       "path": ".github/workflows/validate-distribution.yml",
-      "sha256": "3a6b979be65ab09c7ab78476238ca217dc409afcf7d6287cf9af283f45af2eed"
+      "sha256": "1e58ef17ae267898aa419415432b023e34b4d5dcedd018082ac55b4c0c8f93f9"
     },
     {
       "path": ".github/workflows/validate-emdash.yml",
@@ -549,8 +549,20 @@
       "sha256": "ba1903fed0f7f9ee49a2bec8cba2527803ba0b0a69b70d9d0a73e2c2df05099c"
     },
     {
+      "path": "distribution/MARKETPLACES.md",
+      "sha256": "cdddd379d93ef675536567c0125c3c84123c6d9ac9de5d29991d4a4980fc3a55"
+    },
+    {
       "path": "distribution/README.md",
-      "sha256": "bd78d0bdd9fe4b5f644f4f94005209e612d7ad71646774ab4b82dcefe6384a6e"
+      "sha256": "9e6f07e6f05e7e1cc2f0766bb0c241efe0387fd54b293db03081a308f6ebc435"
+    },
+    {
+      "path": "distribution/VALIDATION.json",
+      "sha256": "8cdc52dbcc4d489e7da75ebca269c2f015835e90ed20fa7ac7249efd733412b3"
+    },
+    {
+      "path": "distribution/VALIDATION.md",
+      "sha256": "7fba5b659daccf5fe586fb1dee86dd5d78053c7cf28e613b40843a81e7c02bfc"
     },
     {
       "path": "distribution/VERIFICATION.md",
@@ -601,12 +613,164 @@
       "sha256": "cc0a3c229347e47a154a00c9e6dfa774c0e1f07ee9fc063935af5bc4897f4b18"
     },
     {
+      "path": "distribution/aws/BUYER_SETUP.md",
+      "sha256": "a0db04d3f6d413a414c3e17a78006ed055ed2c31cb7de9f6efab478e2a004eaf"
+    },
+    {
+      "path": "distribution/aws/README.md",
+      "sha256": "fb6bc82e34101f77fcae7b8aec4894b876e59490aeea7212d1548ca1e095b7b8"
+    },
+    {
+      "path": "distribution/aws/SOURCES.md",
+      "sha256": "10b2dde6c7fe0944002f30178777a1e28ceae58018f5781be1a460410c59ff50"
+    },
+    {
+      "path": "distribution/aws/TECHNICAL_HANDOFF.md",
+      "sha256": "f056a9c979a4f4a7fd6fa322c385409c4d3e9f6a86a5c9fd7b3d735d5ade9f04"
+    },
+    {
+      "path": "distribution/aws/listing.draft.json",
+      "sha256": "fe0a47e3f75747e5be55a91707e646162237062796d88d2f0807f40d6d085e01"
+    },
+    {
+      "path": "distribution/aws/mcp-client.json",
+      "sha256": "e37fa20377907668edc7a9747ea8029fb3a82425604835cd0477be8a0b8db675"
+    },
+    {
       "path": "distribution/catalog.json",
       "sha256": "c02babbcbff9d52519c074e84be3d94162658fbc82359211d39724c5bbfc9a99"
     },
     {
+      "path": "distribution/google/README.md",
+      "sha256": "0caa49dbaa8706cd572250d59261d048169229812bd655e094ea0f4d405e4256"
+    },
+    {
+      "path": "distribution/google/assets/logo.png",
+      "sha256": "cc0a3c229347e47a154a00c9e6dfa774c0e1f07ee9fc063935af5bc4897f4b18"
+    },
+    {
+      "path": "distribution/google/backend-handoff.md",
+      "sha256": "6591d246962779667183a21f05240bcebb86a8ffe60bcefb35d85d1332cd44ef"
+    },
+    {
+      "path": "distribution/google/console-fields.json",
+      "sha256": "a835612bb0d275e82bd1c178b5d985f9d4664c7baaef7bc5ecf6f36cd4fe1bb5"
+    },
+    {
+      "path": "distribution/google/reviewer-runbook.md",
+      "sha256": "386727d1db20a94be4f70c4ccc1595389349ddb1fff8566e686301a5685b704c"
+    },
+    {
+      "path": "distribution/google/scripts/prepare-oauth-registration.mjs",
+      "sha256": "93a05ad60fe1255770e49a15bfccc9cfab001617e1e33d3595586dfde73d8ba6"
+    },
+    {
+      "path": "distribution/google/scripts/render-domain-verification.mjs",
+      "sha256": "54f010ad787c78399f17770f168c747feb77f0453df181c50fd21e4e12b56e7d"
+    },
+    {
+      "path": "distribution/google/server-overlay/google-connected-apps-route.ts",
+      "sha256": "6d265b1782c56a5e8fafd876ce6a7618bf585ee246e444e8b6aaa0e12994bbac"
+    },
+    {
+      "path": "distribution/google/sources.json",
+      "sha256": "aa405e0e2ca1369d83707010e39e495d83553023e8621d76cc8b8872c70ca502"
+    },
+    {
       "path": "distribution/lib/partner-client.cjs",
       "sha256": "155e31133189ae6a0122b9741d906331031574e093498a141630c80e06d22f23"
+    },
+    {
+      "path": "distribution/meta/README.md",
+      "sha256": "4a13e2edbe2ba09215ebaaa4ef7b746310b57e59d9a321872ccddd5acd035577"
+    },
+    {
+      "path": "distribution/meta/assets/logo.png",
+      "sha256": "cc0a3c229347e47a154a00c9e6dfa774c0e1f07ee9fc063935af5bc4897f4b18"
+    },
+    {
+      "path": "distribution/meta/connection-profile.json",
+      "sha256": "11d221c8edba1a3370d5a81f73b9c9e97474f24eb6d56c740ff3894a514f511e"
+    },
+    {
+      "path": "distribution/meta/reviewer-runbook.md",
+      "sha256": "0a4fbdc7372faf618fefb518e049ba4ec2575fc45d2a8ed48695d16996ea6e3b"
+    },
+    {
+      "path": "distribution/meta/sources.json",
+      "sha256": "cfa05f4cb56968022e493271b2b45103f9c81537a319718c162543954beb4645"
+    },
+    {
+      "path": "distribution/meta/submission-copy.md",
+      "sha256": "abb94e33eda4ef7f21be2c06750a9d69ddea48e30bb805ff733b4e24170123f1"
+    },
+    {
+      "path": "distribution/microsoft/NEXT_STEPS.md",
+      "sha256": "06ab492a9cdc1a1b2554e4e7e6dacac5edc3fcd58bf1ec2361d665bc37f884b9"
+    },
+    {
+      "path": "distribution/salesforce/README.md",
+      "sha256": "0b29f3dd32caecc278184ae346dd1ece9f3790a2b7d8ee4c9e1801c86ae65033"
+    },
+    {
+      "path": "distribution/salesforce/assets/logo.png",
+      "sha256": "cc0a3c229347e47a154a00c9e6dfa774c0e1f07ee9fc063935af5bc4897f4b18"
+    },
+    {
+      "path": "distribution/salesforce/config/project-scratch-def.json",
+      "sha256": "be3aabf72e3e00e67e7a07e94153cafff0756c4ccc53b58e54682b9b5091d745"
+    },
+    {
+      "path": "distribution/salesforce/connection-profile.json",
+      "sha256": "3fed3d441ea576ad2c2cc7871b4f95d6d69b7570e9225a1e3f839ae8d36a25e1"
+    },
+    {
+      "path": "distribution/salesforce/force-app/README.md",
+      "sha256": "f3782af5d21d5bb2616e2686aa8cf7ad6a1bf7f80b81aad81168a506da096cf1"
+    },
+    {
+      "path": "distribution/salesforce/listing-copy.md",
+      "sha256": "ed2eb0dc262a582fe03b22c329c36d631b066f5b9b7cb74acedeb6aff5523373"
+    },
+    {
+      "path": "distribution/salesforce/manifest/package.xml",
+      "sha256": "ff26662d652395765fc8b6b3669158b151befed0f9c4f5d45f219f8b06f8da80"
+    },
+    {
+      "path": "distribution/salesforce/scripts/retrieve-registration.mjs",
+      "sha256": "7d55aa1f2f1e5081a39bdc0ac123153484f74f7b69f8ae4fe8de1f387eedd595"
+    },
+    {
+      "path": "distribution/salesforce/scripts/set-namespace.mjs",
+      "sha256": "63032b3ed0393df2b50fe2abc1479502906329a91f59b39583efdcdcf733eb43"
+    },
+    {
+      "path": "distribution/salesforce/scripts/validate-registration.mjs",
+      "sha256": "c6dc4631b54699175e1019148892bae2a2334e4ba1708728a2e2f7ea32adca4a"
+    },
+    {
+      "path": "distribution/salesforce/setup-guide.md",
+      "sha256": "753d874f8c85217c22cc0027893bf7ba9734a056fcd0d765db0ab9b26472755a"
+    },
+    {
+      "path": "distribution/salesforce/sfdx-project.json",
+      "sha256": "b86f99c11cfdbcca74a6fad9fb03c068209887facaf399d6cf25ebeb5807b1b6"
+    },
+    {
+      "path": "distribution/salesforce/sources.json",
+      "sha256": "bdc13a8b6f4bfe549790ad19ce81ba58ccb09c94d736367de0c1f0ddcd891b2c"
+    },
+    {
+      "path": "distribution/shared/LISTING_COPY.md",
+      "sha256": "ad2880852399c5e1a126205553b9e32b624eab7d1b898033d0372fcb4c5063f6"
+    },
+    {
+      "path": "distribution/shared/REVIEWER_TEST_PLAN.md",
+      "sha256": "b8c6d9fccd6226ccd4a1525099134b9e9bc4c5a76303a4a95185cec93c31d4ca"
+    },
+    {
+      "path": "distribution/shared/profile.json",
+      "sha256": "0fa085eac394590cb92eda587e2f395994240703507dece4102a4c6771b0aad4"
     },
     {
       "path": "distribution/tests/adapters.test.cjs",
@@ -1130,7 +1294,7 @@
     },
     {
       "path": "registry/README.md",
-      "sha256": "3aa339567d1b6af914c0d392f7951d43ee1a48377708f22ea87d5abacc702b80"
+      "sha256": "b8dc2b3bc05198b5dfe7d10cc855d7649e019c8d40aa6e588c58bc1387845401"
     },
     {
       "path": "registry/package-lock.json",
@@ -1139,6 +1303,10 @@
     {
       "path": "registry/package.json",
       "sha256": "45cf990a7fdad74bd0d28f3c43a8ac236ddde1efeeceae62411a75d99dec916b"
+    },
+    {
+      "path": "registry/prepare-domain.mjs",
+      "sha256": "0851e65a2a186e08c9251c3cb0b04cfe198482d02541a7f0fc8948ea6582f035"
     },
     {
       "path": "registry/server.json",
@@ -1162,7 +1330,7 @@
     },
     {
       "path": "release/INVENTORY.json",
-      "sha256": "2bc5c4944e931c9e470295371dc84e5f2d653a8ed1a909eb42db16999e5ebed7"
+      "sha256": "fff089474ea2157b8014bf4ba792d0a23e4b4f72afca1414f8a78e7cc39e0309"
     },
     {
       "path": "release/MICROSOFT_SHA256SUMS.txt",
@@ -1210,7 +1378,7 @@
     },
     {
       "path": "release/SHA256SUMS.txt",
-      "sha256": "852018d1c7f4385494524865ca7a6ea623975345cdb2ad7a153ee23c1e01ac34"
+      "sha256": "62840cb594dc49c44af34d0734e1680c78a8fd70b6d60d66ec1687d06e0dc37d"
     },
     {
       "path": "release/Ultiwrite_Claude_Plugin_v0.10.0.zip",
@@ -1333,8 +1501,16 @@
       "sha256": "f41346af459431fd1f174111b5da3b361c54ee660575ca008a65d51bf1e556cc"
     },
     {
+      "path": "release/ultiwrite-cursor-plugin-0.9.2.zip",
+      "sha256": "be339549b23bdc07268a6748eb408daaa346fe9287bac1e34ba9659ddb3582d7"
+    },
+    {
       "path": "release/ultiwrite-cursor-plugin-0.9.3.zip",
       "sha256": "6d8977daea01083dd3fb98cdec3826e29699274195d6e1dc16b6808447b4635e"
+    },
+    {
+      "path": "release/ultiwrite-cursor-plugin-0.9.4.zip",
+      "sha256": "ddddc32e186b41ba88a2e0d9b85b144fcbd6081f679917571f793163651a5ba5"
     },
     {
       "path": "release/ultiwrite-host-adapters-0.10.0.zip",
@@ -1369,6 +1545,10 @@
       "sha256": "84464d78eb7554e02f30b8f2a349a18d1ae168c5cf3e5f1ca392c1ebbbb828f1"
     },
     {
+      "path": "release/ultiwrite-marketplace-handoffs-1.0.3.zip",
+      "sha256": "86b12c4a430ef212af685c5df0a905f21d4333c6573e2229e6d34498b662ff88"
+    },
+    {
       "path": "release/ultiwrite-vscode-0.1.0.vsix",
       "sha256": "10404aba6129802c913f953c9a6552a8c40f11697ee5f82f32bfb3a2f6b6e6e0"
     },
@@ -1393,6 +1573,10 @@
       "sha256": "707d10a0c06739febc9936c64db261c15698dc4b2813c44a4a91e7457d77b493"
     },
     {
+      "path": "scripts/pack-distribution.py",
+      "sha256": "ff9e66fe36a9f90fc0ec960fe3ee84996a7b6b5dd08d743570838b559db16d55"
+    },
+    {
       "path": "scripts/pack-public-connectors.mjs",
       "sha256": "895014bfdfe93c2061387ae8e3c9f488f1666a08fd5e7ee6e0d2b7d8b63ed70b"
     },
@@ -1407,6 +1591,10 @@
     {
       "path": "scripts/test/release.test.mjs",
       "sha256": "aff656835956c988a723a73486793e93481ecfea18f9d0018e59dc9fe1fca017"
+    },
+    {
+      "path": "scripts/validate-distribution.mjs",
+      "sha256": "0e20f1877c68143879bb8f5468486d61dd914bf4186970cf92fe88c297d749e4"
     },
     {
       "path": "scripts/validate-microsoft-distribution.mjs",

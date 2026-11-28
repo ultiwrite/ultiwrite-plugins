@@ -25,3 +25,7 @@ The existing Claude, ChatGPT, Cursor, Grok and EmDash listing packs contain revi
 The repository validator scans the complete source, including these channel kits. The validation workflow runs local contract checks, archive parity and separate native n8n and Zapier checks.
 
 Marketplace submission uses each channel’s publisher account and release checklist.
+
+## Marketplace handoffs
+
+The [marketplace guide](MARKETPLACES.md) covers the current connector sources and provider steps for Google Connected Apps, Meta Muse, Salesforce AgentExchange, AWS Marketplace, Microsoft 365 Copilot, Cursor and the MCP Registry.

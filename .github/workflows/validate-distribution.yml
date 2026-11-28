@@ -16,6 +16,7 @@ jobs:
         with:
           node-version: '22'
       - run: node scripts/verify-distribution.mjs
+      - run: python3 scripts/pack-distribution.py
       - run: node scripts/validate-public-plugins.mjs
       - run: node scripts/pack-public-connectors.mjs --check
       - uses: actions/upload-artifact@v4
@@ -24,6 +25,8 @@ jobs:
           path: |
             dist/distribution/
             dist/distribution-verification/
+            dist/Ultiwrite_Remaining_MCP_Submission_Kit.zip
+            dist/Ultiwrite_Remaining_MCP_Submission_Kit.sha256
           if-no-files-found: error
   native-package-checks:
     runs-on: ubuntu-latest

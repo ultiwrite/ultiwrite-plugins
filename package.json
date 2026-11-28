@@ -39,10 +39,10 @@
   "homepage": "https://dwsoffshorepartners.com/docs/mcp",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dennis430/ultiwrite-plugins.git"
+    "url": "git+https://github.com/ultiwrite/ultiwrite-plugins.git"
   },
   "bugs": {
-    "url": "https://github.com/dennis430/ultiwrite-plugins/issues"
+    "url": "https://github.com/ultiwrite/ultiwrite-plugins/issues"
   },
   "keywords": ["ultiwrite", "mcp", "cursor", "claude", "codex", "diligence", "investigative-intelligence"],
   "publishConfig": {

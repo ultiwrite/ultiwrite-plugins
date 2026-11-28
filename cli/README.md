@@ -9,7 +9,7 @@ Requires **Node.js 22+**. The package version is **0.1.0**, and npm publication 
 With Git installed:
 
 ```sh
-npx --yes github:dennis430/ultiwrite-plugins#codex/npx-plugin-installer-20261101 install cursor
+npx --yes github:ultiwrite/ultiwrite-plugins#main install cursor
 ```
 
 The branch command uses the branch's current commit. To pin an approved version, replace the text after `#` with that commit's full SHA. A GitHub install requires network access to GitHub and npm for the declared dependency.
@@ -161,11 +161,11 @@ If your interactive terminal is not signed in to npm, the real publisher opens n
 
 ### Start safely from any Windows PowerShell directory
 
-This downloads the installer branch into a new temporary directory and invokes its publisher by absolute path. Requires Git and Node.js 22+:
+This downloads the default branch into a new temporary directory and invokes its publisher by absolute path. Requires Git and Node.js 22+:
 
 ```powershell
 $ultiwritePublishDir = Join-Path $env:TEMP ("ultiwrite-publish-" + [guid]::NewGuid().ToString("N"))
-git clone --depth 1 --branch codex/npx-plugin-installer-20261101 https://github.com/dennis430/ultiwrite-plugins.git $ultiwritePublishDir
+git clone --depth 1 --branch main https://github.com/ultiwrite/ultiwrite-plugins.git $ultiwritePublishDir
 if ($LASTEXITCODE -ne 0) { throw "Ultiwrite download failed; nothing was published." }
 & (Join-Path $ultiwritePublishDir "PUBLISH.cmd")
 ```
@@ -177,7 +177,7 @@ After the package exists, configure its **Trusted Publisher** in npm with these 
 | npm field | Value |
 | --- | --- |
 | Provider | GitHub Actions |
-| Organization or user | `dennis430` |
+| Organization or user | `ultiwrite` |
 | Repository | `ultiwrite-plugins` |
 | Workflow filename | `publish-cli.yml` |
 | Environment | Leave empty; this workflow does not declare an environment |

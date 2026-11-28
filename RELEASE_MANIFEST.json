@@ -78,7 +78,7 @@
     },
     {
       "path": "INSTALL.md",
-      "sha256": "1cd2ee3f6deae08ce983347e6be9c0a5ae0ad0aa643b8db9d30e739d6df5fdc5"
+      "sha256": "6ab482cfa01b404221aef276c00d2147689acc24f79d07c6b8f566d4dcb4264a"
     },
     {
       "path": "LICENSE",
@@ -122,7 +122,7 @@
     },
     {
       "path": "api-contract.mdx",
-      "sha256": "98351b767b3971da8c68e8aea2228e0e880eb8ce077b36eb0cfe5a3bb6d21570"
+      "sha256": "41767e655dac3db06e29fa48fc6abad4967f75254c2acb7889a3746e0139941c"
     },
     {
       "path": "api-keys.mdx",
@@ -131,6 +131,10 @@
     {
       "path": "api-reference/account.mdx",
       "sha256": "c765d98ba907cb6c0c9d306296a9a3ba949f3e7cfba8bbe46d96d3b291905721"
+    },
+    {
+      "path": "api-reference/billing-offers.mdx",
+      "sha256": "bdab9ef09003744c7c765b5fbba717045766f0d01b0db4b85f7eef44382b2158"
     },
     {
       "path": "api-reference/capabilities.mdx",
@@ -149,8 +153,16 @@
       "sha256": "4493056abdddd3d74ee93feb3a0f20479147515a5186028e2e3f74c4ed9d26f5"
     },
     {
+      "path": "api-reference/checkout-status.mdx",
+      "sha256": "c01db511f69fadac1347ea5796fbe32a86f2418f4b090550b93147b074d056d8"
+    },
+    {
       "path": "api-reference/continue-case.mdx",
       "sha256": "12ad418a64697ffe19414a2a28374316bcf0b02ce840e04c56a59c85b4dbf170"
+    },
+    {
+      "path": "api-reference/create-checkout.mdx",
+      "sha256": "e0710905f88d67897ae604cfdf4f5c921b803c32499a7139130bd8143f47c203"
     },
     {
       "path": "api-reference/create-webhook.mdx",
@@ -422,7 +434,7 @@
     },
     {
       "path": "docs.json",
-      "sha256": "6e3ba995b6105748d4f94eddb45de25edef54dc71dba3351c60196fd70a29e42"
+      "sha256": "056ff19d3fbb70b29a06c8899868f990a82dc750a6d6dfc7e2c7ffd1fdfe5fb3"
     },
     {
       "path": "evals/README.md",
@@ -606,11 +618,11 @@
     },
     {
       "path": "partner-api/authentication.mdx",
-      "sha256": "0913cc69f10d6253af76b5ee470106af381b9dd4c76cfef963c0d3faa283e759"
+      "sha256": "ff1826064bad0fade96e5cb870a21f2270ef1e0ee4a6cce9e55801f2428804c7"
     },
     {
       "path": "partner-api/errors-and-retries.mdx",
-      "sha256": "929f9ae4b76b6e3330e2d2afb2460164e8756adf66cc1b0824bbd2b79139966e"
+      "sha256": "c92eb9ce50e7ab024eccda54a6b7dcdc89fb2515c1e9065a7c2763b21d9c17b8"
     },
     {
       "path": "partner-api/integration-checklist.mdx",
@@ -634,11 +646,11 @@
     },
     {
       "path": "partner-api/usage.mdx",
-      "sha256": "954aff3fcd4b1349ecba491926b31ba2779f7857e5d23cbc9f208cf34a1c09eb"
+      "sha256": "2793ac609993f099060c1f0246c1c75f3b4c9caaf44729793940c621caf035a1"
     },
     {
       "path": "partner-api/workflow.mdx",
-      "sha256": "8b1a37556233cfa8e3d6ecdf835a4a223e484766fefc6c5a585c9558ef9caeb4"
+      "sha256": "6df3ccbeb800e6f8a2bfeb5bb4b0005ada62f66028a0e6998aca84ab080d3d27"
     },
     {
       "path": "quickstart.mdx",

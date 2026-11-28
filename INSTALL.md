@@ -5,7 +5,7 @@ Use the package for the target host. All hosts connect to the same Ultiwrite ser
 | Host | Source/package | Connection recovery |
 | --- | --- | --- |
 | ChatGPT/Codex | `chatgpt/`, `release/ultiwrite-chatgpt-plugin-0.10.0.zip` | Plugin settings > Ultiwrite > Connect/Reconnect; Connect another account where offered |
-| Claude | `claude/`, `release/Ultiwrite_Claude_Plugin_v0.10.0.zip` | Plugins > Ultiwrite > Connectors > Connect; Claude Code `/mcp` > Authenticate |
+| Claude | `claude/`, `release/Ultiwrite_Claude_Plugin_v0.10.1.zip` | Plugins > Ultiwrite > Connectors > Connect; Claude Code `/mcp` > Authenticate |
 | Cursor | `cursor/`, `release/ultiwrite-cursor-plugin-0.10.0.zip` | Existing Ultiwrite MCP server's authentication control |
 | Grok Bot | `grokbot/` submission dossier | Host's supported MCP account controls |
 
@@ -38,7 +38,7 @@ The five packaged workflows permit automatic invocation by default. Claude also 
 
 ## Release status
 
-This distribution provides ChatGPT, Claude and Cursor 0.10.0 source and archives. The Grok Bot dossier is 0.9.0; the optional adapter is 0.8.0. These packages do not establish marketplace approval or authenticated host acceptance; npm publication remains separate. Historical approved identities and archive bytes remain intact. The current host matrix, configuration examples and documented limitations are in [hosts/README.md](hosts/README.md).
+This distribution provides ChatGPT and Cursor 0.10.0 and Claude 0.10.1 source and archives. The Grok Bot dossier is 0.9.0; the optional adapter is 0.8.0. These packages do not establish marketplace approval or authenticated host acceptance; npm publication remains separate. Historical approved identities and archive bytes remain intact. The current host matrix, configuration examples and documented limitations are in [hosts/README.md](hosts/README.md).
 
 Sign in through Ultiwrite’s existing account flow and approve scoped OAuth access. Connection does not grant usage. Check the returned accountStatus with `ultiwrite_capabilities_get` before a requested investigation. The first eligible complimentary investigation remains available once per account, with no card required. Existing paid entitlements, report access and canonical usage accounting remain unchanged.
 

@@ -32,7 +32,7 @@ before(async () => {
   await cp(join(fixture, 'release/ultiwrite-chatgpt-plugin-0.10.0.zip'), join(fixture, 'release/ultiwrite-chatgpt-plugin-0.0.0.zip'))
   const hostVersion = (await readJson(join(fixture, 'hosts/matrix.json'))).packageVersion
   const currentArchives = new Set([`ultiwrite-host-adapters-${hostVersion}.zip`,
-    'ultiwrite-chatgpt-plugin-0.10.0.zip', 'ultiwrite-cursor-plugin-0.10.0.zip', 'Ultiwrite_Claude_Plugin_v0.10.0.zip'])
+    'ultiwrite-chatgpt-plugin-0.10.0.zip', 'ultiwrite-cursor-plugin-0.10.0.zip', 'Ultiwrite_Claude_Plugin_v0.10.1.zip'])
   frozen = new Map(await Promise.all((await readdir(join(fixture, 'release')))
     .filter(name => name.endsWith('.zip') && !currentArchives.has(name))
     .map(async name => [name, await digest(join(fixture, 'release', name))])))
@@ -58,8 +58,8 @@ test('combined release preserves ChatGPT identity, prompts, artwork and all plug
     ultiwrite: { type: 'streamable-http', url: 'https://mcp.dwsoffshorepartners.com/mcp' },
   })
   assert.equal(await digest(join(root, 'chatgpt/assets/logo.png')), 'cc0a3c229347e47a154a00c9e6dfa774c0e1f07ee9fc063935af5bc4897f4b18')
-  for (const [host, manifest] of [['claude', '.claude-plugin'], ['cursor', '.cursor-plugin']]) {
-    assert.equal((await readJson(join(root, host, manifest, 'plugin.json'))).version, '0.10.0')
+  for (const [host, manifest, version] of [['claude', '.claude-plugin', '0.10.1'], ['cursor', '.cursor-plugin', '0.10.0']]) {
+    assert.equal((await readJson(join(root, host, manifest, 'plugin.json'))).version, version)
   }
 })
 
@@ -82,8 +82,8 @@ test('packing records exact source, refuses stale metadata claims and preserves 
   assert.equal(rebuilt.packages.cli, undefined)
   assert.equal(rebuilt.packages.chatgpt.extra_provenance, undefined)
   assert.equal(rebuilt.packages.chatgpt.version, '0.10.0')
-  assert.equal(rebuilt.packages.hosts.version, '0.12.0', 'the host bundle versions independently of released plugins')
-  assert.equal(rebuilt.packages.hosts.zip, 'release/ultiwrite-host-adapters-0.12.0.zip')
+  assert.equal(rebuilt.packages.hosts.version, '0.12.1', 'the host bundle versions independently of released plugins')
+  assert.equal(rebuilt.packages.hosts.zip, 'release/ultiwrite-host-adapters-0.12.1.zip')
   assert.ok(!rebuilt.files.some(item => /^(node_modules|dist|coverage|\.cache)\//.test(item.path) || item.path.endsWith('.tgz')))
   assert.ok(frozen.size >= 1, 'historical archive preservation must be exercised')
   for (const [name, hash] of frozen) assert.equal(await digest(join(fixture, 'release', name)), hash, name)

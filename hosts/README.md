@@ -1,6 +1,6 @@
 # Ultiwrite across MCP hosts
 
-Updated November 13, 2026. Host bundle 0.12.0 contains source-backed setup guidance, enterprise adoption runbooks and directory review packets. Current native host acceptance is NOT_RUN; historical evidence remains dated. Provider approval and authenticated host acceptance remain separate.
+Updated November 13, 2026. Host bundle 0.12.1 contains source-backed setup guidance, enterprise adoption runbooks and directory review packets. Current native host acceptance is NOT_RUN; historical evidence remains dated. Provider approval and authenticated host acceptance remain separate.
 
 All hosts use **https://mcp.dwsoffshorepartners.com/mcp**. The historical apex integration route remains valid for existing grants. Sign in through Ultiwrite’s existing account flow, then approve scoped OAuth access. A host's own Microsoft, Claude, xAI or other account is not the Ultiwrite customer's identity.
 

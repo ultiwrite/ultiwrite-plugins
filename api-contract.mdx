@@ -1,0 +1,85 @@
+---
+title: "Partner API contract and architecture"
+sidebarTitle: "Contract and boundaries"
+description: "Understand the Ultiwrite Partner API resources, authentication boundaries, saved-case lifecycle and delivery contract before building an integration."
+keywords: ["Ultiwrite API architecture", "OpenAPI", "Partner API", "case lifecycle"]
+---
+
+The Ultiwrite Partner API connects your backend to the same account, evidence workflow and saved reports as the website. The canonical registry defines request and response schemas; these guides explain how to combine the operations into a complete integration. This portal builds from its generated local snapshot; live OpenAPI and capabilities establish what the target deployment currently enables.
+
+This documentation portal presents the existing API contract. It does not introduce a second endpoint, credential system or report workflow.
+
+## Contract authority
+
+Use [the generated OpenAPI 3.1 document](https://dwsoffshorepartners.com/.well-known/openapi.json) and [the native API reference](https://dwsoffshorepartners.com/docs/api) for the deployed contract. The base URL is `https://dwsoffshorepartners.com/api/v1`.
+
+The schema contains Partner API operations and separately identified historical scoring routes. Their credentials have different authority. Use the Partner API for evidence-package investigations.
+
+## Partner operations
+
+All paths below are relative to `/api/v1`.
+
+| Method | Path | Purpose |
+| --- | --- | --- |
+| GET | `/me` | Confirm the authorized account |
+| GET | `/capabilities` | Inspect inputs, limits and workflow |
+| GET | `/usage` | Read analysis allowance and API request usage |
+| GET | `/billing/offers` | Read current offers for the authorized account |
+| POST | `/billing/checkouts` | Create a Stripe checkout link with explicit OAuth consent |
+| GET | `/billing/checkouts/{sessionId}` | Recover checkout and fulfillment status |
+| GET | `/cases` | List cases and saved reports |
+| POST | `/cases` | Submit evidence and start an investigation |
+| GET | `/cases/{caseId}` | Read saved workflow status |
+| POST | `/cases/{caseId}/continue` | Advance retained processing |
+| GET | `/cases/{caseId}/findings` | Read released findings for a case |
+| GET | `/cases/{caseId}/brief` | Read the case's Decision Brief |
+| GET | `/reports/{reportId}/findings` | Read released findings by report |
+| GET | `/reports/{reportId}/brief` | Read the report's Decision Brief |
+| GET | `/reports/{reportId}/export` | Read entitled delivery options |
+| GET | `/reports/{reportId}/artifacts/{artifact}` | Download entitled JSON/PDF/CSV/Excel/ZIP with the Partner bearer |
+| GET | `/report-releases` | Poll source-bound released-report notifications |
+| GET | `/billing/offers` | Read investigation offers |
+| POST | `/billing/checkouts` | Create a Stripe link with separately consented OAuth checkout authority |
+| GET | `/billing/checkouts/{checkoutId}` | Read that account-bound checkout state |
+| POST | `/upload-links` | Create a protected upload link |
+| GET | `/webhooks` | List configured destinations |
+| POST | `/webhooks` | Register a destination and obtain its secret once |
+| DELETE | `/webhooks/{endpointId}` | Revoke a destination and pending attempts |
+| GET | `/webhooks/{endpointId}/deliveries` | Read the latest fifty delivery outcomes |
+
+## Authentication and account authority
+
+Approved accounts can use a dashboard-issued `ultiwrite_live_` key or delegated OAuth with PKCE S256. Both use the same account request allowance. The credential determines the account; a request cannot select another organization.
+
+Partner OAuth uses resource `https://dwsoffshorepartners.com/api/v1`, with `ultiwrite:read` for reads and `ultiwrite:evidence` for evidence submission and continuation. Checkout creation and status additionally require the separately consented optional `ultiwrite:checkout` scope. An MCP token and a legacy `uw_live_` key cannot replace Partner API credentials. See [authentication](/partner-api/authentication) and [API keys](/api-keys).
+
+## Checkout and fulfillment
+
+Read [the current offer catalog](/api-reference/billing-offers) for the authorized account. [Create checkout](/api-reference/create-checkout) and [recover checkout status](/api-reference/checkout-status) require Partner OAuth with both `ultiwrite:read` and the separately consented optional `ultiwrite:checkout` scope. Dashboard keys and ordinary read/evidence grants cannot create or recover checkout.
+
+Checkout returns a private Stripe URL for the intended user to review and pay. Creating the link does not charge a payment method, grant credit or change API approval. Only `credited` confirms fulfillment; preserve pending and unresolved states before inviting another payment. A `document_forensics` purchase requires an owned, unstarted P1/P2 portal Upload draft, not a Partner API case. See [checkout permission and recovery](/partner-api/usage#request-existing-stripe-checkout-with-permission).
+
+## Saved-case lifecycle
+
+Submit evidence, retain the returned `caseId`, read status, and follow any returned continuation. Status reads alone do not advance processing. A completed investigation links a saved report; findings and brief reads retrieve that result rather than running another investigation.
+
+Preserve the original filenames, bytes and forensic choice when recovering an uncertain submission. Identical package retries, continuation and result reads do not consume another analysis credit. Every admitted Partner API request still counts toward the request allowance. See [case workflow](/partner-api/workflow) and [usage](/partner-api/usage).
+
+## Results and delivery
+
+Findings pagination binds eight cursors, the saved report snapshot and the previous page token. Preserve provenance, confidence, counter-evidence and limitations when presenting results. See [results and delivery](/partner-api/results).
+
+Use **GET /reports/\{reportId\}/artifacts/\{artifact\}** with the same Partner Authorization bearer to retrieve entitled report bytes. Supported artifact names are report.json, report.pdf, document-forensics.pdf, report.csv, report.xlsx and report.zip. Read-only scope is sufficient; explicit account API approval, current credential authority, request quotas and the canonical report/format entitlements still apply. The export response includes an **apiDownloads** map alongside existing website links. Optional version/digest query parameters pin the saved report revision; PDF depth is summary or comprehensive. ZIP requires a formats=pdf,csv,xlsx selection containing the entitled formats to include. No public or presigned report capability is created. Website links still require the signed-in same-account browser session; MCP delivery keeps its existing website-only file policy.
+
+## Integration boundaries
+
+Optional workflow webhooks are available only where live OpenAPI includes their operations and GET /capabilities reports webhooks.available. Management requires an approved dashboard API key with read and evidence scopes; OAuth cannot manage destinations. Notifications do not advance continuation and contain minimal metadata. Read the [receiver signature, deduplication, retry and revocation contract](/partner-api/workflow#webhook-notifications).
+
+The current contract does not offer client-credentials authentication, append-evidence or rerun endpoints, or selectable investigation tiers in evidence-submission requests. A report is advisory evidence for your workflow; it does not render an autonomous approve or decline.
+
+Use the [complete developer guide](https://dwsoffshorepartners.com/docs/downloads/partner-api/GUIDE.md), [downloadable README and Node examples](https://dwsoffshorepartners.com/docs/downloads/partner-api/README.md), and [integration checklist](/partner-api/integration-checklist) before sending customer evidence.
+
+
+## Maintained binary-download helper
+
+The [Node client](https://dwsoffshorepartners.com/docs/downloads/partner-api/client.mjs) provides `downloadArtifact(href, {destination, maxBytes, deadline})` for an export `apiDownloads` URL. It streams only canonical-origin artifact GETs, refuses redirects and overwrite, bounds bytes/deadline and removes partial files. The [runner](https://dwsoffshorepartners.com/docs/downloads/partner-api/example.mjs) downloads the offered commercial PDF by default after submission or resume; choose another entitled format with `ULTIWRITE_DOWNLOAD_FORMAT` or use `none` for metadata only. Download recovery uses the saved report, with no new investigation.

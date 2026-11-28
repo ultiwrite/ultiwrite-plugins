@@ -14,9 +14,9 @@ Use `claude-code`, `vscode`, or `codex` in place of `cursor`. Add `--dry-run` to
 
 | Host | Source/package | Connection recovery |
 | --- | --- | --- |
-| ChatGPT/Codex | `chatgpt/`, `release/ultiwrite-chatgpt-plugin-0.10.0.zip` | Plugin settings > Ultiwrite > Connect/Reconnect; Connect another account where offered |
-| Claude | `claude/`, `release/Ultiwrite_Claude_Plugin_v0.10.1.zip` | Plugins > Ultiwrite > Connectors > Connect; Claude Code `/mcp` > Authenticate |
-| Cursor | `cursor/`, `release/ultiwrite-cursor-plugin-0.10.0.zip` | Existing Ultiwrite MCP server's authentication control |
+| ChatGPT/Codex | `chatgpt/`, `release/ultiwrite-chatgpt-plugin-0.11.0.zip` | Plugin settings > Ultiwrite > Connect/Reconnect; Connect another account where offered |
+| Claude | `claude/`, `release/Ultiwrite_Claude_Plugin_v0.11.0.zip` | Plugins > Ultiwrite > Connectors > Connect; Claude Code `/mcp` > Authenticate |
+| Cursor | `cursor/`, `release/ultiwrite-cursor-plugin-0.11.0.zip` | Existing Ultiwrite MCP server's authentication control |
 | Grok Bot | `grokbot/` submission dossier | Host's supported MCP account controls |
 
 ChatGPT: update the original Ultiwrite listing rather than creating a duplicate. The previously recorded original identity is `plugin_asdk_app_6ad72494738c8191af2df24a75ab4afc`; inspect current publisher state before replacing a draft. A ZIP build alone does not upload or approve the listing.
@@ -42,18 +42,18 @@ Start with “Connect Ultiwrite and confirm which account is connected.” The p
 
 ## Permissions and default features
 
-Reading requires `ultiwrite:read`; evidence submission also requires `ultiwrite:evidence`. Select access in the real authorization flow. Host approval modes determine when a tool invocation needs approval and remain separate from account scopes.
+Reading requires `ultiwrite:read`; evidence submission and audited case dispositions also require `ultiwrite:evidence`. Select access in the real authorization flow. Host approval modes determine when a tool invocation needs approval and remain separate from account scopes.
 
-The five packaged workflows permit automatic invocation by default. Claude also declares `defaultEnabled: true` for new installations. Existing user-disabled choices and workspace policies take precedence. A default-enabled workflow does not start work, select a paid Document Forensics add-on, grant credits or approve a charge.
+The six packaged workflows permit automatic invocation by default. Claude also declares `defaultEnabled: true` for new installations. Existing user-disabled choices and workspace policies take precedence. A default-enabled workflow does not start work, record a disposition, select a paid Document Forensics add-on, grant credits or approve a charge.
 
 ## Release status
 
-This distribution provides ChatGPT and Cursor 0.10.0 and Claude 0.10.1 source and archives. The Grok Bot dossier is 0.9.0; the optional adapter is 0.8.0. These packages do not establish marketplace approval or authenticated host acceptance; npm publication remains separate. Historical approved identities and archive bytes remain intact. The current host matrix, configuration examples and documented limitations are in [hosts/README.md](hosts/README.md).
+The public repository includes ChatGPT, Claude and Cursor 0.11.0 packages, Grok Bot dossier 0.9.0, and optional local adapter 0.8.0. See [the host guide](hosts/README.md) for setup and verification status by host.
 
 Sign in through Ultiwrite’s existing account flow and approve scoped OAuth access. Connection does not grant usage. Check the returned accountStatus with `ultiwrite_capabilities_get` before a requested investigation. The first eligible complimentary investigation remains available once per account, with no card required. Existing paid entitlements, report access and canonical usage accounting remain unchanged.
 
 ## Source validation
 
-Run `node scripts/validate-public-plugins.mjs`, rebuild with `node scripts/pack-public-connectors.mjs`, then verify with `node scripts/pack-public-connectors.mjs --check`. Historical archives remain intact. Test installation, account labels, switching, reconnect and declined permissions in the intended host before claiming the installed experience is verified.
+Export to a new empty directory with `node scripts/export-plugin-distribution.mjs --out <outside-path>`. In that controlled export, run `node scripts/validate-public-plugins.mjs`, rebuild with `node scripts/pack-public-connectors.mjs`, then verify with `node scripts/pack-public-connectors.mjs --check`. Historical archives remain intact. Test installation, account labels, switching, reconnect, declined permissions and the case-disposition retry in the intended host before claiming the installed experience is verified.
 
 The local npm wrapper is prepared at 0.8.0 and is not published by this connector release. Do not advertise `npx ultiwrite-mcp` until the real package is published and a clean registry installation succeeds.

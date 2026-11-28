@@ -8,7 +8,7 @@ The canonical message is **Asymmetric Diligence & Investigative Intelligence**: 
 
 Run `node scripts/verify-distribution.mjs` from the repository root. The generated `dist/distribution/START_HERE.md` indexes every pack. `VERIFY.cmd` and `VERIFY.sh` provide launchers. Install native platform dependencies and retain the resolved lockfiles before release. In the generated n8n package, run `npm run lint`, `npm run build` and `npm pack --dry-run`. In the generated Zapier package, run `npm run build:local` to check the schema and build the versioned adapter. Run `npm run validate` with Zapier access before seeking publication.
 
-Existing Claude/ChatGPT/Cursor/Grok release contents stay unchanged. Their packs contain revised listing copy for updating the original records, not duplicate publication. EmDash PR #12 remains separate.
+The existing Claude, ChatGPT, Cursor, Grok and EmDash listing packs contain revised copy for their current records.
 
 ## Honest readiness levels
 
@@ -18,10 +18,10 @@ Existing Claude/ChatGPT/Cursor/Grok release contents stay unchanged. Their packs
 - Workspace: Drive sidebar; no automatic Drive-content access. Review the visible key-entry/per-user storage pilot flow before public release.
 - Chrome: explicit local evidence-note capture and manual website handoff, not authenticated in-browser analysis.
 - Microsoft: templates, real-tool discovery and required-value finalizer; certification is not complete.
-- HubSpot: dependency handoff for existing backend PR #687; deal card/writeback remain unfinished.
+- HubSpot: follow the merged backend in PR #687 for OAuth installation. The deal card and writeback remain unfinished.
 
 ## Validation preservation
 
-The former public-package validator is retained byte-for-byte at `.github/validate-legacy-tree.mjs`. The entry script scans the entire source and runs those same legacy checks against a temporary legacy-package view. It does not remove identity, version, logo, credential or archive-parity checks. New CI adds local tests plus separately reported n8n/Zapier native checks; nothing auto-publishes.
+The repository validator scans the complete source, including these channel kits. The validation workflow runs local contract checks, archive parity and separate native n8n and Zapier checks.
 
-No production change, marketplace submission, merge or deployment is authorized by these preparation files.
+Marketplace submission uses each channel’s publisher account and release checklist.

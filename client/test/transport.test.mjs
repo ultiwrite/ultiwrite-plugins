@@ -5,6 +5,7 @@ import { mkdtemp, mkdir, readFile, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { once } from 'node:events'
+import { fileURLToPath } from 'node:url'
 
 const home = await mkdtemp(join(tmpdir(), 'ultiwrite-transport-'))
 const credentials = join(home, '.config/ultiwrite/credentials.json')
@@ -16,6 +17,8 @@ const server = createServer(async (req, res) => {
   const bytes = Buffer.concat(chunks)
   const body = () => JSON.parse(bytes)
   const reply = value => { res.setHeader('content-type', 'application/json'); res.end(JSON.stringify(value)) }
+  if (req.url.startsWith('/.well-known/oauth-protected-resource')) return reply({ resource: `${origin}/api/integrations/ultiwrite/mcp`, authorization_servers: [origin] })
+  if (req.url === '/.well-known/oauth-authorization-server') return reply({ issuer: origin, code_challenge_methods_supported: ['S256'], authorization_endpoint: `${origin}/authorize`, token_endpoint: `${origin}/api/integrations/ultiwrite/oauth/token`, registration_endpoint: `${origin}/register` })
   if (req.url === '/api/integrations/ultiwrite/oauth/token') {
     assert.equal(new URLSearchParams(bytes.toString()).get('refresh_token'), 'old-refresh')
     refreshed++
@@ -41,7 +44,7 @@ await new Promise(resolve => server.listen(0, '127.0.0.1', resolve))
 origin = `http://127.0.0.1:${server.address().port}`
 await writeFile(credentials, JSON.stringify({ access_token: 'old-access', refresh_token: 'old-refresh', client_id: 'synthetic', issuer: origin }), { mode: 0o600 })
 const bin = new URL('../bin/ultiwrite-mcp.js', import.meta.url)
-const start = args => spawn(process.execPath, [bin.pathname, ...args], { env: { ...process.env, ULTIWRITE_HOME: home }, stdio: ['pipe', 'pipe', 'pipe'] })
+const start = args => spawn(process.execPath, [fileURLToPath(bin), ...args], { env: { ...process.env, ULTIWRITE_HOME: home }, stdio: ['pipe', 'pipe', 'pipe'] })
 const child = start(['stdio'])
 let output = '', errors = ''
 child.stdout.on('data', chunk => { output += chunk })

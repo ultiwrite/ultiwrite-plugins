@@ -4,7 +4,7 @@ import { dirname, resolve, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
-const folder=join(root,'distribution/verification');mkdirSync(folder,{recursive:true});
+const folder=join(root,'dist/distribution-verification');mkdirSync(folder,{recursive:true});
 const tests=readdirSync(join(root,'distribution/tests')).filter(n=>/\.test\.(cjs|mjs)$/.test(n)).sort().map(n=>'distribution/tests/'+n);
 const results=[];
 function run(name,cmd,args,optional=false){const r=spawnSync(cmd,args,{cwd:root,encoding:'utf8'});const output=(r.stdout??'')+(r.stderr??'');writeFileSync(join(folder,name+'.log'),output);const status=r.error&&optional?'NOT_RUN':r.status===0?'PASS':'FAIL';results.push({name,status,command:[cmd,...args].join(' ')});console.log(name+': '+status);if(status==='FAIL'){console.error(output.slice(-4000));process.exitCode=1;}return r;}

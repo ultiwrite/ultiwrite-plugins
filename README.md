@@ -1,69 +1,72 @@
 # Ultiwrite plugins
 
-**Asymmetric Diligence & Investigative Intelligence**
+Ultiwrite is an asymmetric diligence engine: ordinary commercial documents open a wider investigation across financial, identity, integrity, operational and external-context evidence. Publisher: DWS Offshore Fund. This repository contains thin public connectors and workflow guidance; the analytical service is hosted separately.
 
-Your documents are the starting point. Not the limits of the investigation.
+## Install from your terminal
 
-Ultiwrite expands the evidence beyond initial documents, investigates relevant external information, and reconciles the combined picture to reveal findings and test conclusions the original files alone could not support. This repository contains thin connectors and distribution packaging—not the proprietary investigative engine or customer records. Publisher: **DWS Offshore Fund**.
-
-## Distribution preparation — November 1, 2026
-
-The new `distribution/` source prepares 21 channel packs with a single messaging catalog, platform-specific installation/submission instructions, explicit blockers and host acceptance checklists. It includes new MCP manifests, automation adapters, a WordPress admin connector, a Workspace sidebar and a Chrome manual evidence-handoff extension.
-
-**Preparation is not publication.** Microsoft is a certification template/finalizer, not a certified connector. HubSpot is a handoff tied to existing unmerged backend work, not a completed deal integration. Existing marketplace identities and released ZIPs have not been overwritten.
-
-Run with Node.js 22:
+Run the installer with Node.js 22 or later and Git:
 
 ```sh
-node scripts/verify-distribution.mjs
+npx --yes github:ultiwrite/ultiwrite-plugins#main install cursor
 ```
 
-Windows: double-click `VERIFY.cmd`. Outputs go to `dist/distribution/`; begin with `START_HERE.md`. Run `python scripts/prepare-distribution-assets.py` with Pillow installed to produce approved-logo size variants. No verification or build command submits an application or publishes a package.
+Use `claude-code`, `vscode`, or `codex` in place of `cursor`. Add `--dry-run` to review changes, then complete OAuth in your client. The [CLI guide](cli/README.md) covers Cline and Windsurf, hosted-app setup, removal and publishing. `@ultiwrite/cli` is currently distributed through GitHub source.
 
-See [distribution/README.md](distribution/README.md), [the channel catalog](distribution/catalog.json), and [the website-positioning Codex prompt](docs/handoffs/CODEX_PUBLIC_POSITIONING_2026-11-01.md). Native platform validation, actual OAuth/API acceptance and publisher-account approvals are separate from local tests.
+## Connector packages
 
-## Existing connector releases
+| Directory | Version | Contents |
+| --- | --- | --- |
+| `chatgpt/` | 0.11.0 | Existing ChatGPT/Codex identity and six workflows, including typed case disposition |
+| `claude/` | 0.11.0 | Existing Claude identity, connection recovery and six workflows |
+| `cursor/` | 0.11.0 | Existing Cursor identity and six discoverable workflows |
+| `grokbot/` | 0.9.0 | Separate Grok Bot submission dossier; distinct from Grok Build |
+| `client/` | 0.8.0 | Optional local OAuth/stdio adapter; npm publication outstanding |
+| `hosts/` | 0.13.0 | 55-surface compatibility matrix, 16 config examples, enterprise adoption/operations guides, directory review packets, hosted-client guide, API example and generated public tool catalog |
 
-| Directory | Version | Purpose |
-|---|---|---|
-| `claude/` | 0.8.3 | Claude remote MCP plus account connection, evidence, report and follow-up skills. |
-| `chatgpt/` | 0.7.1 | Existing ChatGPT/Codex listing source; preserve that listing identity. |
-| `cursor/` | 0.7.1 | Cursor plugin and Streamable HTTP MCP configuration. |
-| `grokbot/` | 0.7.1 | Existing Grok Bot submission package; consumer Grok availability is not implied. |
-| `client/` | 0.7.1 | Local wrapper; npm publication is not established. |
+Release 0.11.0 adds audited case disposition, guidance for separately identified customer requirement sets, and applicability reporting. The packages use the existing production MCP service. The release includes public source and download archives. Provider listing and authenticated host acceptance have their own review.
 
-The submitted EmDash package remains on its separate PR #12 branch. It is not silently merged by this distribution work.
+## Connect
 
-Historical ZIPs remain in `release/`, including `Ultiwrite_Claude_Plugin_v0.8.3.zip`, `ultiwrite-chatgpt-plugin-0.7.1.zip` and `ultiwrite-cursor-plugin-0.7.1.zip`. Consult `release/SHA256SUMS.txt` and `release/INVENTORY.json` for exact hashes and members. `node scripts/pack-public-connectors.mjs --check` checks existing source/archive parity. GitHub availability does not prove directory approval or an installed client's version.
+Preferred endpoint: **https://mcp.dwsoffshorepartners.com/mcp**. The historical apex `/api/integrations/ultiwrite/mcp` route remains valid for existing connections and audiences.
 
-## Hosted service and account
+Sign in through Ultiwrite’s existing account flow, then approve the specific host’s scoped OAuth grant. The host account and customer account are separate. Verify `ultiwrite_account_get` after connecting, reconnecting or switching accounts. Read `ultiwrite_capabilities_get` for current capabilities, account limits, paid credits and complimentary availability. Evidence consent and server usage accounting still govern analysis.
 
-Canonical MCP: https://dwsoffshorepartners.com/api/integrations/ultiwrite/mcp
+The first eligible complimentary investigation remains available once per account, with no card required. Canonical account eligibility and the existing server ledger govern complimentary and purchased usage.
 
-Claude clean-host MCP: https://mcp.dwsoffshorepartners.com/mcp
+[Installation and host-specific configurations](hosts/README.md) · [Hosted SaaS clients](hosts/hosted-clients.md) · [Per-surface status](hosts/matrix.json) · [Canonical public tool catalog](hosts/catalog.json). Unknown host behavior and external approvals remain explicit; a model name alone is not an MCP host.
 
-Both reach the same hosted service and account. MCP clients use native OAuth; do not embed a dashboard API key in their config. API-based automation adapters separately require explicit account API approval and retain the service's existing quotas and analysis entitlements.
+[Enterprise adoption and operations](hosts/enterprise/README.md) · [Directory submission packets](hosts/submissions/README.md) · [EmDash setup](hosts/emdash.md)
 
-Setup: https://dwsoffshorepartners.com/docs/mcp
-API documentation: https://dwsoffshorepartners.com/docs/api
-Website: https://dwsoffshorepartners.com
-Support: https://dwsoffshorepartners.com/contact
-Privacy: https://dwsoffshorepartners.com/privacy
-Terms: https://dwsoffshorepartners.com/terms
+## Downloads
 
-## Claude installation and recovery
+Download the versioned connector packages below. The host adapter bundle is `release/ultiwrite-host-adapters-0.13.0.zip`. The optional local adapter is `release/ultiwrite-mcp-0.8.0.tgz`.
 
-Upload the current Claude ZIP through the host's plugin interface, or use the existing Claude Code marketplace entry:
+<!-- CURRENT_DOWNLOADS_START -->
+| Archive | SHA-256 |
+| --- | --- |
+| [`ultiwrite-chatgpt-plugin-0.11.0.zip`](https://github.com/dennis430/ultiwrite-plugins/raw/main/release/ultiwrite-chatgpt-plugin-0.11.0.zip) | `0c54d2f2fd0613289540b01627b82ef29af57d14f49b37ebde3f15db3dfd4377` |
+| [`ultiwrite-cursor-plugin-0.11.0.zip`](https://github.com/dennis430/ultiwrite-plugins/raw/main/release/ultiwrite-cursor-plugin-0.11.0.zip) | `99ec899527f597544c5b9309b7b40f98c1da6e80ab962cb4aa788f986708b2f5` |
+| [`Ultiwrite_Claude_Plugin_v0.11.0.zip`](https://github.com/dennis430/ultiwrite-plugins/raw/main/release/Ultiwrite_Claude_Plugin_v0.11.0.zip) | `68477d935ed33bc1476fe43d7449beceff302ca8f3ebf77d24716a1cbbd42299` |
+<!-- CURRENT_DOWNLOADS_END -->
 
-```text
-/plugin marketplace add dennis430/ultiwrite-plugins
-/plugin install ultiwrite@ultiwrite
+`release/INVENTORY.json`, `release/SHA256SUMS.txt` and `RELEASE_MANIFEST.json` record the hashes for these public repository packages. For an authenticated website download, use its accompanying checksum inventory.
+
+## Microsoft connector review
+
+The [Microsoft distribution guide](DISTRIBUTION.md) covers the VS Code 0.1.1 review candidate, GitHub Copilot, Microsoft 365 tenant validation, and MCP Registry preparation. The guide records package checks and host publication requirements.
+
+## Distribution preparation
+
+The [channel preparation guide](distribution/README.md) covers automation adapters, directory listings and their release requirements.
+
+## Preparation
+
+```sh
+node scripts/validate-public-plugins.mjs
+node scripts/pack-public-connectors.mjs
+node scripts/pack-public-connectors.mjs --check
 ```
 
-Ask to connect Ultiwrite and confirm the account. Use the host's Ultiwrite connector controls or Claude Code's `/mcp` authentication action to reconnect. See `claude/README.md` for recovery and account switching.
+These structural and archive checks are not authenticated host acceptance. The original discovery prompt suite remains in `evals/`. It does not establish that a model selected the plugin.
 
-`server.draft.json` remains the historical unpublished draft. The new `server.json` is a prepared registry candidate; neither is a publication receipt. Preserve `io.github.dennis430/ultiwrite` if that namespace is already registered.
-
-## License boundary
-
-The MIT grant covers the original thin connector code described in LICENSE and NOTICE, not the hosted analytical service. The WordPress adapter carries its own GPL-2.0-or-later notice. Public connectors contain no engine source, customer records or credentials.
+Canonical editable sources are maintained in the private application packaging directories. Keep them synchronized before export. The MIT license applies to original connector files; the hosted investigative service is not included. Public positioning is maintained in [POSITIONING.md](POSITIONING.md).

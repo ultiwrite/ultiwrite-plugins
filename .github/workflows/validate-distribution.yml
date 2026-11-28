@@ -23,7 +23,7 @@ jobs:
           name: Ultiwrite-distribution-preparation
           path: |
             dist/distribution/
-            distribution/verification/
+            dist/distribution-verification/
           if-no-files-found: error
   native-package-checks:
     runs-on: ubuntu-latest

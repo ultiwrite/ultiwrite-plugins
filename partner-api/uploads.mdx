@@ -1,0 +1,49 @@
+---
+title: "Choose direct upload or a protected upload link"
+sidebarTitle: "Evidence uploads"
+description: "Choose a transport based on package size, the deployed body limit and the account’s upload policy."
+keywords: ["document upload","multipart","upload links","document forensics"]
+canonical: "https://dwsoffshorepartners.com/docs/partner-api/uploads"
+---
+
+Read [the account’s capabilities](/api-reference/capabilities) before accepting files. The [native upload guide](https://dwsoffshorepartners.com/docs/partner-api/uploads) describes the same admission rules.
+
+## Choose the transport
+
+<div className="uw-reference">
+
+<div className="uw-entry">
+
+**Direct submission**
+
+Send one to six `files` parts to [`POST /cases`](/api-reference/submit-evidence). Let the HTTP client set the multipart boundary. The only additional form field is `documentForensics`.
+
+</div>
+
+<div className="uw-entry">
+
+**Guided upload**
+
+For packages over the direct request limit, [create an upload link](/api-reference/upload-link) and give it to the person submitting the evidence.
+
+</div>
+
+</div>
+
+## Check both size limits
+
+The application accepts up to **8 MiB per file** and **12 MiB per package**. The production host limits a direct request to approximately **4.5 MB**, including multipart overhead. The example client switches transport at 4,000,000 file bytes to leave room for that overhead.
+
+Direct submission derives the account from the credential. It rejects organization, tier and user overrides.
+
+## Treat the upload link as a credential
+
+POST /upload-links returns a single-use, time-limited URL bound to the authorized grant and organization. Hand it to the intended user’s guided uploader. Do not log it, expose it to search engines or analytics, or share it with a different account. Actual limits come from the account policy; no universal unlimited-upload promise is implied. Validity is up to 30 minutes. API-key links expire no later than the issuing key; OAuth links remain bound to their original grant family across normal refresh. Current approval, revocation and credential authority are rechecked when the link is used.
+
+## Keep forensic choice and file identity stable
+
+Omitting documentForensics allows the engine to infer relevance. True or false requests an explicit choice, which is frozen for the saved case. Baseline metadata analysis is distinct from optional document forensics. Retrying the same package means preserving filenames, bytes and the forensic choice; new evidence is not silently appended to an existing case.
+
+## Handle unsupported evidence explicitly
+
+The direct route accepts supported PDF, spreadsheet, Word, image and ZIP evidence but refuses HTML/XML markup, gzip, tar, 7z, RAR and empty files. A file that appears in a website marketing list is not automatically supported by this transport. Preserve the original evidence and correct the submission through the documented workflow; do not mask a refusal with an empty report.

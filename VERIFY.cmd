@@ -9,7 +9,7 @@ if errorlevel 1 (
 )
 node scripts\verify-distribution.mjs
 if errorlevel 1 (
-  echo Verification failed. Read distribution\verification. Nothing was submitted.
+  echo Verification failed. Read dist\distribution-verification. Nothing was submitted.
   pause
   exit /b 1
 )
